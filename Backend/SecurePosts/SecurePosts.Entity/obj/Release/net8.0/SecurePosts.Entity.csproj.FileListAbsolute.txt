@@ -1,0 +1,12 @@
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\SecurePosts\SecurePosts.Entity\bin\Release\net8.0\SecurePosts.Entity.deps.json
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\SecurePosts\SecurePosts.Entity\bin\Release\net8.0\SecurePosts.Entity.dll
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\SecurePosts\SecurePosts.Entity\bin\Release\net8.0\SecurePosts.Entity.pdb
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\SecurePosts\SecurePosts.Entity\obj\Release\net8.0\SecurePosts.Entity.csproj.AssemblyReference.cache
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\SecurePosts\SecurePosts.Entity\obj\Release\net8.0\SecurePosts.Entity.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\SecurePosts\SecurePosts.Entity\obj\Release\net8.0\SecurePosts.Entity.AssemblyInfoInputs.cache
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\SecurePosts\SecurePosts.Entity\obj\Release\net8.0\SecurePosts.Entity.AssemblyInfo.cs
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\SecurePosts\SecurePosts.Entity\obj\Release\net8.0\SecurePosts.Entity.csproj.CoreCompileInputs.cache
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\SecurePosts\SecurePosts.Entity\obj\Release\net8.0\SecurePosts.Entity.dll
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\SecurePosts\SecurePosts.Entity\obj\Release\net8.0\refint\SecurePosts.Entity.dll
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\SecurePosts\SecurePosts.Entity\obj\Release\net8.0\SecurePosts.Entity.pdb
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\SecurePosts\SecurePosts.Entity\obj\Release\net8.0\ref\SecurePosts.Entity.dll

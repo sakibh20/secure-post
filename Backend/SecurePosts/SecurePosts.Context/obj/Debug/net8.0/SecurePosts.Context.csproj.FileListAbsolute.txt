@@ -1,0 +1,15 @@
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\SecurePosts\SecurePosts.Context\bin\Debug\net8.0\SecurePosts.Context.deps.json
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\SecurePosts\SecurePosts.Context\bin\Debug\net8.0\SecurePosts.Context.dll
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\SecurePosts\SecurePosts.Context\bin\Debug\net8.0\SecurePosts.Context.pdb
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\SecurePosts\SecurePosts.Context\bin\Debug\net8.0\SecurePosts.Entity.dll
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\SecurePosts\SecurePosts.Context\bin\Debug\net8.0\SecurePosts.Entity.pdb
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\SecurePosts\SecurePosts.Context\obj\Debug\net8.0\SecurePosts.Context.csproj.AssemblyReference.cache
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\SecurePosts\SecurePosts.Context\obj\Debug\net8.0\SecurePosts.Context.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\SecurePosts\SecurePosts.Context\obj\Debug\net8.0\SecurePosts.Context.AssemblyInfoInputs.cache
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\SecurePosts\SecurePosts.Context\obj\Debug\net8.0\SecurePosts.Context.AssemblyInfo.cs
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\SecurePosts\SecurePosts.Context\obj\Debug\net8.0\SecurePosts.Context.csproj.CoreCompileInputs.cache
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\SecurePosts\SecurePosts.Context\obj\Debug\net8.0\SecurePo.D87D8719.Up2Date
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\SecurePosts\SecurePosts.Context\obj\Debug\net8.0\SecurePosts.Context.dll
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\SecurePosts\SecurePosts.Context\obj\Debug\net8.0\refint\SecurePosts.Context.dll
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\SecurePosts\SecurePosts.Context\obj\Debug\net8.0\SecurePosts.Context.pdb
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\SecurePosts\SecurePosts.Context\obj\Debug\net8.0\ref\SecurePosts.Context.dll
