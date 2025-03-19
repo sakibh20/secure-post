@@ -15,6 +15,15 @@ react_report.html
 .vscode
 !.vscode/launch.json
 /Backend/SecurePosts/.vs
-/Backend/SecurePosts/.vs
 /Backend/SecurePosts/SecurePosts.API/bin
+/Backend/SecurePosts/SecurePosts.API/obj
+/Backend/SecurePosts/SecurePosts.BLL/bin
+/Backend/SecurePosts/SecurePosts.BLL/obj
+/Backend/SecurePosts/SecurePosts.Context/bin
 /Backend/SecurePosts/SecurePosts.Context/obj
+/Backend/SecurePosts/SecurePosts.DAL/bin
+/Backend/SecurePosts/SecurePosts.DAL/obj
+/Backend/SecurePosts/SecurePosts.Entity/bin
+/Backend/SecurePosts/SecurePosts.Entity/obj
+/Backend/SecurePosts/SecurePosts.Logging/bin
+/Backend/SecurePosts/SecurePosts.Logging/obj
