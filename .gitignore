@@ -14,3 +14,7 @@ jsdoc_report.html
 react_report.html
 .vscode
 !.vscode/launch.json
+/Backend/SecurePosts/.vs
+/Backend/SecurePosts/.vs
+/Backend/SecurePosts/SecurePosts.API/bin
+/Backend/SecurePosts/SecurePosts.Context/obj
