@@ -1,0 +1,16 @@
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\secure-post\Backend\SecureService\SecureService.Logging\bin\Debug\net8.0\SecureService.Logging.deps.json
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\secure-post\Backend\SecureService\SecureService.Logging\bin\Debug\net8.0\SecureService.Logging.dll
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\secure-post\Backend\SecureService\SecureService.Logging\bin\Debug\net8.0\SecureService.Logging.pdb
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\secure-post\Backend\SecureService\SecureService.Logging\bin\Debug\net8.0\SecureService.Entity.dll
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\secure-post\Backend\SecureService\SecureService.Logging\bin\Debug\net8.0\SecureService.Entity.pdb
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\secure-post\Backend\SecureService\SecureService.Logging\obj\Debug\net8.0\SecureService.Logging.csproj.AssemblyReference.cache
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\secure-post\Backend\SecureService\SecureService.Logging\obj\Debug\net8.0\SecureService.Logging.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\secure-post\Backend\SecureService\SecureService.Logging\obj\Debug\net8.0\SecureService.Logging.AssemblyInfoInputs.cache
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\secure-post\Backend\SecureService\SecureService.Logging\obj\Debug\net8.0\SecureService.Logging.AssemblyInfo.cs
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\secure-post\Backend\SecureService\SecureService.Logging\obj\Debug\net8.0\SecureService.Logging.csproj.CoreCompileInputs.cache
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\secure-post\Backend\SecureService\SecureService.Logging\obj\Debug\net8.0\SecureService.Logging.sourcelink.json
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\secure-post\Backend\SecureService\SecureService.Logging\obj\Debug\net8.0\SecureSe.DA2A0C9C.Up2Date
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\secure-post\Backend\SecureService\SecureService.Logging\obj\Debug\net8.0\SecureService.Logging.dll
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\secure-post\Backend\SecureService\SecureService.Logging\obj\Debug\net8.0\refint\SecureService.Logging.dll
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\secure-post\Backend\SecureService\SecureService.Logging\obj\Debug\net8.0\SecureService.Logging.pdb
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\secure-post\Backend\SecureService\SecureService.Logging\obj\Debug\net8.0\ref\SecureService.Logging.dll
