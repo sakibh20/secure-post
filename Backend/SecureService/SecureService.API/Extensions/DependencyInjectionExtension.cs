@@ -26,6 +26,12 @@ namespace SecureService.API.Extensions
 
             services.AddScoped<IDalLoginRepository, DalLoginService>();
             services.AddScoped<ILoginRepository, LoginService>();
+
+            services.AddScoped<IDalLogoutRepository, DalLogoutService>();
+            services.AddScoped<ILogoutRepository, LogoutService>();
+
+            services.AddScoped<IDalMatchRepository, DalMatchService>();
+            services.AddScoped<IMatchRepository, MatchService>();
         }
     }
 }

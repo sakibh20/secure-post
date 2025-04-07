@@ -19,6 +19,8 @@ namespace SecureService.Context
 
         public virtual DbSet<UserDetail> UserDetail { get; set; }
         public virtual DbSet<UserSession> UserSession { get; set; }
+        public virtual DbSet<UserRefreshToken> UserRefreshToken { get; set; }
+        public virtual DbSet<UserMatch> UserMatch { get; set; }
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

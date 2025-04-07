@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SecureService.Entity")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2278f951a5bfd557682300d0719cbb2f874c8ae2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eee137cde9deb7c5682cb7f87b7aad9029e43b71")]
 [assembly: System.Reflection.AssemblyProductAttribute("SecureService.Entity")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SecureService.Entity")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

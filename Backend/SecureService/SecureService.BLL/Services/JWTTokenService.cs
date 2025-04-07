@@ -3,6 +3,7 @@ using System.Security.Claims;
 using SecureService.BLL.Repositories;
 using SecureService.DAL.Repositories;
 using SecureService.Entity.Shared.Database;
+using SecureService.Entity.Shared.Internal;
 
 namespace SecureService.BLL.Services
 {
@@ -15,9 +16,18 @@ namespace SecureService.BLL.Services
             this._IDalJWTTokenRepository = IDalJWTTokenRepository;
         }
 
-        public UserDetail GetUserByHeaderToken(ClaimsIdentity identity)
+        public UserDetail ValidateAccessToken(ClaimsIdentity identity)
         {
-            return _IDalJWTTokenRepository.GetUserByHeaderToken(identity); 
+            return _IDalJWTTokenRepository.ValidateAccessToken(identity); 
         }
+        public UserMatch ValidateMatchToken(ClaimsIdentity identity)
+        {
+            return _IDalJWTTokenRepository.ValidateMatchToken(identity);
+        }
+        public TokenResponseViewModel GenerateTokenByRefreshToken(ClaimsIdentity identity)
+        {
+            return _IDalJWTTokenRepository.GenerateTokenByRefreshToken(identity);
+        }
+
     }
 }

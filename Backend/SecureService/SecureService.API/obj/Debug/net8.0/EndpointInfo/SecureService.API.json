@@ -1,0 +1,326 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "SecureService API",
+    "description": "Add & Update Posts Securely",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/Login": {
+      "post": {
+        "tags": [
+          "Login"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginViewModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/GenerateAccessTokenByRefreshToken": {
+      "get": {
+        "tags": [
+          "Login"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Logout": {
+      "get": {
+        "tags": [
+          "Logout"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/FetchUserInfo": {
+      "get": {
+        "tags": [
+          "Match"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/CreateMatchID": {
+      "post": {
+        "tags": [
+          "Match"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlayerValidationViewModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlayerValidationViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlayerValidationViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlayerValidationViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/UpdateMatchResult": {
+      "post": {
+        "tags": [
+          "Match"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MatchresultViewModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MatchresultViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MatchresultViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MatchresultViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/FetchLeaderBoard": {
+      "get": {
+        "tags": [
+          "Match"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/FetchMatchHistory": {
+      "get": {
+        "tags": [
+          "Match"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Register": {
+      "post": {
+        "tags": [
+          "Registration"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrationViewModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrationViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrationViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrationViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "LoginViewModel": {
+        "required": [
+          "Password",
+          "UserId"
+        ],
+        "type": "object",
+        "properties": {
+          "UserId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "Password": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MatchresultViewModel": {
+        "type": "object",
+        "properties": {
+          "MatchId": {
+            "type": "string",
+            "nullable": true
+          },
+          "Player1Moves": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Player2Moves": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Winner": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PlayerValidationViewModel": {
+        "type": "object",
+        "properties": {
+          "player1": {
+            "type": "string",
+            "nullable": true
+          },
+          "player1AccessToken": {
+            "type": "string",
+            "nullable": true
+          },
+          "player2": {
+            "type": "string",
+            "nullable": true
+          },
+          "player2AccessToken": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegistrationViewModel": {
+        "required": [
+          "ConfirmPassword",
+          "Email",
+          "Password",
+          "UserId",
+          "UserName"
+        ],
+        "type": "object",
+        "properties": {
+          "UserId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "UserName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "Email": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "Password": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "ConfirmPassword": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "apiKey",
+        "description": "Please insert JWT with Bearer into field",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
+}

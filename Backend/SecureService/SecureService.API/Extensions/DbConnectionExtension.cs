@@ -15,7 +15,7 @@ namespace SecureService.API.Extensions
         //Used for AesEncryption and AesDecryption
         static private byte[] iv16Bit = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 };
 
-        public static void ConfigureOracleContext(this IServiceCollection services, IConfiguration config)
+        public static void ConfigureMySqlContext(this IServiceCollection services, IConfiguration config)
         {
             string DB_CON = string.Empty;
             var IS_ENCRYPTED_DB_CON = config.GetConnectionString("IS_ENCRYPTED");

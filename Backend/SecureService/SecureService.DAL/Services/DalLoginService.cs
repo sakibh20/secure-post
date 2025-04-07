@@ -91,21 +91,33 @@ namespace SecureService.DAL.Services
                         usersNewSession.SessionID = Guid.NewGuid().ToString();
                         usersNewSession.IsActiveSessionFlag = true;
                         usersNewSession.SessionStartTime = DateTime.Now;
-                        usersNewSession.SessionEndTime = DateTime.Now.AddHours(1);
+                        usersNewSession.SessionEndTime = DateTime.Now.AddMinutes(15);
                         _context.UserSession.Add(usersNewSession);
                         if (_context.SaveChanges() > 0)
                         {
-                            var accessToken = _jwt.GenerateJWTToken(usersNewSession);
-                            if (accessToken != null)
+                            UserRefreshToken userNewRefreshToken = new UserRefreshToken();
+                            userNewRefreshToken.UserId = checkForExistingUserByUserID.UserId;
+                            userNewRefreshToken.TokenId = usersNewSession.SessionID + "#" + Guid.NewGuid().ToString();
+                            userNewRefreshToken.IsActive = true;
+                            userNewRefreshToken.CreatedAt = DateTime.Now;
+                            userNewRefreshToken.ExpiryDate = DateTime.Now.AddDays(7);
+                            _context.UserRefreshToken.Add(userNewRefreshToken);
+
+                            if (_context.SaveChanges() > 0)
                             {
-                                status.Status = "OK";
-                                status.Message = "Login Successfull.";
-                                status.Result = accessToken;
-                            }
-                            else
-                            {
-                                status.Status = "FAILED";
-                                status.Message = "Login Failed.";
+                                TokenResponseViewModel token = _jwt.GenerateToken(usersNewSession, userNewRefreshToken);
+
+                                if (token != null)
+                                {
+                                    status.Status = "OK";
+                                    status.Message = "Login Successfull.";
+                                    status.Result = token;
+                                }
+                                else
+                                {
+                                    status.Status = "FAILED";
+                                    status.Message = "Login Failed.";
+                                }
                             }
                         }
                         else
@@ -122,7 +134,7 @@ namespace SecureService.DAL.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error in Register : " + ex.Message + " , Stacktrace: " + ex.StackTrace);
+                _logger.LogError("Error in Login : " + ex.Message + " , Stacktrace: " + ex.StackTrace);
                 status.Status = "FAILED";
                 status.Message = ex.Message;
                 status.Result = null;

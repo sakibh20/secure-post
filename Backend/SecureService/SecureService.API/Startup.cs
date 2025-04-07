@@ -29,36 +29,36 @@ namespace SecureService.API
 
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
                 {
-                    options.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuer = true,
-                        ValidateAudience = true,
-                        ValidateLifetime = true,
-                        ValidateIssuerSigningKey = true,
-                        ValidIssuer = Configuration["Jwt:Issuer"],
-                        ValidAudience = Configuration["Jwt:Issuer"],
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
-                    };
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = Configuration["Jwt:Issuer"],
+                    ValidAudience = Configuration["Jwt:Issuer"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
+                };
 
-                    options.Events = new JwtBearerEvents
+                options.Events = new JwtBearerEvents
+                {
+                    OnAuthenticationFailed = context =>
                     {
-                        OnAuthenticationFailed = context =>
+                        if (context.Exception.GetType() == typeof(SecurityTokenExpiredException))
                         {
-                            if (context.Exception.GetType() == typeof(SecurityTokenExpiredException))
-                            {
-                                context.Response.Headers.Add("Token has Expired", "true");
-                            }
-                            return Task.CompletedTask;
+                            context.Response.Headers.Add("Token has Expired", "true");
                         }
-                    };
-                });
+                        return Task.CompletedTask;
+                    }
+                };
+            });
             services.AddMvc().AddNewtonsoftJson();
             services.Configure<ApplicationOptions>(Configuration.GetSection("ApplicationOptions"));
 
             services.ConfigureAutoMapper(); //Auto mapping Configuration
 
-            services.ConfigureOracleContext(Configuration); //Database Connection Configuration
+            services.ConfigureMySqlContext     (Configuration); //Database Connection Configuration
 
             services.AddControllers();
             services.AddControllers()

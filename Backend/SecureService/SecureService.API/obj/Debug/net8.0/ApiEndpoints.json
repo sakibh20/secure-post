@@ -1,6 +1,62 @@
 [
   {
-    "ContainingType": "SecurePosts.API.Controllers.LoginController",
+    "ContainingType": "SecureService.API.Controllers.MatchController",
+    "Method": "CreateMatchID",
+    "RelativePath": "api/CreateMatchID",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "playerInfo",
+        "Type": "SecureService.Entity.Shared.Internal.PlayerValidationViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SecureService.API.Controllers.MatchController",
+    "Method": "FetchLeaderBoard",
+    "RelativePath": "api/FetchLeaderBoard",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SecureService.API.Controllers.MatchController",
+    "Method": "FetchMatchHistory",
+    "RelativePath": "api/FetchMatchHistory",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SecureService.API.Controllers.MatchController",
+    "Method": "FetchUserInfo",
+    "RelativePath": "api/FetchUserInfo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SecureService.API.Controllers.LoginController",
+    "Method": "GenerateAccessTokenByRefreshToken",
+    "RelativePath": "api/GenerateAccessTokenByRefreshToken",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SecureService.API.Controllers.LoginController",
     "Method": "Login",
     "RelativePath": "api/Login",
     "HttpMethod": "POST",
@@ -9,14 +65,24 @@
     "Parameters": [
       {
         "Name": "loginModel",
-        "Type": "SecurePosts.Entity.Shared.Internal.LoginViewModel",
+        "Type": "SecureService.Entity.Shared.Internal.LoginViewModel",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "SecurePosts.API.Controllers.RegistrationController",
+    "ContainingType": "SecureService.API.Controllers.LogoutController",
+    "Method": "Logout",
+    "RelativePath": "api/Logout",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SecureService.API.Controllers.RegistrationController",
     "Method": "Register",
     "RelativePath": "api/Register",
     "HttpMethod": "POST",
@@ -25,7 +91,23 @@
     "Parameters": [
       {
         "Name": "registrationModel",
-        "Type": "SecurePosts.Entity.Shared.Internal.RegistrationViewModel",
+        "Type": "SecureService.Entity.Shared.Internal.RegistrationViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SecureService.API.Controllers.MatchController",
+    "Method": "UpdateMatchResult",
+    "RelativePath": "api/UpdateMatchResult",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "matchInfo",
+        "Type": "SecureService.Entity.Shared.Internal.MatchresultViewModel",
         "IsRequired": true
       }
     ],
