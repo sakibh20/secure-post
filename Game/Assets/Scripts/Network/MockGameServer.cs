@@ -1,23 +1,20 @@
-using System;
 using UnityEngine;
-using System.Collections;
 using Random = UnityEngine.Random;
 
 public class MockGameServer : MonoBehaviour
 {
     public static MockGameServer Instance;
 
-    private int playerAScore = 0;
-    private int playerBScore = 0;
-    private int round = 0;
-    private int currentRealRollA = -1;
-    private int currentRealRollB = -1;
-    private string playerAClaim = "";
-    private string playerBClaim = "";
-    private int maxScore = 3;
-    private bool firstPlayerTurn = false;
+    private int _playerAScore = 0;
+    private int _playerBScore = 0;
+    private int _round = 0;
+    private int _currentRealRollA = -1;
+    private int _currentRealRollB = -1;
+    private string _playerAClaim = "";
+    private string _playerBClaim = "";
+    private readonly int _maxScore = 3;
 
-    public int MaxScore => maxScore;
+    public int MaxScore => _maxScore;
 
     private void Awake()
     {
@@ -32,67 +29,48 @@ public class MockGameServer : MonoBehaviour
 
     public void StartGame()
     {
-        playerAScore = 0;
-        playerBScore = 0;
+        _playerAScore = 0;
+        _playerBScore = 0;
         UIManager.Instance.UpdateScore(0, 0);
-        UIManager.Instance.UpdateRound(round);
+        UIManager.Instance.UpdateRound(_round);
         
         NextRound();
     }
-
-    // public void NextRound()
-    // {
-    //     Debug.Log($"Starting Round {round}");
-    //     currentRealRollA = Random.Range(1, 7);
-    //     currentRealRollB = Random.Range(1, 7);
-    //     playerAClaim = "";
-    //     playerBClaim = "";
-    //
-    //     UIManager.Instance.PrepUIForNextRound();
-    //
-    //     UIManager.Instance.UpdateRound(round);
-    //     UIManager.Instance.UpdateRoll("A", currentRealRollA);
-    //     UIManager.Instance.UpdateRoll("B", currentRealRollB);
-    //     UIManager.Instance.UpdateResult("Waiting for both players to claim...");
-    // }
     
     public void NextRound()
     {
-        firstPlayerTurn = !firstPlayerTurn;
-        
-        playerAClaim = "";
-        playerBClaim = "";
+        _playerAClaim = "";
+        _playerBClaim = "";
 
-        round += 1;
+        _round += 1;
 
         UIManager.Instance.PrepUIForNextRound();
-        UIManager.Instance.UpdateRound(round);
+        UIManager.Instance.UpdateRound(_round);
     }
 
     public void PlayerARoll()
     {
-        currentRealRollA = Random.Range(1, 7);
-        UIManager.Instance.UpdateRoll("A", currentRealRollA);
-        WebSocketClient.Instance.Mock_SendToClient($"{NetworkConstants.RollPrefix}{currentRealRollA}");
+        _currentRealRollA = Random.Range(1, 7);
+        UIManager.Instance.UpdateRoll("A", _currentRealRollA);
+        WebSocketClient.Instance.Mock_SendToClient($"{NetworkConstants.RollPrefix}{_currentRealRollA}");
     }
     
     public void PlayerBRoll()
     {
-        currentRealRollB = Random.Range(1, 7);
-        UIManager.Instance.UpdateRoll("B", currentRealRollB);
-        //WebSocketClient.Instance.Mock_SendToClient($"{NetworkConstants.RollPrefix}{currentRealRollB}");
+        _currentRealRollB = Random.Range(1, 7);
+        UIManager.Instance.UpdateRoll("B", _currentRealRollB);
     }
 
     public void ReceiveClaim(string player, string claimedValue)
     {
         if (player == "A")
         {
-            playerAClaim = claimedValue;
+            _playerAClaim = claimedValue;
             WebSocketClient.Instance.Mock_SendToClient($"{NetworkConstants.ClaimPrefix}A:{claimedValue}");
         }
         else
         {
-            playerBClaim = claimedValue;
+            _playerBClaim = claimedValue;
             WebSocketClient.Instance.Mock_SendToClient($"{NetworkConstants.ClaimPrefix}B:{claimedValue}");
         }
     }
@@ -102,29 +80,26 @@ public class MockGameServer : MonoBehaviour
         string opponent = player == "A" ? "B" : "A";
 
         // Get claimed and actual roll of the opponent
-        int opponentClaim = opponent == "A" ? int.Parse(playerAClaim) : int.Parse(playerBClaim);
-        int opponentRoll = opponent == "A" ? currentRealRollA : currentRealRollB;
+        int opponentClaim = opponent == "A" ? int.Parse(_playerAClaim) : int.Parse(_playerBClaim);
+        int opponentRoll = opponent == "A" ? _currentRealRollA : _currentRealRollB;
 
         bool wasHonest = opponentClaim == opponentRoll; // Was the claim true?
 
         string resultText = "";
-        string roundWinner = "";
 
         if (decision == NetworkConstants.Believe) // Opponent believed the claim
         {
             if (wasHonest) // The claim was truthful, claimer wins
             {
                 resultText = $"{player} believed correctly. {player} +1";
-                if (player == "A") playerAScore++;
-                else playerBScore++;
-                roundWinner = player;
+                if (player == "A") _playerAScore++;
+                else _playerBScore++;
             }
             else // The claim was false, but opponent believed it, so claimer wins
             {
                 resultText = $"{player} believed incorrectly. {opponent} +1";
-                if (opponent == "A") playerAScore++;
-                else playerBScore++;
-                roundWinner = opponent;
+                if (opponent == "A") _playerAScore++;
+                else _playerBScore++;
             }
         }
         else // Opponent called the bluff
@@ -132,41 +107,27 @@ public class MockGameServer : MonoBehaviour
             if (wasHonest) // Opponent called bluff but the claim was truthful, so opponent loses
             {
                 resultText = $"{player} called bluff incorrectly. {opponent} +1";
-                if (opponent == "A") playerAScore++;
-                else playerBScore++;
-                roundWinner = opponent;
+                if (opponent == "A") _playerAScore++;
+                else _playerBScore++;
             }
             else // Opponent called bluff correctly, so opponent wins
             {
                 resultText = $"{player} called bluff correctly. {player} +1";
-                if (player == "A") playerAScore++;
-                else playerBScore++;
-                roundWinner = player;
+                if (player == "A") _playerAScore++;
+                else _playerBScore++;
             }
         }
 
         WebSocketClient.Instance.Mock_SendToClient($"{NetworkConstants.ResultPrefix}{resultText}");
-        WebSocketClient.Instance.Mock_SendToClient($"{NetworkConstants.ScorePrefix}A:{playerAScore}|B:{playerBScore}");
+        WebSocketClient.Instance.Mock_SendToClient($"{NetworkConstants.ScorePrefix}A:{_playerAScore}|B:{_playerBScore}");
 
-        // Check for game win condition
-        if (playerAScore >= maxScore || playerBScore >= maxScore)
+        if (_playerAScore >= _maxScore || _playerBScore >= _maxScore)
         {
-            string winText = playerAScore >= maxScore ? "Player A Wins!" : "Player B Wins!";
+            string winText = _playerAScore >= _maxScore ? "Player A Wins!" : "Player B Wins!";
             WebSocketClient.Instance.Mock_SendToClient($"{NetworkConstants.ResultPrefix}{winText}");
             Debug.Log($"Game Over — {winText}");
             
             UIManager.Instance.GameOver();
         }
-    }
-
-    private IEnumerator DelayedNextRound()
-    {
-        yield return new WaitForSeconds(2f);
-        NextRound();
-    }
-
-    public void PrintScore()
-    {
-        Debug.Log($"Score — A: {playerAScore} | B: {playerBScore}");
     }
 }

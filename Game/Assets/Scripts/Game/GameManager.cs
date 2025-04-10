@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -24,7 +23,7 @@ public class GameManager : MonoBehaviour
         {
             string value = message.Substring(NetworkConstants.RollPrefix.Length);
             int realRoll = int.Parse(value);
-            PlayerController.Instance.ReceiveRoll(realRoll); // assuming this shows local roll
+            //PlayerController.Instance.ReceiveRoll(realRoll);
         }
         else if (message.StartsWith(NetworkConstants.ClaimPrefix))
         {

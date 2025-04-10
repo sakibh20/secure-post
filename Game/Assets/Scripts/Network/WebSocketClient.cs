@@ -5,7 +5,7 @@ using NativeWebSocket;
 public class WebSocketClient : MonoBehaviour
 {
     public static WebSocketClient Instance;
-    private WebSocket websocket;
+    private WebSocket _websocket;
 
     public delegate void OnMessageReceived(string message);
     public event OnMessageReceived MessageReceived;
@@ -15,30 +15,30 @@ public class WebSocketClient : MonoBehaviour
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
 
-        websocket = new WebSocket(NetworkConstants.ServerUrl);
+        _websocket = new WebSocket(NetworkConstants.ServerUrl);
 
-        websocket.OnOpen += () => Debug.Log("WebSocket opened.");
-        websocket.OnError += (e) => Debug.LogError($"WebSocket error: {e}");
-        websocket.OnClose += (e) => Debug.Log("WebSocket closed.");
-        websocket.OnMessage += (bytes) =>
+        _websocket.OnOpen += () => Debug.Log("WebSocket opened.");
+        _websocket.OnError += (e) => Debug.LogError($"WebSocket error: {e}");
+        _websocket.OnClose += (e) => Debug.Log("WebSocket closed.");
+        _websocket.OnMessage += (bytes) =>
         {
             var message = System.Text.Encoding.UTF8.GetString(bytes);
             MessageReceived?.Invoke(message);
         };
 
-        await websocket.Connect();
+        await _websocket.Connect();
     }
 
     private void Update()
     {
-        websocket?.DispatchMessageQueue();
+        _websocket?.DispatchMessageQueue();
     }
 
     public async void Send(string message)
     {
-        if (websocket.State == WebSocketState.Open)
+        if (_websocket.State == WebSocketState.Open)
         {
-            await websocket.SendText(message);
+            await _websocket.SendText(message);
             Debug.Log($"[WS Sent]: {message}");
         }
         else
@@ -49,12 +49,8 @@ public class WebSocketClient : MonoBehaviour
 
     private async void OnApplicationQuit()
     {
-        await websocket.Close();
+        await _websocket.Close();
     }
-
-    // -------------------------------
-    // 🔧 MOCK TOOLS (Accessible via Inspector)
-    // -------------------------------
 
     [ContextMenu("Mock: Start Full Game Loop")]
     public void Mock_StartGame()
@@ -62,16 +58,10 @@ public class WebSocketClient : MonoBehaviour
         MockGameServer.Instance.StartGame();
     }
 
-    // [ContextMenu("Mock: Player A Rolls")]
-    // public void Mock_PlayerARoll()
-    // {
-    //     MockGameServer.Instance.PlayerARoll();
-    // }
-
     [ContextMenu("Mock: Player A Claims")]
     public void Mock_PlayerAClaim()
     {
-        int claim = Random.Range(1, 7); // Claiming a random number
+        int claim = Random.Range(1, 7);
         MockGameServer.Instance.ReceiveClaim("A", claim.ToString());
     }
     
@@ -86,17 +76,11 @@ public class WebSocketClient : MonoBehaviour
     {
         MockGameServer.Instance.ReceiveDecision("A", NetworkConstants.Bluff);
     }
-
-    // [ContextMenu("Mock: Player B Rolls")]
-    // public void Mock_PlayerBRoll()
-    // {
-    //     MockGameServer.Instance.PlayerBRoll();
-    // }
-
+    
     [ContextMenu("Mock: Player B Claims")]
     public void Mock_PlayerBClaim()
     {
-        int claim = Random.Range(1, 7); // Claiming a random number
+        int claim = Random.Range(1, 7);
         MockGameServer.Instance.ReceiveClaim("B", claim.ToString());
     }
 

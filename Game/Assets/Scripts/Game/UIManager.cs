@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -213,13 +212,11 @@ public class UIManager : MonoBehaviour
 
     private void ClearTexts()
     {
-        //playerARollText.SetText("");
-        //playerBRollText.SetText("");
         playerAClaimText.SetText("");
         playerBClaimText.SetText("");
     }
     
-    public void UpdateResult(string msg)
+    private void UpdateResult(string msg)
     {
         resultText.text = $"{msg}";
     }
