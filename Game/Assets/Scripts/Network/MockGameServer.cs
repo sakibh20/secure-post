@@ -80,7 +80,7 @@ public class MockGameServer : MonoBehaviour
     {
         currentRealRollB = Random.Range(1, 7);
         UIManager.Instance.UpdateRoll("B", currentRealRollB);
-        WebSocketClient.Instance.Mock_SendToClient($"{NetworkConstants.RollPrefix}{currentRealRollB}");
+        //WebSocketClient.Instance.Mock_SendToClient($"{NetworkConstants.RollPrefix}{currentRealRollB}");
     }
 
     public void ReceiveClaim(string player, string claimedValue)
@@ -94,11 +94,6 @@ public class MockGameServer : MonoBehaviour
         {
             playerBClaim = claimedValue;
             WebSocketClient.Instance.Mock_SendToClient($"{NetworkConstants.ClaimPrefix}B:{claimedValue}");
-        }
-
-        if (!string.IsNullOrEmpty(playerAClaim) && !string.IsNullOrEmpty(playerBClaim))
-        {
-            UIManager.Instance.UpdateResult("Both players have claimed. Make your decisions.");
         }
     }
 
@@ -159,6 +154,8 @@ public class MockGameServer : MonoBehaviour
             string winText = playerAScore >= maxScore ? "Player A Wins!" : "Player B Wins!";
             WebSocketClient.Instance.Mock_SendToClient($"{NetworkConstants.ResultPrefix}{winText}");
             Debug.Log($"Game Over — {winText}");
+            
+            UIManager.Instance.GameOver();
         }
     }
 

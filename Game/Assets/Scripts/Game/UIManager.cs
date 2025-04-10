@@ -1,5 +1,7 @@
+using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -34,6 +36,7 @@ public class UIManager : MonoBehaviour
 
         BindButtons();
         InitButtons();
+        InitTexts();
     }
 
     private void BindButtons()
@@ -60,7 +63,11 @@ public class UIManager : MonoBehaviour
         ActivePlayerBClaimBtn(false);
         ActivePlayerBBelieveBtn(false);
         ActivePlayerBBluffBtn(false);
+    }
 
+    private void InitTexts()
+    {
+        
         playerARollText.text = "";
         playerAClaimText.text = "";
 
@@ -68,6 +75,34 @@ public class UIManager : MonoBehaviour
         playerBClaimText.text = "";
 
         resultText.text = "";
+    }
+
+    public void GameOver()
+    {
+        InitButtons();
+        
+        ActivePlayerARollBtn(false);
+        
+        Invoke(nameof(RestartGame), 2);
+    }
+
+    private void RestartGame()
+    {
+        UpdateResult("Restarting in 3 Seconds ..");
+        Invoke(nameof(ReLoadScene), 3f);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ReLoadScene();
+        }
+    }
+
+    private void ReLoadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void OnPlayerARoll()
@@ -213,8 +248,8 @@ public class UIManager : MonoBehaviour
     public void UpdateScore(int scoreA, int scoreB)
     {
         int maxScore = MockGameServer.Instance.MaxScore;
-        playerAScoreText.text = $"{scoreA}/{maxScore}";
-        playerBScoreText.text = $"{scoreB}/{maxScore}";
+        playerAScoreText.text = $"Score: {scoreA}/{maxScore}";
+        playerBScoreText.text = $"Score: {scoreB}/{maxScore}";
     }
 
     public void UpdateRound(int round)
@@ -225,5 +260,6 @@ public class UIManager : MonoBehaviour
     public void PrepUIForNextRound()
     {
         InitButtons();
+        InitTexts();
     }
 }
