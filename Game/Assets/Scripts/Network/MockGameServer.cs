@@ -17,6 +17,8 @@ public class MockGameServer : MonoBehaviour
     private int maxScore = 3;
     private bool firstPlayerTurn = false;
 
+    public int MaxScore => maxScore;
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -32,7 +34,6 @@ public class MockGameServer : MonoBehaviour
     {
         playerAScore = 0;
         playerBScore = 0;
-        round = 1;
         UIManager.Instance.UpdateScore(0, 0);
         UIManager.Instance.UpdateRound(round);
         
@@ -61,6 +62,8 @@ public class MockGameServer : MonoBehaviour
         
         playerAClaim = "";
         playerBClaim = "";
+
+        round += 1;
 
         UIManager.Instance.PrepUIForNextRound();
         UIManager.Instance.UpdateRound(round);

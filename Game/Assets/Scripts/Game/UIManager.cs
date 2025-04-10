@@ -26,8 +26,6 @@ public class UIManager : MonoBehaviour
     public Button playerBClaimBtn;
     public Button playerBBelieveBtn;
     public Button playerBBluffBtn;
-    
-    public Button nextRoundBtn;
 
     private void Awake()
     {
@@ -49,8 +47,6 @@ public class UIManager : MonoBehaviour
         playerBClaimBtn.onClick.AddListener(OnPlayerBClaim);
         playerBBelieveBtn.onClick.AddListener(OnPlayerBBelieve);
         playerBBluffBtn.onClick.AddListener(OnPlayerBCallBluff);
-        
-        nextRoundBtn.onClick.AddListener(OnNextRoundButtonPressed);
     }
 
     private void InitButtons()
@@ -64,8 +60,6 @@ public class UIManager : MonoBehaviour
         ActivePlayerBClaimBtn(false);
         ActivePlayerBBelieveBtn(false);
         ActivePlayerBBluffBtn(false);
-
-        ActiveNextRoundBtnBtn(false);
 
         playerARollText.text = "";
         playerAClaimText.text = "";
@@ -94,16 +88,16 @@ public class UIManager : MonoBehaviour
         WebSocketClient.Instance.Mock_PlayerABelieves();
         ActivePlayerABelieveBtn(false);
         ActivePlayerABluffBtn(false);
-        
-        ActiveNextRoundBtnBtn(true);
+
+        OnNextRoundButtonPressed();
     }
     private void OnPlayerACallBluff()
     {
         WebSocketClient.Instance.Mock_PlayerACallsBluff();
         ActivePlayerABelieveBtn(false);
         ActivePlayerABluffBtn(false);
-        
-        ActiveNextRoundBtnBtn(true);
+
+        OnNextRoundButtonPressed();
     }
     
     private void OnPlayerBRoll()
@@ -175,11 +169,6 @@ public class UIManager : MonoBehaviour
         playerBBluffBtn.interactable = value;
     }    
     
-    private void ActiveNextRoundBtnBtn(bool value)
-    {
-        nextRoundBtn.interactable = value;
-    }
-
     private void OnNextRoundButtonPressed()
     {
         MockGameServer.Instance.NextRound();
@@ -203,17 +192,17 @@ public class UIManager : MonoBehaviour
     public void UpdateRoll(string player, int value)
     {
         if (player == "A")
-            playerARollText.text = $"Player A Roll: {value}";
+            playerARollText.text = value.ToString();
         else if (player == "B")
-            playerBRollText.text = $"Player B Roll: {value}";
+            playerBRollText.text = value.ToString();
     }
 
     public void ShowClaim(string player, string claimedValue)
     {
         if (player == "A")
-            playerAClaimText.text = $"Player A Claim: {claimedValue}";
+            playerAClaimText.text = claimedValue;
         else if (player == "B")
-            playerBClaimText.text = $"Player B Claim: {claimedValue}";
+            playerBClaimText.text = claimedValue;
     }
 
     public void ShowResult(string result)
@@ -223,8 +212,9 @@ public class UIManager : MonoBehaviour
 
     public void UpdateScore(int scoreA, int scoreB)
     {
-        playerAScoreText.text = $"Score: {scoreA}";
-        playerBScoreText.text = $"Score: {scoreB}";
+        int maxScore = MockGameServer.Instance.MaxScore;
+        playerAScoreText.text = $"{scoreA}/{maxScore}";
+        playerBScoreText.text = $"{scoreB}/{maxScore}";
     }
 
     public void UpdateRound(int round)
