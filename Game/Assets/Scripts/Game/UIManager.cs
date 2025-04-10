@@ -35,21 +35,149 @@ public class UIManager : MonoBehaviour
         else Destroy(gameObject);
 
         BindButtons();
+        InitButtons();
     }
 
     private void BindButtons()
     {
-        playerARollBtn.onClick.AddListener(() => WebSocketClient.Instance.Mock_PlayerARoll());
-        playerAClaimBtn.onClick.AddListener(() => WebSocketClient.Instance.Mock_PlayerAClaim());
-        playerABelieveBtn.onClick.AddListener(() => WebSocketClient.Instance.Mock_PlayerABelieves());
-        playerABluffBtn.onClick.AddListener(() => WebSocketClient.Instance.Mock_PlayerACallsBluff());
+        playerARollBtn.onClick.AddListener(OnPlayerARoll);
+        playerAClaimBtn.onClick.AddListener(OnPlayerAClaim);
+        playerABelieveBtn.onClick.AddListener(OnPlayerABelieve);
+        playerABluffBtn.onClick.AddListener(OnPlayerACallBluff);
 
-        playerBRollBtn.onClick.AddListener(() => WebSocketClient.Instance.Mock_PlayerBRoll());
-        playerBClaimBtn.onClick.AddListener(() => WebSocketClient.Instance.Mock_PlayerBClaim());
-        playerBBelieveBtn.onClick.AddListener(() => WebSocketClient.Instance.Mock_PlayerBBelieves());
-        playerBBluffBtn.onClick.AddListener(() => WebSocketClient.Instance.Mock_PlayerBBluff());
+        playerBRollBtn.onClick.AddListener(OnPlayerBRoll);
+        playerBClaimBtn.onClick.AddListener(OnPlayerBClaim);
+        playerBBelieveBtn.onClick.AddListener(OnPlayerBBelieve);
+        playerBBluffBtn.onClick.AddListener(OnPlayerBCallBluff);
         
         nextRoundBtn.onClick.AddListener(OnNextRoundButtonPressed);
+    }
+
+    private void InitButtons()
+    {
+        ActivePlayerARollBtn(true);
+        ActivePlayerAClaimBtn(false);
+        ActivePlayerABelieveBtn(false);
+        ActivePlayerABluffBtn(false);
+        
+        ActivePlayerBRollBtn(false);
+        ActivePlayerBClaimBtn(false);
+        ActivePlayerBBelieveBtn(false);
+        ActivePlayerBBluffBtn(false);
+
+        ActiveNextRoundBtnBtn(false);
+
+        playerARollText.text = "";
+        playerAClaimText.text = "";
+
+        playerBRollText.text = "";
+        playerBClaimText.text = "";
+
+        resultText.text = "";
+    }
+
+    private void OnPlayerARoll()
+    {
+        MockGameServer.Instance.PlayerARoll();
+        ActivePlayerARollBtn(false);
+        ActivePlayerAClaimBtn(true);
+    }
+    private void OnPlayerAClaim()
+    {
+        WebSocketClient.Instance.Mock_PlayerAClaim();
+        ActivePlayerAClaimBtn(false);
+        ActivePlayerBBelieveBtn(true);
+        ActivePlayerBBluffBtn(true);
+    }
+    private void OnPlayerABelieve()
+    {
+        WebSocketClient.Instance.Mock_PlayerABelieves();
+        ActivePlayerABelieveBtn(false);
+        ActivePlayerABluffBtn(false);
+        
+        ActiveNextRoundBtnBtn(true);
+    }
+    private void OnPlayerACallBluff()
+    {
+        WebSocketClient.Instance.Mock_PlayerACallsBluff();
+        ActivePlayerABelieveBtn(false);
+        ActivePlayerABluffBtn(false);
+        
+        ActiveNextRoundBtnBtn(true);
+    }
+    
+    private void OnPlayerBRoll()
+    {
+        MockGameServer.Instance.PlayerBRoll();
+        ActivePlayerBClaimBtn(true);
+        ActivePlayerBRollBtn(false);
+    }
+    private void OnPlayerBClaim()
+    {
+        WebSocketClient.Instance.Mock_PlayerBClaim();
+        ActivePlayerBClaimBtn(false);
+        
+        ActivePlayerABelieveBtn(true);
+        ActivePlayerABluffBtn(true);
+    }
+    private void OnPlayerBBelieve()
+    {
+        WebSocketClient.Instance.Mock_PlayerBBelieves();
+        ActivePlayerBRollBtn(true);
+        ActivePlayerBBelieveBtn(false);
+        ActivePlayerBBluffBtn(false);
+    }
+    private void OnPlayerBCallBluff()
+    {
+        WebSocketClient.Instance.Mock_PlayerBBluff();
+        ActivePlayerBRollBtn(true);
+        ActivePlayerBBelieveBtn(false);
+        ActivePlayerBBluffBtn(false);
+    }
+
+    private void ActivePlayerARollBtn(bool value)
+    {
+        playerARollBtn.interactable = value;
+    }
+    
+    private void ActivePlayerAClaimBtn(bool value)
+    {
+        playerAClaimBtn.interactable = value;
+    }
+    
+    private void ActivePlayerABelieveBtn(bool value)
+    {
+        playerABelieveBtn.interactable = value;
+    }
+    
+    private void ActivePlayerABluffBtn(bool value)
+    {
+        playerABluffBtn.interactable = value;
+    }
+    
+    private void ActivePlayerBRollBtn(bool value)
+    {
+        playerBRollBtn.interactable = value;
+    }
+    
+    private void ActivePlayerBClaimBtn(bool value)
+    {
+        playerBClaimBtn.interactable = value;
+    }
+    
+    private void ActivePlayerBBelieveBtn(bool value)
+    {
+        playerBBelieveBtn.interactable = value;
+    }
+    
+    private void ActivePlayerBBluffBtn(bool value)
+    {
+        playerBBluffBtn.interactable = value;
+    }    
+    
+    private void ActiveNextRoundBtnBtn(bool value)
+    {
+        nextRoundBtn.interactable = value;
     }
 
     private void OnNextRoundButtonPressed()
@@ -102,5 +230,10 @@ public class UIManager : MonoBehaviour
     public void UpdateRound(int round)
     {
         roundText.text = $"Round: {round}";
+    }
+
+    public void PrepUIForNextRound()
+    {
+        InitButtons();
     }
 }

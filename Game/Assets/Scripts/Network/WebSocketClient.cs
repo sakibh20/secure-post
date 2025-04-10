@@ -62,12 +62,11 @@ public class WebSocketClient : MonoBehaviour
         MockGameServer.Instance.StartGame();
     }
 
-    [ContextMenu("Mock: Player A Rolls")]
-    public void Mock_PlayerARoll()
-    {
-        int roll = Random.Range(1, 7);
-        WebSocketClient.Instance.Mock_SendToClient($"{NetworkConstants.RollPrefix}{roll}");
-    }
+    // [ContextMenu("Mock: Player A Rolls")]
+    // public void Mock_PlayerARoll()
+    // {
+    //     MockGameServer.Instance.PlayerARoll();
+    // }
 
     [ContextMenu("Mock: Player A Claims")]
     public void Mock_PlayerAClaim()
@@ -88,12 +87,11 @@ public class WebSocketClient : MonoBehaviour
         MockGameServer.Instance.ReceiveDecision("A", NetworkConstants.Bluff);
     }
 
-    [ContextMenu("Mock: Player B Rolls")]
-    public void Mock_PlayerBRoll()
-    {
-        int roll = Random.Range(1, 7);
-        WebSocketClient.Instance.Mock_SendToClient($"{NetworkConstants.RollPrefix}{roll}");
-    }
+    // [ContextMenu("Mock: Player B Rolls")]
+    // public void Mock_PlayerBRoll()
+    // {
+    //     MockGameServer.Instance.PlayerBRoll();
+    // }
 
     [ContextMenu("Mock: Player B Claims")]
     public void Mock_PlayerBClaim()
@@ -113,7 +111,6 @@ public class WebSocketClient : MonoBehaviour
     {
         MockGameServer.Instance.ReceiveDecision("B", NetworkConstants.Bluff);
     }
-    
 
     private IEnumerator MockReceiveMessage(string message, float delay)
     {

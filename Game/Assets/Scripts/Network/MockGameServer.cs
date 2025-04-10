@@ -15,6 +15,7 @@ public class MockGameServer : MonoBehaviour
     private string playerAClaim = "";
     private string playerBClaim = "";
     private int maxScore = 3;
+    private bool firstPlayerTurn = false;
 
     private void Awake()
     {
@@ -34,21 +35,49 @@ public class MockGameServer : MonoBehaviour
         round = 1;
         UIManager.Instance.UpdateScore(0, 0);
         UIManager.Instance.UpdateRound(round);
+        
         NextRound();
     }
 
+    // public void NextRound()
+    // {
+    //     Debug.Log($"Starting Round {round}");
+    //     currentRealRollA = Random.Range(1, 7);
+    //     currentRealRollB = Random.Range(1, 7);
+    //     playerAClaim = "";
+    //     playerBClaim = "";
+    //
+    //     UIManager.Instance.PrepUIForNextRound();
+    //
+    //     UIManager.Instance.UpdateRound(round);
+    //     UIManager.Instance.UpdateRoll("A", currentRealRollA);
+    //     UIManager.Instance.UpdateRoll("B", currentRealRollB);
+    //     UIManager.Instance.UpdateResult("Waiting for both players to claim...");
+    // }
+    
     public void NextRound()
     {
-        Debug.Log($"Starting Round {round}");
-        currentRealRollA = Random.Range(1, 7);
-        currentRealRollB = Random.Range(1, 7);
+        firstPlayerTurn = !firstPlayerTurn;
+        
         playerAClaim = "";
         playerBClaim = "";
 
+        UIManager.Instance.PrepUIForNextRound();
         UIManager.Instance.UpdateRound(round);
+    }
+
+    public void PlayerARoll()
+    {
+        currentRealRollA = Random.Range(1, 7);
         UIManager.Instance.UpdateRoll("A", currentRealRollA);
+        WebSocketClient.Instance.Mock_SendToClient($"{NetworkConstants.RollPrefix}{currentRealRollA}");
+    }
+    
+    public void PlayerBRoll()
+    {
+        currentRealRollB = Random.Range(1, 7);
         UIManager.Instance.UpdateRoll("B", currentRealRollB);
-        UIManager.Instance.UpdateResult("Waiting for both players to claim...");
+        WebSocketClient.Instance.Mock_SendToClient($"{NetworkConstants.RollPrefix}{currentRealRollB}");
     }
 
     public void ReceiveClaim(string player, string claimedValue)
@@ -87,31 +116,31 @@ public class MockGameServer : MonoBehaviour
         {
             if (wasHonest) // The claim was truthful, claimer wins
             {
-                resultText = $"{opponent} believed correctly. {opponent} +1";
-                if (opponent == "A") playerAScore++;
-                else playerBScore++;
-                roundWinner = opponent;
-            }
-            else // The claim was false, but opponent believed it, so claimer wins
-            {
-                resultText = $"{opponent} believed incorrectly. {player} +1";
+                resultText = $"{player} believed correctly. {player} +1";
                 if (player == "A") playerAScore++;
                 else playerBScore++;
                 roundWinner = player;
+            }
+            else // The claim was false, but opponent believed it, so claimer wins
+            {
+                resultText = $"{player} believed incorrectly. {opponent} +1";
+                if (opponent == "A") playerAScore++;
+                else playerBScore++;
+                roundWinner = opponent;
             }
         }
         else // Opponent called the bluff
         {
             if (wasHonest) // Opponent called bluff but the claim was truthful, so opponent loses
             {
-                resultText = $"{opponent} called bluff incorrectly. {opponent} +1";
+                resultText = $"{player} called bluff incorrectly. {opponent} +1";
                 if (opponent == "A") playerAScore++;
                 else playerBScore++;
                 roundWinner = opponent;
             }
             else // Opponent called bluff correctly, so opponent wins
             {
-                resultText = $"{opponent} called bluff correctly. {opponent} +1";
+                resultText = $"{player} called bluff correctly. {player} +1";
                 if (player == "A") playerAScore++;
                 else playerBScore++;
                 roundWinner = player;
