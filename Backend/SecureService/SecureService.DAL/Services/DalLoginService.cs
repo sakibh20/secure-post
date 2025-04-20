@@ -106,7 +106,8 @@ namespace SecureService.DAL.Services
                             if (_context.SaveChanges() > 0)
                             {
                                 TokenResponseViewModel token = _jwt.GenerateToken(usersNewSession, userNewRefreshToken);
-
+                                token.UseID = checkForExistingUserByUserID.UserId;
+                                token.Email = checkForExistingUserByUserID.Email;
                                 if (token != null)
                                 {
                                     status.Status = "OK";

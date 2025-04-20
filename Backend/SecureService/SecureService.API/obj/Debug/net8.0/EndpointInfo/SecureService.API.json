@@ -78,7 +78,28 @@
         }
       }
     },
-    "/api/CreateMatchID": {
+    "/api/InitializeMatchRequest": {
+      "get": {
+        "tags": [
+          "Match"
+        ],
+        "parameters": [
+          {
+            "name": "playerID",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/ResponseMatchRequest": {
       "post": {
         "tags": [
           "Match"
@@ -87,22 +108,22 @@
           "content": {
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/PlayerValidationViewModel"
+                "$ref": "#/components/schemas/MatchRequestViewModel"
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PlayerValidationViewModel"
+                "$ref": "#/components/schemas/MatchRequestViewModel"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/PlayerValidationViewModel"
+                "$ref": "#/components/schemas/MatchRequestViewModel"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/PlayerValidationViewModel"
+                "$ref": "#/components/schemas/MatchRequestViewModel"
               }
             }
           }
@@ -231,6 +252,28 @@
         },
         "additionalProperties": false
       },
+      "MatchRequestViewModel": {
+        "type": "object",
+        "properties": {
+          "MatchId": {
+            "type": "string",
+            "nullable": true
+          },
+          "Player1": {
+            "type": "string",
+            "nullable": true
+          },
+          "Player2": {
+            "type": "string",
+            "nullable": true
+          },
+          "MatchStatus": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "MatchresultViewModel": {
         "type": "object",
         "properties": {
@@ -247,28 +290,6 @@
             "format": "int32"
           },
           "Winner": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "PlayerValidationViewModel": {
-        "type": "object",
-        "properties": {
-          "player1": {
-            "type": "string",
-            "nullable": true
-          },
-          "player1AccessToken": {
-            "type": "string",
-            "nullable": true
-          },
-          "player2": {
-            "type": "string",
-            "nullable": true
-          },
-          "player2AccessToken": {
             "type": "string",
             "nullable": true
           }

@@ -55,8 +55,8 @@ namespace SecureService.DAL.Services
                 if (!Regex.IsMatch(registrationModel.Password, @"[\W_]+")) 
                     throw new Exception("Password must contain at least one special character (e.g., @, #, $, etc.).");
 
-                if (!registrationModel.Email.Contains("@gmail.com") && !registrationModel.Email.Contains("@hotmail.com"))
-                    throw new Exception("Invalid Email. Allowed email types are Gmail or Hotmail.");
+                if (!registrationModel.Email.Contains("@"))
+                    throw new Exception("Invalid Email.");
 
                 var checkForExistingUserByUserID = _context.UserDetail.Where(it=>it.UserId.Equals(registrationModel.UserId)).FirstOrDefault();
 

@@ -151,6 +151,11 @@ namespace SecureService.Context.Shared
                     .HasMaxLength(100)
                     .HasColumnName("winner");
 
+                entity.Property(e => e.Status)
+                    .HasMaxLength(50)
+                    .HasColumnName("status")
+                    .HasDefaultValue("PENDING");
+
                 entity.HasIndex(e => e.Winner).HasDatabaseName("idx_winner");
             });
 

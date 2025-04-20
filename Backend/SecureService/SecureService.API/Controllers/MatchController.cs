@@ -33,7 +33,7 @@ namespace SecureService.API.Controllers
                 loggedInUser = _IJWTTokenRepository.ValidateAccessToken(identity);
                 if (loggedInUser == null)
                 {
-                    status.Status = "UNAUTH";
+                    status.Status = "FAILED";
                     status.Message = "Unauthorized Access.";
                     status.Result = null;
                     return Ok(status);
@@ -53,17 +53,65 @@ namespace SecureService.API.Controllers
             }
             catch (Exception ex)
             {
-                status.Status = "UNAUTH";
+                status.Status = "FAILED";
                 status.Message = ex.Message;
                 status.Result = null;
                 return Ok(status);
             }
         }
 
-        [HttpPost]
-        public IActionResult CreateMatchID(PlayerValidationViewModel playerInfo)
+        [HttpGet]
+        public IActionResult InitializeMatchRequest(string playerID)
         {
-            return Ok(_IMatchRepository.CreateMatchID(playerInfo));
+            StatusResult<object> status = new StatusResult<object>();
+            UserDetail loggedInUser;
+            try
+            {
+                var identity = HttpContext.User.Identity as ClaimsIdentity;
+                loggedInUser = _IJWTTokenRepository.ValidateAccessToken(identity);
+                if (loggedInUser == null)
+                {
+                    status.Status = "FAILED";
+                    status.Message = "Unauthorized Access.";
+                    status.Result = null;
+                    return Ok(status);
+                }
+            }
+            catch (Exception ex)
+            {
+                status.Status = "FAILED";
+                status.Message = ex.Message;
+                status.Result = null;
+                return Ok(status);
+            }
+            return Ok(_IMatchRepository.InitializeMatchRequest(playerID, loggedInUser));
+        }
+
+        [HttpPost]
+        public IActionResult ResponseMatchRequest(MatchRequestViewModel match)
+        {
+            StatusResult<object> status = new StatusResult<object>();
+            UserDetail loggedInUser;
+            try
+            {
+                var identity = HttpContext.User.Identity as ClaimsIdentity;
+                loggedInUser = _IJWTTokenRepository.ValidateAccessToken(identity);
+                if (loggedInUser == null)
+                {
+                    status.Status = "FAILED";
+                    status.Message = "Unauthorized Access.";
+                    status.Result = null;
+                    return Ok(status);
+                }
+            }
+            catch (Exception ex)
+            {
+                status.Status = "FAILED";
+                status.Message = ex.Message;
+                status.Result = null;
+                return Ok(status);
+            }
+            return Ok(_IMatchRepository.ResponseMatchRequest(match, loggedInUser));
         }
 
         [HttpPost]
@@ -77,7 +125,7 @@ namespace SecureService.API.Controllers
                 match = _IJWTTokenRepository.ValidateMatchToken(identity);
                 if (match == null)
                 {
-                    status.Status = "UNAUTH";
+                    status.Status = "FAILED";
                     status.Message = "Unauthorized Access.";
                     status.Result = null;
                     return Ok(status);
@@ -85,7 +133,7 @@ namespace SecureService.API.Controllers
             }
             catch (Exception ex)
             {
-                status.Status = "UNAUTH";
+                status.Status = "FAILED";
                 status.Message = ex.Message;
                 status.Result = null;
                 return Ok(status);
@@ -110,7 +158,7 @@ namespace SecureService.API.Controllers
                 loggedInUser = _IJWTTokenRepository.ValidateAccessToken(identity);
                 if (loggedInUser == null)
                 {
-                    status.Status = "UNAUTH";
+                    status.Status = "FAILED";
                     status.Message = "Unauthorized Access.";
                     status.Result = null;
                     return Ok(status);
@@ -118,7 +166,7 @@ namespace SecureService.API.Controllers
             }
             catch (Exception ex)
             {
-                status.Status = "UNAUTH";
+                status.Status = "FAILED";
                 status.Message = ex.Message;
                 status.Result = null;
                 return Ok(status);

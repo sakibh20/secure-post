@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json.Linq;
 using SecureService.Context;
 using SecureService.DAL.Repositories;
 using SecureService.Entity.Shared.Database;
@@ -50,7 +51,7 @@ namespace SecureService.DAL.Services
             }
 
             if (string.IsNullOrEmpty(user.UserId) && string.IsNullOrEmpty(SessionID))
-                throw new Exception("Vaild Token Required.");
+                throw new Exception("Valid  Token Required.");
 
             if (nowDate > ExpiryDate)
             {
@@ -101,7 +102,7 @@ namespace SecureService.DAL.Services
             }
 
             if (string.IsNullOrEmpty(UserId) && string.IsNullOrEmpty(MatchID))
-                throw new Exception("Vaild Token Required.");
+                throw new Exception("Valid  Token Required.");
 
             if (nowDate > ExpiryDate)
             {
@@ -142,7 +143,7 @@ namespace SecureService.DAL.Services
             }
 
             if (string.IsNullOrEmpty(user.UserId) && string.IsNullOrEmpty(TokenID))
-                throw new Exception("Vaild Refresh Token Required.");
+                throw new Exception("Valid  Refresh Token Required.");
 
             if (nowDate > ExpiryDate)
             {
@@ -179,7 +180,10 @@ namespace SecureService.DAL.Services
                             _context.UserSession.Add(usersNewSession);
                             if (_context.SaveChanges() > 0)
                             {
-                                return GenerateToken(usersNewSession, checkActiveRefreshToken);
+                                TokenResponseViewModel token = GenerateToken(usersNewSession, checkActiveRefreshToken);
+                                token.UseID = Validuser.UserId;
+                                token.Email = Validuser.Email;
+                                return token;
                             }
                         }
                         else
@@ -235,9 +239,8 @@ namespace SecureService.DAL.Services
             return token;
         }
 
-        public MatchTokenViewModel GenerateMatchToken(UserMatch userNewMatch)
+        public string GenerateMatchToken(UserMatch userNewMatch)
         {
-            MatchTokenViewModel matchToken = new MatchTokenViewModel();
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
@@ -254,9 +257,7 @@ namespace SecureService.DAL.Services
               signingCredentials: credentials);
             var JWTmatchToken = new JwtSecurityTokenHandler().WriteToken(accessToken);
 
-            matchToken.matchID = userNewMatch.MatchId;
-            matchToken.matchToken = JWTmatchToken;
-            return matchToken;
+            return JWTmatchToken;
         }
 
     }

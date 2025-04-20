@@ -8,6 +8,8 @@ namespace SecureService.Entity.Shared.Internal
 {
     public class TokenResponseViewModel
     {
+        public string UseID { get; set; }
+        public string Email { get; set; }
         public string AccessToken { get; set; }
         public string RefreshToken { get; set; }
         public DateTime AccessTokenExpiry { get; set; }

@@ -40,5 +40,9 @@ namespace SecureService.Entity.Shared.Database
         [Column("winner")]
         [MaxLength(100)]
         public string Winner { get; set; }
+
+        [Column("status")]
+        [MaxLength(50)]
+        public string Status { get; set; } = "PENDING";
     }
 }

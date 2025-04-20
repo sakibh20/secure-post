@@ -36,97 +36,106 @@ namespace SecureService.DAL.Services
             this._context = context;
         }
 
-        public StatusResult<object> CreateMatchID(PlayerValidationViewModel playerInfo)
+        public StatusResult<object> InitializeMatchRequest(string playerID, UserDetail user)
         {
             StatusResult<object> status = new StatusResult<object>();
             try
             {
-                UserDetail Validplayer1 = new UserDetail();
-                bool IsValidplayer1 = false;
-                UserDetail Validplayer2 = new UserDetail();
-                bool IsValidplayer2 = false;
-
-                var handler = new JwtSecurityTokenHandler();
-
-                #region Player 1
-                var player1AccessToken = handler.ReadToken(playerInfo.player1AccessToken);
-                var player1AccessTokenClaims = player1AccessToken as JwtSecurityToken;
-
-                var player1UserId = _cls.Decrypt(player1AccessTokenClaims.Claims.First(claim => claim.Type == "UserId").Value);
-                var player1SessionID = _cls.Decrypt(player1AccessTokenClaims.Claims.First(claim => claim.Type == "SessionID").Value);
-                if (!string.IsNullOrWhiteSpace(player1UserId) && playerInfo.player1 == player1UserId)
+                var player2 = _context.UserDetail.Where(it => it.UserId == playerID).FirstOrDefault();
+                if (player2 != null)
                 {
-                    Validplayer1 = _context.UserDetail.Where(it => it.UserId.Equals(player1UserId)).FirstOrDefault();
-
-                    if (Validplayer1 != null)
-                    {
-                        var checkActiveSession = _context.UserSession.Where(it => it.UserId == Validplayer1.UserId && it.SessionID == player1SessionID && it.IsActiveSessionFlag == true).FirstOrDefault();
-                        if (checkActiveSession != null)
-                        {
-                            IsValidplayer1 = true;
-                        }
-                        else
-                            throw new Exception("Token Deactivated.");
-                    }
-                    else
-                        throw new Exception("Invalid Token.");
-                }
-                else
-                    throw new Exception("Invalid User.");
-                #endregion
-
-                #region Player 2
-                var player2AccessToken = handler.ReadToken(playerInfo.player2AccessToken);
-                var player2AccessTokenClaims = player2AccessToken as JwtSecurityToken;
-
-                var player2UserId = _cls.Decrypt(player2AccessTokenClaims.Claims.First(claim => claim.Type == "UserId").Value);
-                var player2SessionID = _cls.Decrypt(player2AccessTokenClaims.Claims.First(claim => claim.Type == "SessionID").Value);
-                if (!string.IsNullOrWhiteSpace(player2UserId) && playerInfo.player2 == player2UserId)
-                {
-                    Validplayer2 = _context.UserDetail.Where(it => it.UserId.Equals(player2UserId)).FirstOrDefault();
-
-                    if (Validplayer2 != null)
-                    {
-                        var checkActiveSession = _context.UserSession.Where(it => it.UserId == Validplayer2.UserId && it.SessionID == player2SessionID && it.IsActiveSessionFlag == true).FirstOrDefault();
-                        if (checkActiveSession != null)
-                        {
-                            IsValidplayer2 = true;
-                        }
-                        else
-                            throw new Exception("Token Deactivated.");
-                    }
-                    else
-                        throw new Exception("Invalid Token.");
-                }
-                else
-                    throw new Exception("Invalid User.");
-                #endregion
-
-                #region Match ID Genaration
-                if(IsValidplayer1 && IsValidplayer2)
-                { 
                     UserMatch userNewMatch = new UserMatch();
                     userNewMatch.MatchId = Guid.NewGuid().ToString();
-                    userNewMatch.Player1 = Validplayer1.UserId;
-                    userNewMatch.Player2 = Validplayer2.UserId;
+                    userNewMatch.Player1 = user.UserId;
+                    userNewMatch.Player2 = player2.UserId;
 
                     _context.UserMatch.Add(userNewMatch);
-                    if(_context.SaveChanges() > 0)
-                    {
-                        MatchTokenViewModel matchToken = _jwt.GenerateMatchToken(userNewMatch);
-                        if(matchToken != null)
-                        {
-                            status.Status = "OK";
-                            status.Message = "Match Id Created";
-                            status.Result = matchToken;
-                        }
-                    }
+                    _context.SaveChanges();
+
+                    //Server A Rest API call
+
+
+                    MatchRequestViewModel match = new MatchRequestViewModel();
+                    match.MatchId = userNewMatch.MatchId;
+                    match.Player1 = userNewMatch.Player1;
+                    match.Player2 = userNewMatch.Player2;
+                    match.MatchStatus = userNewMatch.Status;
+
+                    status.Status = "OK";
+                    status.Message = user.UserId + " has requested " + player2.UserId + " for a Match.";
+                    status.Result = null;
+
                 }
+                else
+                    throw new Exception("Invalid Player ID.");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Error in InitializeMatchRequest : " + ex.Message + " , Stacktrace: " + ex.StackTrace);
+                status.Status = "FAILED";
+                status.Message = ex.Message;
+                status.Result = null;
+            }
+            return status;
+        }
+        public StatusResult<object> ResponseMatchRequest(MatchRequestViewModel match, UserDetail user)
+        {
+            StatusResult<object> status = new StatusResult<object>();
+            try
+            {
+                #region Match ID Genaration
+                if (match.Player2 == user.UserId)
+                {
+                    UserMatch userExistingMatch = _context.UserMatch.Where(it => it.MatchId == match.MatchId && it.Player1 == match.Player1 && it.Player2 == match.Player2).FirstOrDefault();
+
+                    if (userExistingMatch == null)
+                        throw new Exception("Invalid match Information.");
+                    else if (userExistingMatch.Status?.ToUpper() != "PENDING")
+                        throw new Exception("Match is already " + userExistingMatch.Status.ToLower());
+
+                    if (match.MatchStatus?.ToUpper() == "ACCEPTED")
+                    {
+                        userExistingMatch.Status = "ACCEPTED";
+                        userExistingMatch.StartTime = DateTime.Now;
+                        _context.UserMatch.Update(userExistingMatch);
+                        _context.SaveChanges();
+
+
+                        string matchToken = _jwt.GenerateMatchToken(userExistingMatch);
+
+                        MatchAcceptedViewModel matchAccepted = new MatchAcceptedViewModel();
+                        matchAccepted.MatchId = userExistingMatch.MatchId;
+                        matchAccepted.Player1 = userExistingMatch.Player1;
+                        matchAccepted.Player2 = userExistingMatch.Player2;
+                        matchAccepted.MatchToken = matchToken;
+                        _logger.LogError("Token-" + matchToken);
+                        //Server A Rest API call
+
+
+                        status.Status = "OK";
+                        status.Message = userExistingMatch.Player2 + " has accepted " + userExistingMatch.Player1 + "'s Match Request.";
+                        status.Result = null;
+                    }
+                    else if (match.MatchStatus?.ToUpper() == "DECLINED")
+                    {
+                        userExistingMatch.Status = "DECLINED";
+                        _context.UserMatch.Update(userExistingMatch);
+                        _context.SaveChanges();
+
+                        status.Status = "OK";
+                        status.Message = userExistingMatch.Player2 + " has declined " + userExistingMatch.Player1 + "'s Match Request.";
+                        status.Result = null;
+                    }
+                    else
+                        throw new Exception("Invalid Match Status.");
+                }
+                else
+                    throw new Exception("Invalid Player 2.");
                 #endregion
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error in CreateMatchID : " + ex.Message + " , Stacktrace: " + ex.StackTrace);
+                _logger.LogError("Error in ResponseMatchRequest : " + ex.Message + " , Stacktrace: " + ex.StackTrace);
                 status.Status = "FAILED";
                 status.Message = ex.Message;
                 status.Result = null;
@@ -140,11 +149,14 @@ namespace SecureService.DAL.Services
             {
                 if (matchInfo.MatchId != match.MatchId)
                     throw new Exception("Invalid Match ID.");
+                else if (match.Status?.ToUpper() != "ACCEPTED")
+                    throw new Exception("Match status is " + match.Status.ToLower());
 
-                match.Player1Moves= matchInfo.Player1Moves;
+                match.Player1Moves = matchInfo.Player1Moves;
                 match.Player2Moves= matchInfo.Player2Moves;
                 match.Winner= matchInfo.Winner;
                 match.EndTime = DateTime.Now;
+                match.Status = "FINNISHED";
 
                 _context.UserMatch.Update(match);
                 if (_context.SaveChanges() > 0)

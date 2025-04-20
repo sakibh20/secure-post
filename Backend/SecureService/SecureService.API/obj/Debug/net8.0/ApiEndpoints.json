@@ -1,22 +1,6 @@
 [
   {
     "ContainingType": "SecureService.API.Controllers.MatchController",
-    "Method": "CreateMatchID",
-    "RelativePath": "api/CreateMatchID",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "playerInfo",
-        "Type": "SecureService.Entity.Shared.Internal.PlayerValidationViewModel",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "SecureService.API.Controllers.MatchController",
     "Method": "FetchLeaderBoard",
     "RelativePath": "api/FetchLeaderBoard",
     "HttpMethod": "GET",
@@ -56,6 +40,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "SecureService.API.Controllers.MatchController",
+    "Method": "InitializeMatchRequest",
+    "RelativePath": "api/InitializeMatchRequest",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "playerID",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SecureService.API.Controllers.LoginController",
     "Method": "Login",
     "RelativePath": "api/Login",
@@ -92,6 +92,22 @@
       {
         "Name": "registrationModel",
         "Type": "SecureService.Entity.Shared.Internal.RegistrationViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SecureService.API.Controllers.MatchController",
+    "Method": "ResponseMatchRequest",
+    "RelativePath": "api/ResponseMatchRequest",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "match",
+        "Type": "SecureService.Entity.Shared.Internal.MatchRequestViewModel",
         "IsRequired": true
       }
     ],

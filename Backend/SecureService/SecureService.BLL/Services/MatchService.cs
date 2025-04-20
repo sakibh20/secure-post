@@ -20,9 +20,13 @@ namespace SecureService.BLL.Services
         {
             this._IDalMatchRepository = IDalMatchRepository;
         }
-        public StatusResult<object> CreateMatchID(PlayerValidationViewModel playerInfo)
+        public StatusResult<object> InitializeMatchRequest(string playerID, UserDetail user)
         {
-            return _IDalMatchRepository.CreateMatchID(playerInfo);
+            return _IDalMatchRepository.InitializeMatchRequest(playerID, user);
+        }
+        public StatusResult<object> ResponseMatchRequest(MatchRequestViewModel match, UserDetail user)
+        {
+            return _IDalMatchRepository.ResponseMatchRequest(match, user);
         }
         public StatusResult<object> UpdateMatchResult(MatchresultViewModel matchInfo, UserMatch match)
         {

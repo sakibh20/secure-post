@@ -13,6 +13,6 @@ namespace SecureService.DAL.Repositories
         public UserMatch ValidateMatchToken(ClaimsIdentity identity);
         public TokenResponseViewModel GenerateTokenByRefreshToken(ClaimsIdentity identity);
         public TokenResponseViewModel GenerateToken(UserSession usersNewSession, UserRefreshToken userNewRefreshToken);
-        public MatchTokenViewModel GenerateMatchToken(UserMatch userNewMatch);
+        public string GenerateMatchToken(UserMatch userNewMatch);
     }
 }

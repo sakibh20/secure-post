@@ -47,7 +47,7 @@ namespace SecureService.API.Controllers
             }
             catch (Exception ex)
             {
-                status.Status = "UNAUTH";
+                status.Status = "FAILED";
                 status.Message = ex.Message;
                 status.Result = null;
                 return Ok(status);
