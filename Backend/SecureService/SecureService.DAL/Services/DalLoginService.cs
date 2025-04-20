@@ -142,7 +142,7 @@ namespace SecureService.DAL.Services
             }
             finally
             {
-                if (checkForExistingUserByUserID.Isupdated)
+                if (checkForExistingUserByUserID != null && checkForExistingUserByUserID.Isupdated)
                 {
                     _context.UserDetail.Update(checkForExistingUserByUserID);
                     _context.SaveChanges();
