@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "JQcdVqghP/RUkJPUKHSRi1/njbQzvje+20Etnx1+tPQ=",
+  "Source": "SecureService.API",
+  "BasePath": "_content/SecureService.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

@@ -1,0 +1,13 @@
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\secure-post\Backend\SecureService\SecureService.Entity\bin\Debug\net8.0\SecureService.Entity.deps.json
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\secure-post\Backend\SecureService\SecureService.Entity\bin\Debug\net8.0\SecureService.Entity.dll
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\secure-post\Backend\SecureService\SecureService.Entity\bin\Debug\net8.0\SecureService.Entity.pdb
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\secure-post\Backend\SecureService\SecureService.Entity\obj\Debug\net8.0\SecureService.Entity.csproj.AssemblyReference.cache
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\secure-post\Backend\SecureService\SecureService.Entity\obj\Debug\net8.0\SecureService.Entity.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\secure-post\Backend\SecureService\SecureService.Entity\obj\Debug\net8.0\SecureService.Entity.AssemblyInfoInputs.cache
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\secure-post\Backend\SecureService\SecureService.Entity\obj\Debug\net8.0\SecureService.Entity.AssemblyInfo.cs
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\secure-post\Backend\SecureService\SecureService.Entity\obj\Debug\net8.0\SecureService.Entity.csproj.CoreCompileInputs.cache
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\secure-post\Backend\SecureService\SecureService.Entity\obj\Debug\net8.0\SecureService.Entity.sourcelink.json
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\secure-post\Backend\SecureService\SecureService.Entity\obj\Debug\net8.0\SecureService.Entity.dll
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\secure-post\Backend\SecureService\SecureService.Entity\obj\Debug\net8.0\refint\SecureService.Entity.dll
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\secure-post\Backend\SecureService\SecureService.Entity\obj\Debug\net8.0\SecureService.Entity.pdb
+C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\secure-post\Backend\SecureService\SecureService.Entity\obj\Debug\net8.0\ref\SecureService.Entity.dll

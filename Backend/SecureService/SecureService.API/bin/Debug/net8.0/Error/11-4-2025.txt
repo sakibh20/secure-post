@@ -1,0 +1,5 @@
+11/04/2025 10.39.45 <======> Error in Login : Wrong Password. , Stacktrace:    at SecureService.DAL.Services.DalLoginService.Login(LoginViewModel loginModel) in C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\secure-post\Backend\SecureService\SecureService.DAL\Services\DalLoginService.cs:line 75 
+
+*************************************************************************************************************
+
+

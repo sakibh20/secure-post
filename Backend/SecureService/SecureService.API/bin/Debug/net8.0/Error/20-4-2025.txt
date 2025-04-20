@@ -1,0 +1,50 @@
+20/04/2025 0.02.13 <======> Error in Register : samith is already existed. , Stacktrace:    at SecureService.DAL.Services.DalRegistrationService.Register(RegistrationViewModel registrationModel) in C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\secure-post\Backend\SecureService\SecureService.DAL\Services\DalRegistrationService.cs:line 64 
+
+*************************************************************************************************************
+
+
+20/04/2025 2.12.27 <======> Error in Login : Wrong Password. , Stacktrace:    at SecureService.DAL.Services.DalLoginService.Login(LoginViewModel loginModel) in C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\secure-post\Backend\SecureService\SecureService.DAL\Services\DalLoginService.cs:line 75 
+
+*************************************************************************************************************
+
+
+20/04/2025 3.19.50 <======> Error in ResponseMatchRequest : An error occurred while saving the entity changes. See the inner exception for details. , Stacktrace:    at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.<>c.<SaveChanges>b__112_0(DbContext _, ValueTuple`2 t)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges()
+   at SecureService.DAL.Services.DalMatchService.ResponseMatchRequest(MatchRequestViewModel match, UserDetail user) in C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\secure-post\Backend\SecureService\SecureService.DAL\Services\DalMatchService.cs:line 101 
+
+*************************************************************************************************************
+
+
+20/04/2025 3.21.04 <======> Error in ResponseMatchRequest : An error occurred while saving the entity changes. See the inner exception for details. , Stacktrace:    at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.<>c.<SaveChanges>b__112_0(DbContext _, ValueTuple`2 t)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges()
+   at SecureService.DAL.Services.DalMatchService.ResponseMatchRequest(MatchRequestViewModel match, UserDetail user) in C:\Users\Samith\OneDrive\Documents\Tampare_University\Spring_25\Secure_Programming\Project\secure-post\Backend\SecureService\SecureService.DAL\Services\DalMatchService.cs:line 101 
+
+*************************************************************************************************************
+
+
+20/04/2025 3.22.34 <======> Error in ResponseMatchRequest : Match is already accepted , Stacktrace:    at SecureService.DAL.Services.DalMatchService.ResponseMatchRequest(MatchRequestViewModel match, UserDetail user) 
+
+*************************************************************************************************************
+
+
+20/04/2025 3.33.16 <======> Token-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiI2VFVUSG4xK244ajJsbU5MeVoxWUVUb3F4ODJWbDNLSHpGSVYyV1M1enFBPSIsIlNlc3Npb25JRCI6IjZUVVRIbjErbjhqMmxtTkx5WjFZRWZ3MFBHdjlNMDUvS2czK2hLQ1NYa3JidzZlT3ROdVp5NmZnQWhIL3JIeFFIZk1rZDdBaVRPZlNsTnEzZDhpZUNRPT0iLCJTdGFydERhdGUiOiIyMC8wNC8yMDI1IDMuMzMuMTUiLCJFeHBpcnlEYXRlIjoiMjAvMDQvMjAyNSA0LjAzLjE1IiwiZXhwIjoxNzQ1MTEwOTk1LCJpc3MiOiJTZWN1cmVTZXJ2aWNlIiwiYXVkIjoiU2VjdXJlU2VydmljZSJ9.meZ3D1o6V-C2KVxjiHFtHw4VcrpGaOXD303_kNtcCPA 
+
+*************************************************************************************************************
+
+

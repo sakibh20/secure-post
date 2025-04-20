@@ -1,0 +1,578 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{37CC6324-0218-4347-B8A7-1E8CA971C1C0}|SecurePosts.DAL\\SecurePosts.DAL.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureposts\\secureposts.dal\\services\\daljwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37CC6324-0218-4347-B8A7-1E8CA971C1C0}|SecurePosts.DAL\\SecurePosts.DAL.csproj|solutionrelative:secureposts.dal\\services\\daljwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37CC6324-0218-4347-B8A7-1E8CA971C1C0}|SecurePosts.DAL\\SecurePosts.DAL.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureposts\\secureposts.dal\\services\\dalloginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37CC6324-0218-4347-B8A7-1E8CA971C1C0}|SecurePosts.DAL\\SecurePosts.DAL.csproj|solutionrelative:secureposts.dal\\services\\dalloginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37CC6324-0218-4347-B8A7-1E8CA971C1C0}|SecurePosts.DAL\\SecurePosts.DAL.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureposts\\secureposts.dal\\services\\dalregistrationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37CC6324-0218-4347-B8A7-1E8CA971C1C0}|SecurePosts.DAL\\SecurePosts.DAL.csproj|solutionrelative:secureposts.dal\\services\\dalregistrationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8DA0966F-FD8D-4474-BE4F-D020AA864006}|SecurePosts.Logging\\SecurePosts.Logging.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureposts\\secureposts.logging\\secureposts.logging.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{8DA0966F-FD8D-4474-BE4F-D020AA864006}|SecurePosts.Logging\\SecurePosts.Logging.csproj|solutionrelative:secureposts.logging\\secureposts.logging.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15688F19-C6B8-40E1-BFF7-2CA7EA1E0A3B}|SecurePosts.Entity\\SecurePosts.Entity.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureposts\\secureposts.entity\\secureposts.entity.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{15688F19-C6B8-40E1-BFF7-2CA7EA1E0A3B}|SecurePosts.Entity\\SecurePosts.Entity.csproj|solutionrelative:secureposts.entity\\secureposts.entity.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37CC6324-0218-4347-B8A7-1E8CA971C1C0}|SecurePosts.DAL\\SecurePosts.DAL.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureposts\\secureposts.dal\\secureposts.dal.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{37CC6324-0218-4347-B8A7-1E8CA971C1C0}|SecurePosts.DAL\\SecurePosts.DAL.csproj|solutionrelative:secureposts.dal\\secureposts.dal.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C415C31D-5D67-F200-0643-94C2B21A58F4}|SecurePosts.Context\\SecurePosts.Context.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureposts\\secureposts.context\\secureposts.context.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{C415C31D-5D67-F200-0643-94C2B21A58F4}|SecurePosts.Context\\SecurePosts.Context.csproj|solutionrelative:secureposts.context\\secureposts.context.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{837511A7-7C92-40E6-8329-208F9706FFB8}|SecurePosts.API\\SecurePosts.API.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureposts\\secureposts.api\\secureposts.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{837511A7-7C92-40E6-8329-208F9706FFB8}|SecurePosts.API\\SecurePosts.API.csproj|solutionrelative:secureposts.api\\secureposts.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8648250-66CB-4F5D-822A-AE78073C6350}|SecurePosts.BLL\\SecurePosts.BLL.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureposts\\secureposts.bll\\secureposts.bll.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{E8648250-66CB-4F5D-822A-AE78073C6350}|SecurePosts.BLL\\SecurePosts.BLL.csproj|solutionrelative:secureposts.bll\\secureposts.bll.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{837511A7-7C92-40E6-8329-208F9706FFB8}|SecurePosts.API\\SecurePosts.API.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureposts\\secureposts.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{837511A7-7C92-40E6-8329-208F9706FFB8}|SecurePosts.API\\SecurePosts.API.csproj|solutionrelative:secureposts.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C415C31D-5D67-F200-0643-94C2B21A58F4}|SecurePosts.Context\\SecurePosts.Context.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureposts\\secureposts.context\\shared\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C415C31D-5D67-F200-0643-94C2B21A58F4}|SecurePosts.Context\\SecurePosts.Context.csproj|solutionrelative:secureposts.context\\shared\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8648250-66CB-4F5D-822A-AE78073C6350}|SecurePosts.BLL\\SecurePosts.BLL.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureposts\\secureposts.bll\\repositories\\iloginrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8648250-66CB-4F5D-822A-AE78073C6350}|SecurePosts.BLL\\SecurePosts.BLL.csproj|solutionrelative:secureposts.bll\\repositories\\iloginrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37CC6324-0218-4347-B8A7-1E8CA971C1C0}|SecurePosts.DAL\\SecurePosts.DAL.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureposts\\secureposts.dal\\repositories\\idalloginrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37CC6324-0218-4347-B8A7-1E8CA971C1C0}|SecurePosts.DAL\\SecurePosts.DAL.csproj|solutionrelative:secureposts.dal\\repositories\\idalloginrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{837511A7-7C92-40E6-8329-208F9706FFB8}|SecurePosts.API\\SecurePosts.API.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureposts\\secureposts.api\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{837511A7-7C92-40E6-8329-208F9706FFB8}|SecurePosts.API\\SecurePosts.API.csproj|solutionrelative:secureposts.api\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37CC6324-0218-4347-B8A7-1E8CA971C1C0}|SecurePosts.DAL\\SecurePosts.DAL.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureposts\\secureposts.dal\\services\\dalclsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37CC6324-0218-4347-B8A7-1E8CA971C1C0}|SecurePosts.DAL\\SecurePosts.DAL.csproj|solutionrelative:secureposts.dal\\services\\dalclsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8DA0966F-FD8D-4474-BE4F-D020AA864006}|SecurePosts.Logging\\SecurePosts.Logging.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureposts\\secureposts.logging\\secureposts.logging.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{8DA0966F-FD8D-4474-BE4F-D020AA864006}|SecurePosts.Logging\\SecurePosts.Logging.csproj|solutionrelative:secureposts.logging\\secureposts.logging.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15688F19-C6B8-40E1-BFF7-2CA7EA1E0A3B}|SecurePosts.Entity\\SecurePosts.Entity.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureposts\\secureposts.entity\\secureposts.entity.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{15688F19-C6B8-40E1-BFF7-2CA7EA1E0A3B}|SecurePosts.Entity\\SecurePosts.Entity.csproj|solutionrelative:secureposts.entity\\secureposts.entity.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37CC6324-0218-4347-B8A7-1E8CA971C1C0}|SecurePosts.DAL\\SecurePosts.DAL.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureposts\\secureposts.dal\\secureposts.dal.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{37CC6324-0218-4347-B8A7-1E8CA971C1C0}|SecurePosts.DAL\\SecurePosts.DAL.csproj|solutionrelative:secureposts.dal\\secureposts.dal.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C415C31D-5D67-F200-0643-94C2B21A58F4}|SecurePosts.Context\\SecurePosts.Context.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureposts\\secureposts.context\\secureposts.context.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{C415C31D-5D67-F200-0643-94C2B21A58F4}|SecurePosts.Context\\SecurePosts.Context.csproj|solutionrelative:secureposts.context\\secureposts.context.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{837511A7-7C92-40E6-8329-208F9706FFB8}|SecurePosts.API\\SecurePosts.API.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureposts\\secureposts.api\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{837511A7-7C92-40E6-8329-208F9706FFB8}|SecurePosts.API\\SecurePosts.API.csproj|solutionrelative:secureposts.api\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37CC6324-0218-4347-B8A7-1E8CA971C1C0}|SecurePosts.DAL\\SecurePosts.DAL.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureposts\\secureposts.dal\\repositories\\idalclsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37CC6324-0218-4347-B8A7-1E8CA971C1C0}|SecurePosts.DAL\\SecurePosts.DAL.csproj|solutionrelative:secureposts.dal\\repositories\\idalclsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37CC6324-0218-4347-B8A7-1E8CA971C1C0}|SecurePosts.DAL\\SecurePosts.DAL.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureposts\\secureposts.dal\\repositories\\idaljwttokenrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37CC6324-0218-4347-B8A7-1E8CA971C1C0}|SecurePosts.DAL\\SecurePosts.DAL.csproj|solutionrelative:secureposts.dal\\repositories\\idaljwttokenrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8648250-66CB-4F5D-822A-AE78073C6350}|SecurePosts.BLL\\SecurePosts.BLL.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureposts\\secureposts.bll\\services\\loginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8648250-66CB-4F5D-822A-AE78073C6350}|SecurePosts.BLL\\SecurePosts.BLL.csproj|solutionrelative:secureposts.bll\\services\\loginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{837511A7-7C92-40E6-8329-208F9706FFB8}|SecurePosts.API\\SecurePosts.API.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureposts\\secureposts.api\\controllers\\registrationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{837511A7-7C92-40E6-8329-208F9706FFB8}|SecurePosts.API\\SecurePosts.API.csproj|solutionrelative:secureposts.api\\controllers\\registrationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8648250-66CB-4F5D-822A-AE78073C6350}|SecurePosts.BLL\\SecurePosts.BLL.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureposts\\secureposts.bll\\services\\jwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8648250-66CB-4F5D-822A-AE78073C6350}|SecurePosts.BLL\\SecurePosts.BLL.csproj|solutionrelative:secureposts.bll\\services\\jwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8648250-66CB-4F5D-822A-AE78073C6350}|SecurePosts.BLL\\SecurePosts.BLL.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureposts\\secureposts.bll\\repositories\\ijwttokenrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8648250-66CB-4F5D-822A-AE78073C6350}|SecurePosts.BLL\\SecurePosts.BLL.csproj|solutionrelative:secureposts.bll\\repositories\\ijwttokenrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8648250-66CB-4F5D-822A-AE78073C6350}|SecurePosts.BLL\\SecurePosts.BLL.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureposts\\secureposts.bll\\services\\registrationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8648250-66CB-4F5D-822A-AE78073C6350}|SecurePosts.BLL\\SecurePosts.BLL.csproj|solutionrelative:secureposts.bll\\services\\registrationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8648250-66CB-4F5D-822A-AE78073C6350}|SecurePosts.BLL\\SecurePosts.BLL.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureposts\\secureposts.bll\\repositories\\iregistrationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8648250-66CB-4F5D-822A-AE78073C6350}|SecurePosts.BLL\\SecurePosts.BLL.csproj|solutionrelative:secureposts.bll\\repositories\\iregistrationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37CC6324-0218-4347-B8A7-1E8CA971C1C0}|SecurePosts.DAL\\SecurePosts.DAL.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureposts\\secureposts.dal\\repositories\\idalregistrationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37CC6324-0218-4347-B8A7-1E8CA971C1C0}|SecurePosts.DAL\\SecurePosts.DAL.csproj|solutionrelative:secureposts.dal\\repositories\\idalregistrationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8DA0966F-FD8D-4474-BE4F-D020AA864006}|SecurePosts.Logging\\SecurePosts.Logging.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureposts\\secureposts.logging\\logservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8DA0966F-FD8D-4474-BE4F-D020AA864006}|SecurePosts.Logging\\SecurePosts.Logging.csproj|solutionrelative:secureposts.logging\\logservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8648250-66CB-4F5D-822A-AE78073C6350}|SecurePosts.BLL\\SecurePosts.BLL.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureposts\\secureposts.bll\\services\\clsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8648250-66CB-4F5D-822A-AE78073C6350}|SecurePosts.BLL\\SecurePosts.BLL.csproj|solutionrelative:secureposts.bll\\services\\clsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8648250-66CB-4F5D-822A-AE78073C6350}|SecurePosts.BLL\\SecurePosts.BLL.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureposts\\secureposts.bll\\repositories\\iclsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8648250-66CB-4F5D-822A-AE78073C6350}|SecurePosts.BLL\\SecurePosts.BLL.csproj|solutionrelative:secureposts.bll\\repositories\\iclsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{837511A7-7C92-40E6-8329-208F9706FFB8}|SecurePosts.API\\SecurePosts.API.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureposts\\secureposts.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{837511A7-7C92-40E6-8329-208F9706FFB8}|SecurePosts.API\\SecurePosts.API.csproj|solutionrelative:secureposts.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{837511A7-7C92-40E6-8329-208F9706FFB8}|SecurePosts.API\\SecurePosts.API.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureposts\\secureposts.api\\extensions\\automapperextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{837511A7-7C92-40E6-8329-208F9706FFB8}|SecurePosts.API\\SecurePosts.API.csproj|solutionrelative:secureposts.api\\extensions\\automapperextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DalLoginService.cs",
+              "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.DAL\\Services\\DalLoginService.cs",
+              "RelativeDocumentMoniker": "SecurePosts.DAL\\Services\\DalLoginService.cs",
+              "ToolTip": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.DAL\\Services\\DalLoginService.cs",
+              "RelativeToolTip": "SecurePosts.DAL\\Services\\DalLoginService.cs",
+              "ViewState": "AgIAAEwAAAAAAAAAAAAcwGEAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T20:13:18.959Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "IDalLoginRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.DAL\\Repositories\\IDalLoginRepository.cs",
+              "RelativeDocumentMoniker": "SecurePosts.DAL\\Repositories\\IDalLoginRepository.cs",
+              "ToolTip": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.DAL\\Repositories\\IDalLoginRepository.cs",
+              "RelativeToolTip": "SecurePosts.DAL\\Repositories\\IDalLoginRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T20:14:16.962Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ILoginRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.BLL\\Repositories\\ILoginRepository.cs",
+              "RelativeDocumentMoniker": "SecurePosts.BLL\\Repositories\\ILoginRepository.cs",
+              "ToolTip": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.BLL\\Repositories\\ILoginRepository.cs",
+              "RelativeToolTip": "SecurePosts.BLL\\Repositories\\ILoginRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T20:15:26.081Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "LoginService.cs",
+              "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.BLL\\Services\\LoginService.cs",
+              "RelativeDocumentMoniker": "SecurePosts.BLL\\Services\\LoginService.cs",
+              "ToolTip": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.BLL\\Services\\LoginService.cs",
+              "RelativeToolTip": "SecurePosts.BLL\\Services\\LoginService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T20:14:50.194Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "LoginController.cs",
+              "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.API\\Controllers\\LoginController.cs",
+              "RelativeDocumentMoniker": "SecurePosts.API\\Controllers\\LoginController.cs",
+              "ToolTip": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.API\\Controllers\\LoginController.cs",
+              "RelativeToolTip": "SecurePosts.API\\Controllers\\LoginController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T20:17:28.055Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SecurePosts.Logging.csproj",
+              "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.Logging\\SecurePosts.Logging.csproj",
+              "RelativeDocumentMoniker": "SecurePosts.Logging\\SecurePosts.Logging.csproj",
+              "ToolTip": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.Logging\\SecurePosts.Logging.csproj",
+              "RelativeToolTip": "SecurePosts.Logging\\SecurePosts.Logging.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAQwBYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-03-17T17:54:36.951Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DalRegistrationService.cs",
+              "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.DAL\\Services\\DalRegistrationService.cs",
+              "RelativeDocumentMoniker": "SecurePosts.DAL\\Services\\DalRegistrationService.cs",
+              "ToolTip": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.DAL\\Services\\DalRegistrationService.cs",
+              "RelativeToolTip": "SecurePosts.DAL\\Services\\DalRegistrationService.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAowEoAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T17:04:44.44Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DalJWTTokenService.cs",
+              "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.DAL\\Services\\DalJWTTokenService.cs",
+              "RelativeDocumentMoniker": "SecurePosts.DAL\\Services\\DalJWTTokenService.cs",
+              "ToolTip": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.DAL\\Services\\DalJWTTokenService.cs",
+              "RelativeToolTip": "SecurePosts.DAL\\Services\\DalJWTTokenService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T18:35:27.764Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SecurePosts.Entity.csproj",
+              "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.Entity\\SecurePosts.Entity.csproj",
+              "RelativeDocumentMoniker": "SecurePosts.Entity\\SecurePosts.Entity.csproj",
+              "ToolTip": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.Entity\\SecurePosts.Entity.csproj",
+              "RelativeToolTip": "SecurePosts.Entity\\SecurePosts.Entity.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-03-17T20:36:14.731Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SecurePosts.DAL.csproj",
+              "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.DAL\\SecurePosts.DAL.csproj",
+              "RelativeDocumentMoniker": "SecurePosts.DAL\\SecurePosts.DAL.csproj",
+              "ToolTip": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.DAL\\SecurePosts.DAL.csproj",
+              "RelativeToolTip": "SecurePosts.DAL\\SecurePosts.DAL.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-03-17T17:54:16.019Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "SecurePosts.Context.csproj",
+              "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.Context\\SecurePosts.Context.csproj",
+              "RelativeDocumentMoniker": "SecurePosts.Context\\SecurePosts.Context.csproj",
+              "ToolTip": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.Context\\SecurePosts.Context.csproj",
+              "RelativeToolTip": "SecurePosts.Context\\SecurePosts.Context.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-03-17T17:54:04.32Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "SecurePosts.API.csproj",
+              "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.API\\SecurePosts.API.csproj",
+              "RelativeDocumentMoniker": "SecurePosts.API\\SecurePosts.API.csproj",
+              "ToolTip": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.API\\SecurePosts.API.csproj",
+              "RelativeToolTip": "SecurePosts.API\\SecurePosts.API.csproj",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAiwC8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-03-17T17:53:32.156Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "SecurePosts.BLL.csproj",
+              "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.BLL\\SecurePosts.BLL.csproj",
+              "RelativeDocumentMoniker": "SecurePosts.BLL\\SecurePosts.BLL.csproj",
+              "ToolTip": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.BLL\\SecurePosts.BLL.csproj",
+              "RelativeToolTip": "SecurePosts.BLL\\SecurePosts.BLL.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-03-17T20:36:01.501Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.API\\appsettings.json",
+              "RelativeDocumentMoniker": "SecurePosts.API\\appsettings.json",
+              "ToolTip": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.API\\appsettings.json",
+              "RelativeToolTip": "SecurePosts.API\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-17T17:44:38.405Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "DalClsService.cs",
+              "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.DAL\\Services\\DalClsService.cs",
+              "RelativeDocumentMoniker": "SecurePosts.DAL\\Services\\DalClsService.cs",
+              "ToolTip": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.DAL\\Services\\DalClsService.cs",
+              "RelativeToolTip": "SecurePosts.DAL\\Services\\DalClsService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T20:44:43.813Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "DBContext.cs",
+              "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.Context\\Shared\\DBContext.cs",
+              "RelativeDocumentMoniker": "SecurePosts.Context\\Shared\\DBContext.cs",
+              "ToolTip": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.Context\\Shared\\DBContext.cs",
+              "RelativeToolTip": "SecurePosts.Context\\Shared\\DBContext.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAswDgAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T18:32:07.334Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "SecurePosts.Logging",
+              "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.Logging\\SecurePosts.Logging.csproj",
+              "RelativeDocumentMoniker": "SecurePosts.Logging\\SecurePosts.Logging.csproj",
+              "ToolTip": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.Logging\\SecurePosts.Logging.csproj",
+              "RelativeToolTip": "SecurePosts.Logging\\SecurePosts.Logging.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-03-17T17:54:40.733Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "SecurePosts.Entity",
+              "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.Entity\\SecurePosts.Entity.csproj",
+              "RelativeDocumentMoniker": "SecurePosts.Entity\\SecurePosts.Entity.csproj",
+              "ToolTip": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.Entity\\SecurePosts.Entity.csproj",
+              "RelativeToolTip": "SecurePosts.Entity\\SecurePosts.Entity.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-03-17T17:54:27.935Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "SecurePosts.DAL",
+              "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.DAL\\SecurePosts.DAL.csproj",
+              "RelativeDocumentMoniker": "SecurePosts.DAL\\SecurePosts.DAL.csproj",
+              "ToolTip": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.DAL\\SecurePosts.DAL.csproj",
+              "RelativeToolTip": "SecurePosts.DAL\\SecurePosts.DAL.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-03-17T17:54:18.344Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Startup.cs",
+              "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.API\\Startup.cs",
+              "RelativeDocumentMoniker": "SecurePosts.API\\Startup.cs",
+              "ToolTip": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.API\\Startup.cs",
+              "RelativeToolTip": "SecurePosts.API\\Startup.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAgwCUAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T21:19:17.308Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "SecurePosts.Context",
+              "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.Context\\SecurePosts.Context.csproj",
+              "RelativeDocumentMoniker": "SecurePosts.Context\\SecurePosts.Context.csproj",
+              "ToolTip": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.Context\\SecurePosts.Context.csproj",
+              "RelativeToolTip": "SecurePosts.Context\\SecurePosts.Context.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-03-17T17:03:29.275Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "IDalClsRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.DAL\\Repositories\\IDalClsRepository.cs",
+              "RelativeDocumentMoniker": "SecurePosts.DAL\\Repositories\\IDalClsRepository.cs",
+              "ToolTip": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.DAL\\Repositories\\IDalClsRepository.cs",
+              "RelativeToolTip": "SecurePosts.DAL\\Repositories\\IDalClsRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T20:33:40.414Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "IDalJWTTokenRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.DAL\\Repositories\\IDalJWTTokenRepository.cs",
+              "RelativeDocumentMoniker": "SecurePosts.DAL\\Repositories\\IDalJWTTokenRepository.cs",
+              "ToolTip": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.DAL\\Repositories\\IDalJWTTokenRepository.cs",
+              "RelativeToolTip": "SecurePosts.DAL\\Repositories\\IDalJWTTokenRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T21:18:45.758Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "RegistrationController.cs",
+              "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.API\\Controllers\\RegistrationController.cs",
+              "RelativeDocumentMoniker": "SecurePosts.API\\Controllers\\RegistrationController.cs",
+              "ToolTip": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.API\\Controllers\\RegistrationController.cs",
+              "RelativeToolTip": "SecurePosts.API\\Controllers\\RegistrationController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T18:25:20.947Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "JWTTokenService.cs",
+              "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.BLL\\Services\\JWTTokenService.cs",
+              "RelativeDocumentMoniker": "SecurePosts.BLL\\Services\\JWTTokenService.cs",
+              "ToolTip": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.BLL\\Services\\JWTTokenService.cs",
+              "RelativeToolTip": "SecurePosts.BLL\\Services\\JWTTokenService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T21:20:03.674Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "IJWTTokenRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.BLL\\Repositories\\IJWTTokenRepository.cs",
+              "RelativeDocumentMoniker": "SecurePosts.BLL\\Repositories\\IJWTTokenRepository.cs",
+              "ToolTip": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.BLL\\Repositories\\IJWTTokenRepository.cs",
+              "RelativeToolTip": "SecurePosts.BLL\\Repositories\\IJWTTokenRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T18:29:52.054Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "IRegistrationRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.BLL\\Repositories\\IRegistrationRepository.cs",
+              "RelativeDocumentMoniker": "SecurePosts.BLL\\Repositories\\IRegistrationRepository.cs",
+              "ToolTip": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.BLL\\Repositories\\IRegistrationRepository.cs",
+              "RelativeToolTip": "SecurePosts.BLL\\Repositories\\IRegistrationRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T20:06:16.4Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "RegistrationService.cs",
+              "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.BLL\\Services\\RegistrationService.cs",
+              "RelativeDocumentMoniker": "SecurePosts.BLL\\Services\\RegistrationService.cs",
+              "ToolTip": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.BLL\\Services\\RegistrationService.cs",
+              "RelativeToolTip": "SecurePosts.BLL\\Services\\RegistrationService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAABVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T20:05:46.448Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "IDalRegistrationRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.DAL\\Repositories\\IDalRegistrationRepository.cs",
+              "RelativeDocumentMoniker": "SecurePosts.DAL\\Repositories\\IDalRegistrationRepository.cs",
+              "ToolTip": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.DAL\\Repositories\\IDalRegistrationRepository.cs",
+              "RelativeToolTip": "SecurePosts.DAL\\Repositories\\IDalRegistrationRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T20:04:56.312Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "LogService.cs",
+              "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.Logging\\LogService.cs",
+              "RelativeDocumentMoniker": "SecurePosts.Logging\\LogService.cs",
+              "ToolTip": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.Logging\\LogService.cs",
+              "RelativeToolTip": "SecurePosts.Logging\\LogService.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAnwDsAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T20:40:57.023Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "ClsService.cs",
+              "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.BLL\\Services\\ClsService.cs",
+              "RelativeDocumentMoniker": "SecurePosts.BLL\\Services\\ClsService.cs",
+              "ToolTip": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.BLL\\Services\\ClsService.cs",
+              "RelativeToolTip": "SecurePosts.BLL\\Services\\ClsService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T18:30:09.994Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "IClsRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.BLL\\Repositories\\IClsRepository.cs",
+              "RelativeDocumentMoniker": "SecurePosts.BLL\\Repositories\\IClsRepository.cs",
+              "ToolTip": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.BLL\\Repositories\\IClsRepository.cs",
+              "RelativeToolTip": "SecurePosts.BLL\\Repositories\\IClsRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T18:29:48.255Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.API\\Program.cs",
+              "RelativeDocumentMoniker": "SecurePosts.API\\Program.cs",
+              "ToolTip": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.API\\Program.cs",
+              "RelativeToolTip": "SecurePosts.API\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T18:28:45.545Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "AutoMapperExtension.cs",
+              "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.API\\Extensions\\AutoMapperExtension.cs",
+              "RelativeDocumentMoniker": "SecurePosts.API\\Extensions\\AutoMapperExtension.cs",
+              "ToolTip": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecurePosts\\SecurePosts.API\\Extensions\\AutoMapperExtension.cs",
+              "RelativeToolTip": "SecurePosts.API\\Extensions\\AutoMapperExtension.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T18:26:54.54Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
