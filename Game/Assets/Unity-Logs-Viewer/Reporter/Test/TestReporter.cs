@@ -15,6 +15,7 @@
 //use UNITY_CHANGE3 for unity 5.3 (fix for new SceneManger system)
 //use UNITY_CHANGE4 for unity 2018.3 (Networking system)
 
+using System;
 using UnityEngine;
 using System.Collections;
 using System.Threading;
@@ -46,6 +47,7 @@ public class TestReporter : MonoBehaviour
 
 	Thread thread;
 
+	[Obsolete("Obsolete")]
 	void Start()
 	{
 		Application.runInBackground = true;
