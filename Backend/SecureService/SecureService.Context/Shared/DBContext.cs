@@ -12,7 +12,7 @@ namespace SecureService.Context.Shared
             {
                 entity.HasKey(e => e.UserId);
 
-                entity.ToTable("USERS_DETAILS");
+                entity.ToTable("users_details");
 
                 entity.Property(e => e.UserId)
                     .HasColumnName("UserId");
@@ -57,7 +57,7 @@ namespace SecureService.Context.Shared
             {
                 entity.HasKey(e => e.SessionID);
 
-                entity.ToTable("USER_SESSIONS");
+                entity.ToTable("user_sessions");
 
                 entity.Property(e => e.SessionID)
                     .HasColumnName("SessionID");

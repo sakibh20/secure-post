@@ -1,0 +1,42 @@
+
+services:
+  backend:
+    build:
+      context: ./backend/SecureService
+      dockerfile: Dockerfile
+    container_name: secure-service-backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DB_CON=server=mysql;database=SecureService;user=root;password=rootpassword;
+      - ConnectionStrings__IS_ENCRYPTED=0
+      - Jwt__Key=zO53wibJ2ga4wu2zgOppgvBQS8WrAVdf76gsHUrwDoY=kNmITYFYcn4s/yIC4jtgUw==
+      - Jwt__Issuer=SecureService
+    networks:
+      - secure-network
+
+  mysql:
+    image: mysql:8.0
+    container_name: secure-service-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: SecureService
+    ports:
+      - "9090:3306"
+    volumes:
+      - ./Database/mysql/init:/docker-entrypoint-initdb.d
+      - mysql_data:/var/lib/mysql
+    networks:
+      - secure-network
+    command: --default-authentication-plugin=mysql_native_password
+
+networks:
+  secure-network:
+    driver: bridge
+    
+volumes:
+  mysql_data:

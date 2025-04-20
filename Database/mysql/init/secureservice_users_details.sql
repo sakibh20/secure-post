@@ -1,8 +1,6 @@
-CREATE DATABASE  IF NOT EXISTS `secureposts` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `secureposts`;
 -- MySQL dump 10.13  Distrib 8.0.41, for Win64 (x86_64)
 --
--- Host: localhost    Database: secureposts
+-- Host: localhost    Database: secureservice
 -- ------------------------------------------------------
 -- Server version	8.0.41
 
@@ -18,32 +16,37 @@ USE `secureposts`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `user_sessions`
+-- Table structure for table `users_details`
 --
 
-DROP TABLE IF EXISTS `user_sessions`;
+DROP TABLE IF EXISTS `users_details`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `user_sessions` (
-  `SessionID` varchar(255) NOT NULL,
+CREATE TABLE `users_details` (
   `UserId` varchar(10) NOT NULL,
-  `IsActiveSessionFlag` tinyint(1) NOT NULL DEFAULT '0',
-  `SessionStartTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `SessionEndTime` datetime DEFAULT NULL,
-  PRIMARY KEY (`SessionID`),
-  KEY `fk-usersession_idx` (`UserId`),
-  CONSTRAINT `fk-usersession` FOREIGN KEY (`UserId`) REFERENCES `users_details` (`UserId`)
+  `UserName` varchar(255) NOT NULL,
+  `Email` varchar(255) NOT NULL,
+  `Password` varchar(255) NOT NULL,
+  `CreatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `Role` varchar(50) NOT NULL DEFAULT 'User',
+  `isActiveFlag` tinyint(1) NOT NULL DEFAULT '1',
+  `LastLoginAt` datetime DEFAULT NULL,
+  `FailedLoginAttemptNo` int NOT NULL DEFAULT '0',
+  `ForcePasswordChangeFlag` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`UserId`),
+  UNIQUE KEY `UserName` (`UserName`),
+  UNIQUE KEY `Email` (`Email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user_sessions`
+-- Dumping data for table `users_details`
 --
 
-LOCK TABLES `user_sessions` WRITE;
-/*!40000 ALTER TABLE `user_sessions` DISABLE KEYS */;
-INSERT INTO `user_sessions` VALUES ('822029df-e31e-42fe-a3ae-64488b23d689','samith',1,'2025-03-17 20:49:29','2025-03-17 21:49:29');
-/*!40000 ALTER TABLE `user_sessions` ENABLE KEYS */;
+LOCK TABLES `users_details` WRITE;
+/*!40000 ALTER TABLE `users_details` DISABLE KEYS */;
+INSERT INTO `users_details` VALUES ('samith','Samith Binda Pantho','samith.pantho@hotmail.com','AD5D519E057014F1625079764861B62F2234034CFD262CD3E438712C7DA8F22C','2025-03-17 20:34:21','USER',1,'2025-04-20 03:18:46',0,0),('sourav','Sourav Paul','saurav.paul@hotmail.com','AD5D519E057014F1625079764861B62F2234034CFD262CD3E438712C7DA8F22C','2025-04-06 23:17:13','USER',1,'2025-04-20 03:11:37',0,0);
+/*!40000 ALTER TABLE `users_details` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -55,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-03-19 16:09:11
+-- Dump completed on 2025-04-20 20:30:58

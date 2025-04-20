@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SecureService.Context")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2bcdf14572e166ffb2ec802e296511e7d5954e7e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1f31c481ceb1cb628fff014cd002c378a3700b1a")]
 [assembly: System.Reflection.AssemblyProductAttribute("SecureService.Context")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SecureService.Context")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
