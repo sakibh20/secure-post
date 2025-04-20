@@ -34,7 +34,6 @@ CREATE TABLE `users_details` (
   `FailedLoginAttemptNo` int NOT NULL DEFAULT '0',
   `ForcePasswordChangeFlag` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`UserId`),
-  UNIQUE KEY `UserName` (`UserName`),
   UNIQUE KEY `Email` (`Email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
