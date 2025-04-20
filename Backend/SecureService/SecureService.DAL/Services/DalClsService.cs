@@ -108,7 +108,7 @@ namespace SecureService.DAL.Services
                 if (string.IsNullOrEmpty(pDateValue))
                     return new DateTime();
 
-                string allowedformates = "dd/MM/yyyy,dd/MM/yyyy HH:mm:ss,yyyy-MM-dd HH:mm:ss,dd-MMM-yy,dd-MMM-yyyy,dd-MM-yyyy HH:mm:ss,dd/MM/yyyy HH.mm.ss,dd/MM/yyyy H.mm.ss,dd MMM yyyy HH.mm.ss,dd MMM yyyy H.mm.ss,d MMM yyyy H.mm.ss";
+                string allowedformates = "dd/MM/yyyy HH:mm:ss,dd-MM-yyyy HH:mm:ss,dd.MM.yyyy HH:mm:ss,dd MM yyyy HH:mm:ss,MM/dd/yyyy HH:mm:ss,MM-dd-yyyy HH:mm:ss,MM.dd.yyyy HH:mm:ss,yyyy/MM/dd HH:mm:ss,yyyy-MM-dd HH:mm:ss,yyyy.MM.dd HH:mm:ss,yyyy MM dd HH:mm:ss,d/M/yyyy HH:mm:ss,d-M-yyyy HH:mm:ss,d.M.yyyy HH:mm:ss,M/d/yyyy HH:mm:ss,M-d-yyyy HH:mm:ss,M.d.yyyy HH:mm:ss,dd/MM/yyyy hh:mm:ss tt,dd-MM-yyyy hh:mm:ss tt,dd.MM.yyyy hh:mm:ss tt,MM/dd/yyyy hh:mm:ss tt,yyyy/MM/dd hh:mm:ss tt,dd/MM/yyyy HH:mm,MM/dd/yyyy HH:mm,yyyy/MM/dd HH:mm,dd/MM/yyyy hh:mm tt,MM/dd/yyyy hh:mm tt,yyyy/MM/dd hh:mm tt,dd MMM yyyy HH:mm:ss,dd MMMM yyyy HH:mm:ss,yyyy MMM dd HH:mm:ss,dd/MM/yy HH:mm:ss,MM/dd/yy HH:mm:ss,yy/MM/dd HH:mm:ss,yyyyMMdd HHmmss,yyyy-MM-ddTHH:mm:ss,yyyy/MM/dd'T'HH:mm:ss,dd/MM/yyyy HH:mm:ss.SSS,MM/dd/yyyy HH:mm:ss.SSS,yyyy/MM/dd HH:mm:ss.SSS";
 
                 if (!string.IsNullOrEmpty(allowedformates))
                 {
