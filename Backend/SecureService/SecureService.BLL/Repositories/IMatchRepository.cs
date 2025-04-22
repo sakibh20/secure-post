@@ -14,7 +14,7 @@ namespace SecureService.BLL.Repositories
         public StatusResult<object> InitializeMatchRequest(string playerID, UserDetail user);
         public StatusResult<object> ResponseMatchRequest(MatchRequestViewModel match, UserDetail user);
         public StatusResult<object> UpdateMatchResult(MatchresultViewModel matchInfo, UserMatch match);
-        public StatusResult<object> FetchLeaderBoard();
+        public StatusResult<object> FetchLeaderBoard(UserDetail user);
         public StatusResult<object> FetchMatchHistory(UserDetail user);
     }
 }

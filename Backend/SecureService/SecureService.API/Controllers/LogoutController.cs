@@ -32,10 +32,10 @@ namespace SecureService.API.Controllers
                 loggedInUser = _IJWTTokenRepository.ValidateAccessToken(identity);
                 if (loggedInUser == null)
                 {
-                    status.Status = "FAILED";
+                    status.Status = "UNAUTH";
                     status.Message = "Unauthorized Access.";
                     status.Result = null;
-                    return Ok(status);
+                    return Unauthorized(status);
                 }
             }
             catch (Exception ex)

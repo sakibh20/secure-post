@@ -720,15 +720,25 @@
 				{
 					"name": "FetchLeaderBoard",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiJhaWVVUkZiMVFpNXkyUHpPdEdVeVNWcExUYTAwaTJ0d1BtRlBGTWVGbis4PSIsIlNlc3Npb25JRCI6ImFpZVVSRmIxUWk1eTJQek90R1V5U2FycGVEOWRLbnBmTDFxdnYydDlKSUJTdVo2UFlabUNOdGFRSlNyaER2djVrQi94elk3Y1dTY3pXRHUxMkNqUHNnPT0iLCJTdGFydERhdGUiOiIwNC8yMi8yMDI1IDIwOjUwOjIzIiwiRXhwaXJ5RGF0ZSI6IjA0LzIyLzIwMjUgMjE6MDU6MjMiLCJleHAiOjE3NDUzNTU5MjMsImlzcyI6IlNlY3VyZVNlcnZpY2UiLCJhdWQiOiJTZWN1cmVTZXJ2aWNlIn0.HUpo__iVADG2sk-lKJmCQCwZv-sArwC2HvAoceiN70I",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:54750/api/FetchLeaderBoard",
+							"raw": "http://localhost:8080/api/FetchLeaderBoard",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "54750",
+							"port": "8080",
 							"path": [
 								"api",
 								"FetchLeaderBoard"
@@ -742,12 +752,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:54750/api/FetchLeaderBoard",
+									"raw": "http://localhost:8080/api/FetchLeaderBoard",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "54750",
+									"port": "8080",
 									"path": [
 										"api",
 										"FetchLeaderBoard"
@@ -760,27 +770,23 @@
 							"header": [
 								{
 									"key": "Content-Length",
-									"value": "106"
+									"value": "230"
 								},
 								{
 									"key": "Content-Type",
 									"value": "application/json; charset=utf-8"
 								},
 								{
-									"key": "Server",
-									"value": "Microsoft-IIS/10.0"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "ASP.NET"
-								},
-								{
 									"key": "Date",
-									"value": "Sun, 06 Apr 2025 20:28:53 GMT"
+									"value": "Tue, 22 Apr 2025 20:50:39 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"Status\": \"SUCCESS\",\n    \"Message\": \"Leaderboard fetched successfully.\",\n    \"Result\": [\n        {\n            \"player\": \"sourav\",\n            \"wins\": 1\n        }\n    ]\n}"
+							"body": "{\n    \"Status\": \"SUCCESS\",\n    \"Message\": \"Leaderboard fetched successfully.\",\n    \"Result\": {\n        \"topUsers\": [\n            {\n                \"position\": \"1\",\n                \"player\": \"samith\",\n                \"wins\": 1\n            },\n            {\n                \"position\": \"2\",\n                \"player\": \"sourav\",\n                \"wins\": 1\n            }\n        ],\n        \"user\": {\n            \"position\": \"-\",\n            \"player\": \"samith3\",\n            \"wins\": 0\n        }\n    }\n}"
 						}
 					]
 				},
