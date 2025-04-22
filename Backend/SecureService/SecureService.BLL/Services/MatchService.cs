@@ -32,9 +32,9 @@ namespace SecureService.BLL.Services
         {
             return _IDalMatchRepository.UpdateMatchResult(matchInfo, match);
         }
-        public StatusResult<object> FetchLeaderBoard()
+        public StatusResult<object> FetchLeaderBoard(UserDetail user)
         {
-            return _IDalMatchRepository.FetchLeaderBoard();
+            return _IDalMatchRepository.FetchLeaderBoard(user);
         }
         public StatusResult<object> FetchMatchHistory(UserDetail user)
         {

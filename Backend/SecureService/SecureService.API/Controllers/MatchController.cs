@@ -33,10 +33,10 @@ namespace SecureService.API.Controllers
                 loggedInUser = _IJWTTokenRepository.ValidateAccessToken(identity);
                 if (loggedInUser == null)
                 {
-                    status.Status = "FAILED";
+                    status.Status = "UNAUTH";
                     status.Message = "Unauthorized Access.";
                     status.Result = null;
-                    return Ok(status);
+                    return Unauthorized(status);
                 }
                 else
                 {
@@ -71,10 +71,10 @@ namespace SecureService.API.Controllers
                 loggedInUser = _IJWTTokenRepository.ValidateAccessToken(identity);
                 if (loggedInUser == null)
                 {
-                    status.Status = "FAILED";
+                    status.Status = "UNAUTH";
                     status.Message = "Unauthorized Access.";
                     status.Result = null;
-                    return Ok(status);
+                    return Unauthorized(status);
                 }
             }
             catch (Exception ex)
@@ -98,10 +98,10 @@ namespace SecureService.API.Controllers
                 loggedInUser = _IJWTTokenRepository.ValidateAccessToken(identity);
                 if (loggedInUser == null)
                 {
-                    status.Status = "FAILED";
+                    status.Status = "UNAUTH";
                     status.Message = "Unauthorized Access.";
                     status.Result = null;
-                    return Ok(status);
+                    return Unauthorized(status);
                 }
             }
             catch (Exception ex)
@@ -125,10 +125,10 @@ namespace SecureService.API.Controllers
                 match = _IJWTTokenRepository.ValidateMatchToken(identity);
                 if (match == null)
                 {
-                    status.Status = "FAILED";
+                    status.Status = "UNAUTH";
                     status.Message = "Unauthorized Access.";
                     status.Result = null;
-                    return Ok(status);
+                    return Unauthorized(status);
                 }
             }
             catch (Exception ex)
@@ -144,7 +144,28 @@ namespace SecureService.API.Controllers
         [HttpGet]
         public IActionResult FetchLeaderBoard()
         {
-            return Ok(_IMatchRepository.FetchLeaderBoard());
+            StatusResult<object> status = new StatusResult<object>();
+            UserDetail loggedInUser;
+            try
+            {
+                var identity = HttpContext.User.Identity as ClaimsIdentity;
+                loggedInUser = _IJWTTokenRepository.ValidateAccessToken(identity);
+                if (loggedInUser == null)
+                {
+                    status.Status = "UNAUTH";
+                    status.Message = "Unauthorized Access.";
+                    status.Result = null;
+                    return Unauthorized(status);
+                }
+            }
+            catch (Exception ex)
+            {
+                status.Status = "FAILED";
+                status.Message = ex.Message;
+                status.Result = null;
+                return Ok(status);
+            }
+            return Ok(_IMatchRepository.FetchLeaderBoard(loggedInUser));
         }
 
         [HttpGet]
@@ -158,10 +179,10 @@ namespace SecureService.API.Controllers
                 loggedInUser = _IJWTTokenRepository.ValidateAccessToken(identity);
                 if (loggedInUser == null)
                 {
-                    status.Status = "FAILED";
+                    status.Status = "UNAUTH";
                     status.Message = "Unauthorized Access.";
                     status.Result = null;
-                    return Ok(status);
+                    return Unauthorized(status);
                 }
             }
             catch (Exception ex)

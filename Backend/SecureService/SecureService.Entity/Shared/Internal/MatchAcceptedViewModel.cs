@@ -11,6 +11,7 @@ namespace SecureService.Entity.Shared.Internal
         public string MatchId { get; set; }
         public string Player1 { get; set; }
         public string Player2 { get; set; }
+        public string FirstTurn { get; set; }
         public string MatchToken { get; set; }
     }
 }
