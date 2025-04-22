@@ -125,6 +125,7 @@ public class RESTAPIManager : MonoBehaviour
         UnityWebRequest request = UnityWebRequest.Get(ServerDataManager.Instance.GetLeaderboardUrl());
 
         request.SetRequestHeader("Accept", "application/json");
+        request.SetRequestHeader("Authorization", "Bearer " + ServerDataManager.Instance.serverResponse.Result.accessToken);
 
         yield return request.SendWebRequest();
 

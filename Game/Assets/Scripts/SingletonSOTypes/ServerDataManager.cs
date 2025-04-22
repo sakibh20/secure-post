@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 [Serializable]
 [CreateAssetMenu(menuName = "SingletonSOs/ServerDataManager")]
@@ -67,7 +66,14 @@ public class LeaderboardResponse
 {
     public string Status;
     public string Message;
-    public List<LeaderBoardItem> Result;
+    public LeaderboardResult Result;
+}
+
+[Serializable]
+public class LeaderboardResult
+{
+    public List<LeaderBoardItem> topUsers;
+    public LeaderBoardItem user;
 }
 
 [Serializable]
@@ -75,6 +81,7 @@ public class LeaderBoardItem
 {
     public string player;
     public string wins;
+    public string position;
 }
 
 [Serializable]
