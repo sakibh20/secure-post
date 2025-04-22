@@ -107,6 +107,7 @@ namespace SecureService.DAL.Services
                         matchAccepted.MatchId = userExistingMatch.MatchId;
                         matchAccepted.Player1 = userExistingMatch.Player1;
                         matchAccepted.Player2 = userExistingMatch.Player2;
+                        matchAccepted.FirstTurn = matchAccepted.Player1;
                         matchAccepted.MatchToken = matchToken;
                         _logger.LogError("Token-" + matchToken);
                         //Server A Rest API call
@@ -175,26 +176,45 @@ namespace SecureService.DAL.Services
             }
             return status;
         }
-        public StatusResult<object> FetchLeaderBoard()
+        public StatusResult<object> FetchLeaderBoard(UserDetail user)
         {
             StatusResult<object> status = new StatusResult<object>();
             try
             {
-                var leaderboard = _context.UserMatch
-                    .Where(match => !string.IsNullOrEmpty(match.Winner))
-                    .GroupBy(match => match.Winner)
-                    .Select(it => new
-                    {
-                        Player = it.Key,
-                        Wins = it.Count()
-                    })
-                    .OrderByDescending(x => x.Wins)
-                    .Take(10)
-                    .ToList();
+                LeaderBoardDataViewModel leaderBoardData = new LeaderBoardDataViewModel();
+
+                var allUsersdata = _context.UserMatch
+                                    .Where(match => !string.IsNullOrEmpty(match.Winner))
+                                    .GroupBy(match => match.Winner)
+                                    .Select(it => new
+                                    {
+                                        Player = it.Key,
+                                        Wins = it.Count()
+                                    })
+                                    .OrderByDescending(x => x.Wins)
+                                    .ToList() 
+                                    .Select((it, index) => new LeaderBoardUserData
+                                    {
+                                        Position = (index + 1).ToString(),
+                                        Player = it.Player,
+                                        Wins = it.Wins
+                                    })
+                                    .ToList();
+
+                leaderBoardData.TopUsers = allUsersdata.Take(10).ToList();
+                leaderBoardData.User = allUsersdata.Where(it=> it.Player == user.UserId).FirstOrDefault();
+
+                if(leaderBoardData.User == null)
+                {
+                    leaderBoardData.User = new LeaderBoardUserData();
+                    leaderBoardData.User.Position = "-";
+                    leaderBoardData.User.Player = user.UserId;
+                    leaderBoardData.User.Wins = 0;
+                }
 
                 status.Status = "SUCCESS";
                 status.Message = "Leaderboard fetched successfully.";
-                status.Result = leaderboard;
+                status.Result = leaderBoardData;
             }
             catch (Exception ex)
             {
