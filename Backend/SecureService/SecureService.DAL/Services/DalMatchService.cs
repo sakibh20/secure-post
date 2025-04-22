@@ -212,7 +212,7 @@ namespace SecureService.DAL.Services
                     leaderBoardData.User.Wins = 0;
                 }
 
-                status.Status = "SUCCESS";
+                status.Status = "OK";
                 status.Message = "Leaderboard fetched successfully.";
                 status.Result = leaderBoardData;
             }
