@@ -1,20 +1,20 @@
-from typing import Dict, List
 from fastapi import WebSocket, WebSocketDisconnect
 
-active_websockets: Dict[str, WebSocket] = {}
-lobby_users: List[str] = []
-active_lobby_sockets: List[WebSocket] = []
+from services.commands import create_lobby_command
+from services.data import active_lobby_sockets, lobby_users, active_websockets
 
 
 async def handle_lobby_socket(websocket: WebSocket):
     await websocket.accept()
     active_lobby_sockets.append(websocket)
+    message = create_lobby_command(
+        payload={
+            "users": lobby_users
+        }
+    )
 
     try:
-        await websocket.send_json({
-            "event": "lobby_snapshot",
-            "users": lobby_users
-        })
+        await websocket.send_json(message)
 
         while True:
             await websocket.receive_text()
@@ -47,10 +47,11 @@ async def handle_user_socket(websocket: WebSocket, user_id: str):
 
 
 async def broadcast_lobby_update():
-    message = {
-        "event": "lobby_update",
-        "users": lobby_users
-    }
+    message = create_lobby_command(
+        payload={
+            "users": lobby_users
+        }
+    )
 
     disconnected = []
     for ws in active_lobby_sockets:
