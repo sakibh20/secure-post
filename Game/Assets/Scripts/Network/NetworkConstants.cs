@@ -1,6 +1,8 @@
 public static class NetworkConstants
 {
-    public const string ServerUrl = "ws://localhost:8080";
+    // public const string WsBaseUrl = "ws://localhost:8000/ws";
+    // public const string LobbyEndpoint = "lobby";
+    // public const string JoinEndpoint = "user";
 
     public const string RollPrefix = "ROLL:";
     public const string ClaimPrefix = "CLAIM:";
@@ -10,4 +12,6 @@ public static class NetworkConstants
     public const string Believe = "BELIEVE";
     public const string Bluff = "BLUFF";
     public const string ScorePrefix = "SCORE:";
+
+
 }

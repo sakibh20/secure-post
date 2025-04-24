@@ -11,12 +11,30 @@ public class ServerDataManager : SingletonSO<ServerDataManager>
     public string loginEndpoint;
     public string logoutEndpoint;
     public string leaderboardEndpoint;
+    public string refreshAccessToken;
+    public string requestMatch;
+    public string acceptMatch;
+    
+    [Space]
+    public string wsBaseUrl = "ws://localhost:8000/ws";
+    public string lobbyEndpoint = "lobby";
+    public string joinEndpoint = "user";
 
+    [Space] 
+    public string matchId;
+    public string player1;
+    public string player2;
+    
     public ServerResponse serverResponse;
     public LeaderboardResponse leaderboardResponse;
 
+    public WSLobbyMessage wsLobbyMessage;
+
     public string FailedStatus = "failed";
     public string SuccessStatus = "ok";
+    
+    public string AcceptStatus = "ACCEPTED";
+    public string DeclineStatus = "DECLINED";
     
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     public static void OnBeforeSceneLoad()
@@ -30,6 +48,16 @@ public class ServerDataManager : SingletonSO<ServerDataManager>
         {
             Debug.LogError("ServerDataManager instance is null.");
         }
+    }
+    
+    public string GetLobbyUrl()
+    {
+        return $"{wsBaseUrl}/{lobbyEndpoint}";
+    }
+    
+    public string GetJoinUrl(string userId)
+    {
+        return $"{wsBaseUrl}/{joinEndpoint}/{userId}";
     }
 
     public string GetLoginUrl()
@@ -51,6 +79,21 @@ public class ServerDataManager : SingletonSO<ServerDataManager>
     {
         return $"{baseUrl}/{leaderboardEndpoint}";
     }
+    
+    public string GetRefreshUrl()
+    {
+        return $"{baseUrl}/{refreshAccessToken}";
+    }
+    
+    public string GetMatchRequestUrl(string targetUserID)
+    {
+        return $"{baseUrl}/{requestMatch}?playerID={targetUserID}";
+    }    
+    
+    public string AcceptDeclineMatchUrl()
+    {
+        return $"{baseUrl}/{acceptMatch}";
+    }
 }
 
 [Serializable]
@@ -58,7 +101,7 @@ public class ServerResponse
 {
     public string Status;
     public string Message;
-    public Result Result;
+    public Result Result = new Result();
 }
 
 [Serializable]
@@ -110,5 +153,21 @@ public class LoginRequestData
 {
     public string UserId;
     public string Password;
+}
+
+[Serializable]
+public class WSLobbyMessage
+{
+    //public string eventType;
+    public List<string> users = new List<string>();
+}
+
+[Serializable]
+public class ExceptMatchClass
+{
+    public string MatchId;
+    public string Player1;
+    public string Player2;
+    public string MatchStatus;
 }
 

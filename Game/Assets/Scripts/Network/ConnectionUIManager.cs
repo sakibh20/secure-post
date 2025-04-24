@@ -17,13 +17,13 @@ public class ConnectionUIManager : MonoBehaviour
         loadingPanel.SetActive(false);
     }
 
-    protected void ShowPopupPanel(string message)
+    public void ShowPopupPanel(string message)
     {
         popupPanelText.text = message;
         popupPanel.SetActive(true);
     }
 
-    protected void HidePopupPanel()
+    public void HidePopupPanel()
     {
         popupPanel.SetActive(false);
     }

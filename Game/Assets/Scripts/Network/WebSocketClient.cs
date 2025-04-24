@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using NativeWebSocket;
+using Random = UnityEngine.Random;
 
 public class WebSocketClient : MonoBehaviour
 {
@@ -10,12 +11,36 @@ public class WebSocketClient : MonoBehaviour
     public delegate void OnMessageReceived(string message);
     public event OnMessageReceived MessageReceived;
 
-    private async void Awake()
+    private void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+    }
 
-        _websocket = new WebSocket(NetworkConstants.ServerUrl);
+    private void Start()
+    {
+        Subscribe();
+    }
+
+    private void OnDestroy()
+    {
+        UnSubscribe();
+    }
+    
+    private void Subscribe()
+    {
+        AuthUIManager.Instance.OnLoginSuccess += JoinPlayer;
+    }
+
+    private void UnSubscribe()
+    {
+        AuthUIManager.Instance.OnLoginSuccess -= JoinPlayer;
+    }
+
+    private async void JoinPlayer()
+    {
+        //_websocket = new WebSocket(NetworkConstants.GetJoinUrl(ServerDataManager.Instance.serverResponse.Result.useID));
+        _websocket = new WebSocket(ServerDataManager.Instance.GetLobbyUrl());
 
         _websocket.OnOpen += () => Debug.Log("WebSocket opened.");
         _websocket.OnError += (e) => Debug.LogError($"WebSocket error: {e}");
@@ -28,7 +53,7 @@ public class WebSocketClient : MonoBehaviour
 
         await _websocket.Connect();
     }
-
+    
     private void Update()
     {
         _websocket?.DispatchMessageQueue();

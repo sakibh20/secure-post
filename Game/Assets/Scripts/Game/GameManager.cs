@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -12,7 +13,18 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        WebSocketClient.Instance.MessageReceived += HandleServerMessage;
+        //WebSocketClient.Instance.MessageReceived += HandleServerMessage;
+        
+        //JoinWebSocketClient.Instance.MessageReceived += HandleServerMessage;
+        //LobbyWebSocketClient.Instance.MessageReceived += HandleServerMessage;
+    }
+
+    private void OnDestroy()
+    {
+        //WebSocketClient.Instance.MessageReceived -= HandleServerMessage;
+        
+        //JoinWebSocketClient.Instance.MessageReceived -= HandleServerMessage;
+        //LobbyWebSocketClient.Instance.MessageReceived -= HandleServerMessage;
     }
 
     private void HandleServerMessage(string message)

@@ -6,6 +6,13 @@ using UnityEngine.Networking;
 
 public class RESTAPIManager : MonoBehaviour
 {
+    public static RESTAPIManager Instance;
+    
+    private void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else Destroy(this.gameObject);
+    }
     private event Action<string> OnSuccess; 
     private event Action<string> OnFail; 
     
@@ -40,6 +47,22 @@ public class RESTAPIManager : MonoBehaviour
         StartCoroutine(HitPost(JsonUtility.ToJson(data), ServerDataManager.Instance.GetLoginUrl()));
     }    
     
+    public void AcceptDeclineMatch(string matchId, string player1, string player2, string status, Action<string> onSuccess = null, Action<string> onFailed = null)
+    {
+        OnSuccess = onSuccess;
+        OnFail = onFailed;
+        
+        ExceptMatchClass data = new ExceptMatchClass
+        {
+            MatchId = matchId,
+            Player1 = player1,
+            Player2 = player2,
+            MatchStatus = status
+        };
+
+        StartCoroutine(HitAcceptDeclineMatch(JsonUtility.ToJson(data), ServerDataManager.Instance.AcceptDeclineMatchUrl()));
+    }   
+    
     public void LogOut(Action<string> onSuccess, Action<string> onFailed)
     {
         OnSuccess = onSuccess;
@@ -54,9 +77,18 @@ public class RESTAPIManager : MonoBehaviour
 
         StartCoroutine(HitGetLeaderboard());
     }
+    
+    public void RequestMatch(string userId, Action<string> onSuccess, Action<string> onFailed)
+    {
+        OnSuccess = onSuccess;
+        OnFail = onFailed;
+
+        StartCoroutine(HitRequestMatch(userId));
+    }
 
     private IEnumerator HitPost(string data, string url)
     {
+        Debug.Log($"Url: {url}");
         byte[] bodyRaw = Encoding.UTF8.GetBytes(data);
 
         UnityWebRequest request = new UnityWebRequest(url, "POST");
@@ -65,13 +97,15 @@ public class RESTAPIManager : MonoBehaviour
         request.SetRequestHeader("Content-Type", "application/json");
 
         yield return request.SendWebRequest();
+        
+        ServerDataManager.Instance.serverResponse = new ServerResponse();
 
         if (request.result == UnityWebRequest.Result.Success)
         {
             Debug.Log("Success: " + request.downloadHandler.text);
-            ServerDataManager.Instance.serverResponse = new ServerResponse();
             ServerDataManager.Instance.serverResponse =
                 JsonUtility.FromJson<ServerResponse>(request.downloadHandler.text);
+            
             if (ServerDataManager.Instance.serverResponse.Status.ToLower() == ServerDataManager.Instance.FailedStatus)
             {
                 OnFail?.Invoke(ServerDataManager.Instance.serverResponse.Message);
@@ -88,6 +122,41 @@ public class RESTAPIManager : MonoBehaviour
         }
     }
     
+    private IEnumerator HitAcceptDeclineMatch(string data, string url)
+    {
+        Debug.Log($"Url: {url}");
+        byte[] bodyRaw = Encoding.UTF8.GetBytes(data);
+
+        UnityWebRequest request = new UnityWebRequest(url, "POST");
+        request.uploadHandler = new UploadHandlerRaw(bodyRaw);
+        request.downloadHandler = new DownloadHandlerBuffer();
+        request.SetRequestHeader("Authorization", "Bearer " + ServerDataManager.Instance.serverResponse.Result.accessToken);
+        request.SetRequestHeader("Content-Type", "application/json");
+
+        yield return request.SendWebRequest();
+        
+        ServerResponse serverResponse = JsonUtility.FromJson<ServerResponse>(request.downloadHandler.text);
+        
+        if (request.result == UnityWebRequest.Result.Success)
+        {
+            Debug.Log("Success: " + request.downloadHandler.text);
+            
+            if (serverResponse.Status.ToLower() == ServerDataManager.Instance.FailedStatus)
+            {
+                OnFail?.Invoke(serverResponse.Message);
+            }
+            else
+            {
+                OnSuccess?.Invoke(serverResponse.Message);
+            }
+        }
+        else
+        {
+            Debug.LogError("Error: " + request.error);
+            OnFail?.Invoke(serverResponse.Message);
+        }
+    }
+    
     private IEnumerator HitLogout()
     {
         UnityWebRequest request = UnityWebRequest.Get(ServerDataManager.Instance.GetLogoutUrl());
@@ -97,12 +166,12 @@ public class RESTAPIManager : MonoBehaviour
         request.SetRequestHeader("Accept", "application/json");
 
         yield return request.SendWebRequest();
+        
+        ServerResponse serverResponse = JsonUtility.FromJson<ServerResponse>(request.downloadHandler.text);
 
         if (request.result == UnityWebRequest.Result.Success)
         {
             Debug.Log("Response: " + request.downloadHandler.text);
-            
-            ServerResponse serverResponse = JsonUtility.FromJson<ServerResponse>(request.downloadHandler.text);
             
             if (serverResponse.Status.ToLower() == ServerDataManager.Instance.FailedStatus)
             {
@@ -128,12 +197,12 @@ public class RESTAPIManager : MonoBehaviour
         request.SetRequestHeader("Authorization", "Bearer " + ServerDataManager.Instance.serverResponse.Result.accessToken);
 
         yield return request.SendWebRequest();
+        
+        ServerDataManager.Instance.leaderboardResponse = JsonUtility.FromJson<LeaderboardResponse>(request.downloadHandler.text);
 
         if (request.result == UnityWebRequest.Result.Success)
         {
             Debug.Log("Response: " + request.downloadHandler.text);
-            
-            ServerDataManager.Instance.leaderboardResponse = JsonUtility.FromJson<LeaderboardResponse>(request.downloadHandler.text);
             
             if (ServerDataManager.Instance.leaderboardResponse.Status.ToLower() == ServerDataManager.Instance.FailedStatus)
             {
@@ -148,6 +217,73 @@ public class RESTAPIManager : MonoBehaviour
         {
             Debug.LogError("Request failed: " + request.error);
             OnFail?.Invoke(request.result.ToString());
+        }
+    }
+    
+    private IEnumerator HitRequestMatch(string userId)
+    {
+        UnityWebRequest request = UnityWebRequest.Get(ServerDataManager.Instance.GetMatchRequestUrl(userId));
+        
+        Debug.Log($"{ServerDataManager.Instance.GetMatchRequestUrl(userId)}");
+
+        request.SetRequestHeader("Accept", "application/json");
+        request.SetRequestHeader("Authorization", "Bearer " + ServerDataManager.Instance.serverResponse.Result.accessToken);
+
+        yield return request.SendWebRequest();
+        
+        ServerResponse serverResponse = JsonUtility.FromJson<ServerResponse>(request.downloadHandler.text);
+
+        if (request.result == UnityWebRequest.Result.Success)
+        {
+            Debug.Log("Response: " + request.downloadHandler.text);
+            
+            if (serverResponse.Status.ToLower() == ServerDataManager.Instance.FailedStatus)
+            {
+                OnFail?.Invoke(serverResponse.Message);
+            }
+            else
+            {
+                OnSuccess?.Invoke(serverResponse.Message);
+            }
+        }
+        else
+        {
+            Debug.LogError("Request failed: " + request.error);
+            OnFail?.Invoke(serverResponse.Message);
+        }
+    }
+
+    private Action OnSuccessRefreshAccToken;
+    private Action OnFailedRefreshAccToken;
+
+    private IEnumerator HandleAccessTokenTimeout()
+    {
+        UnityWebRequest request = UnityWebRequest.Get(ServerDataManager.Instance.GetRefreshUrl());
+
+        request.SetRequestHeader("Accept", "application/json");
+        request.SetRequestHeader("Authorization", "Bearer " + ServerDataManager.Instance.serverResponse.Result.refreshToken);
+
+        yield return request.SendWebRequest();
+        
+        ServerResponse serverResponse = JsonUtility.FromJson<ServerResponse>(request.downloadHandler.text);
+
+        if (request.result == UnityWebRequest.Result.Success)
+        {
+            Debug.Log("Response: " + request.downloadHandler.text);
+            
+            if (serverResponse.Status.ToLower() == ServerDataManager.Instance.FailedStatus)
+            {
+                //OnFail?.Invoke(ServerDataManager.Instance.leaderboardResponse.Message);
+            }
+            else
+            {
+                //OnSuccess?.Invoke(ServerDataManager.Instance.leaderboardResponse.Message);
+            }
+        }
+        else
+        {
+            Debug.LogError("Request failed: " + request.error);
+            //OnFail?.Invoke(request.result.ToString());
         }
     }
 }
