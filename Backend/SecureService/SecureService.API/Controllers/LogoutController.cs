@@ -40,10 +40,10 @@ namespace SecureService.API.Controllers
             }
             catch (Exception ex)
             {
-                status.Status = "FAILED";
+                status.Status = "UNAUTH";
                 status.Message = ex.Message;
                 status.Result = null;
-                return Ok(status);
+                return Unauthorized(status);
             }
             return Ok(_ILogoutRepository.Logout(loggedInUser));
         }
