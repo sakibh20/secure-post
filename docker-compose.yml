@@ -13,6 +13,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__DB_CON=server=mysql;database=SecureService;user=root;password=rootpassword;
       - ConnectionStrings__IS_ENCRYPTED=0
+      - GAME_SERVICE=http://game-service:8000/
       - Jwt__Key=zO53wibJ2ga4wu2zgOppgvBQS8WrAVdf76gsHUrwDoY=kNmITYFYcn4s/yIC4jtgUw==
       - Jwt__Issuer=SecureService
     networks:

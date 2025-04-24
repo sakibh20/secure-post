@@ -2,11 +2,17 @@
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using SecureService.DAL.Repositories;
+using SecureService.Entity.Shared.Status;
 using SecureService.Logging;
 
 namespace SecureService.DAL.Services
@@ -129,6 +135,80 @@ namespace SecureService.DAL.Services
             }
 
         }
+        public bool CallUnauthorizedApi(string serverAddr, string endpoint, string contentType, string method, dynamic Obj)
+        {
 
+            string uri = serverAddr + endpoint;
+
+            var jsonObj = Newtonsoft.Json.JsonConvert.SerializeObject(Obj);
+
+            try
+            {
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create(new Uri(uri, UriKind.Absolute));
+
+                httpWebRequest.ContentType = contentType;
+                httpWebRequest.Method = method.ToUpper();
+                //httpWebRequest.Headers.Add("Authorization", "Bearer " + token);
+
+                _logger.LogError("(Request) SecureService --> " + uri + " , Json : " + jsonObj);
+
+                if (method == "GET")
+                {
+                    string html = string.Empty;
+                    httpWebRequest.AutomaticDecompression = DecompressionMethods.GZip;
+
+                    using (HttpWebResponse response = (HttpWebResponse)httpWebRequest.GetResponse())
+                    using (Stream stream = response.GetResponseStream())
+                    using (StreamReader reader = new StreamReader(stream))
+                    {
+                        JObject JObject = JObject.Parse(reader.ReadToEnd());
+                        _logger.LogError("(Response) SecureService <-- " + uri + " , Json : " + JObject);
+
+                        if (response.StatusCode == HttpStatusCode.OK)
+                            return true;
+                        else
+                            return false;
+                    }
+                }
+
+                using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+                {
+                    streamWriter.Write(jsonObj);
+                    streamWriter.Flush();
+                    streamWriter.Close();
+                }
+
+                var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                {
+                    var text = streamReader.ReadToEnd();
+                    JObject JObject = JObject.Parse(text);
+
+                    _logger.LogError("(Response) SecureService <-- " + uri + " , Json : " + JObject);
+
+                    if (httpResponse.StatusCode == HttpStatusCode.OK)
+                        return true;
+                    else
+                        return false;
+                }
+
+            }
+            catch (WebException webex)
+            {
+                WebResponse errResp = webex.Response;
+                using (Stream respStream = errResp.GetResponseStream())
+                {
+                    StreamReader reader = new StreamReader(respStream);
+                    string text = reader.ReadToEnd();
+                    throw new Exception(text);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("(Request) SecureService --> " + uri + " , Error : " + ex.Message);
+
+                throw ex;
+            }
+        }
     }
 }
