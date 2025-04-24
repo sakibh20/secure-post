@@ -1,4 +1,6 @@
 from fastapi import APIRouter, WebSocket, WebSocketDisconnect, Query
+
+from services.game import handle_match_join
 from services.lobby import handle_lobby_socket, handle_user_socket
 
 websocket_router = APIRouter()
@@ -11,6 +13,6 @@ async def lobby_socket(websocket: WebSocket):
 async def user_socket(websocket: WebSocket, user_id: str):
     await handle_user_socket(websocket, user_id)
 
-@websocket_router.websocket("/ws/game/{match_id}")
-async def game_socket(websocket: WebSocket, match_id: str):
-    pass
+@websocket_router.websocket("/ws/game/{user_id}/{match_id}")
+async def game_socket(websocket: WebSocket, user_id: str, match_id: str):
+    await handle_match_join(websocket, user_id, match_id)
