@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using SecureService.Context;
 using SecureService.DAL.Repositories;
@@ -52,14 +53,15 @@ namespace SecureService.DAL.Services
                     _context.UserMatch.Add(userNewMatch);
                     _context.SaveChanges();
 
-                    //Server A Rest API call
-
-
                     MatchRequestViewModel match = new MatchRequestViewModel();
                     match.MatchId = userNewMatch.MatchId;
                     match.Player1 = userNewMatch.Player1;
                     match.Player2 = userNewMatch.Player2;
                     match.MatchStatus = userNewMatch.Status;
+                    _logger.LogError("MatchRequest-" + JsonConvert.SerializeObject(match));
+
+                    //Server A Rest API call
+
 
                     status.Status = "OK";
                     status.Message = user.UserId + " has requested " + player2.UserId + " for a Match.";
@@ -109,7 +111,7 @@ namespace SecureService.DAL.Services
                         matchAccepted.Player2 = userExistingMatch.Player2;
                         matchAccepted.FirstTurn = matchAccepted.Player1;
                         matchAccepted.MatchToken = matchToken;
-                        _logger.LogError("Token-" + matchToken);
+                        _logger.LogError("MatchAccepted-" + JsonConvert.SerializeObject(matchAccepted));
                         //Server A Rest API call
 
 
