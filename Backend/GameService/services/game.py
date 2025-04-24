@@ -66,3 +66,14 @@ async def handle_match_join(websocket: WebSocket, user_id: str, match_id):
         # if user_id in lobby_users:
         #     lobby_users.remove(user_id)
         #     await broadcast_lobby_update()
+
+async def handle_game_roll_dice(user_id: str, match_id: str, roll: int):
+    game_manager = game_data.get(match_id)
+    if not game_manager:
+        raise ValueError("Game not found")
+    if user_id != game_manager.game.currentState.currentTurn:
+        raise ValueError("Not your turn")
+
+    game_manager.game.currentState.roll= roll
+    await game_manager.next_turn()
+    game_data[match_id] = game_manager
