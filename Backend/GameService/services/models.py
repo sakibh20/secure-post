@@ -47,6 +47,9 @@ class GameProcess(Enum):
 class GameState(BaseModel):
     currentTurn: str
     currentProcess: GameProcess
+    roll: int | None = None
+    claim: int | None = None
+    decide: int | None = None
 
 class Game(BaseModel):
     matchId: str

@@ -34,8 +34,14 @@ class GameManager:
             await self.handle_decide(
                 player=state.currentTurn,
             )
+        elif state.currentProcess == GameProcess.ROUND_OVER:
+            pass
         else:
             raise ValueError("Invalid game process.")
+
+        # Update the game state
+        self.update_game_state()
+
 
     async def handle_rolling(self, player):
         """Handle the rolling process."""
@@ -47,10 +53,19 @@ class GameManager:
         )
 
     async def handle_claiming(self, player):
-        pass
+        print(f"Handling claiming for player: {player}")
+        await self.send_command(
+            player,
+            "claim_dice",
+            {}
+        )
 
     async def handle_decide(self, player):
-        pass
+        await self.send_command(
+            player,
+            "decide",
+            {}
+        )
 
     async def send_command(self, player, command, payload):
         """Send a command to the game."""
@@ -59,5 +74,16 @@ class GameManager:
             "command": command,
             "payload": payload
         })
+
+    def update_game_state(self):
+        current_state = self.game.currentState.currentProcess
+
+        if current_state == GameProcess.ROLLING:
+            self.game.currentState.currentProcess = GameProcess.CLAIMING
+        elif current_state == GameProcess.CLAIMING:
+            self.game.currentState.currentProcess = GameProcess.DECIDE
+        elif current_state == GameProcess.DECIDE:
+            self.game.currentState.currentProcess = GameProcess.ROUND_OVER
+            # TODO: Handle round over logic
 
 
