@@ -53,10 +53,10 @@ namespace SecureService.API.Controllers
             }
             catch (Exception ex)
             {
-                status.Status = "FAILED";
+                status.Status = "UNAUTH";
                 status.Message = ex.Message;
                 status.Result = null;
-                return Ok(status);
+                return Unauthorized(status);
             }
         }
 
@@ -79,10 +79,10 @@ namespace SecureService.API.Controllers
             }
             catch (Exception ex)
             {
-                status.Status = "FAILED";
+                status.Status = "UNAUTH";
                 status.Message = ex.Message;
                 status.Result = null;
-                return Ok(status);
+                return Unauthorized(status);
             }
             return Ok(_IMatchRepository.InitializeMatchRequest(playerID, loggedInUser));
         }
@@ -106,10 +106,10 @@ namespace SecureService.API.Controllers
             }
             catch (Exception ex)
             {
-                status.Status = "FAILED";
+                status.Status = "UNAUTH";
                 status.Message = ex.Message;
                 status.Result = null;
-                return Ok(status);
+                return Unauthorized(status);
             }
             return Ok(_IMatchRepository.ResponseMatchRequest(match, loggedInUser));
         }
@@ -133,10 +133,10 @@ namespace SecureService.API.Controllers
             }
             catch (Exception ex)
             {
-                status.Status = "FAILED";
+                status.Status = "UNAUTH";
                 status.Message = ex.Message;
                 status.Result = null;
-                return Ok(status);
+                return Unauthorized(status);
             }
             return Ok(_IMatchRepository.UpdateMatchResult(matchInfo, match));
         }
@@ -160,10 +160,10 @@ namespace SecureService.API.Controllers
             }
             catch (Exception ex)
             {
-                status.Status = "FAILED";
+                status.Status = "UNAUTH";
                 status.Message = ex.Message;
                 status.Result = null;
-                return Ok(status);
+                return Unauthorized(status);
             }
             return Ok(_IMatchRepository.FetchLeaderBoard(loggedInUser));
         }
@@ -187,10 +187,10 @@ namespace SecureService.API.Controllers
             }
             catch (Exception ex)
             {
-                status.Status = "FAILED";
+                status.Status = "UNAUTH";
                 status.Message = ex.Message;
                 status.Result = null;
-                return Ok(status);
+                return Unauthorized(status);
             }
             return Ok(_IMatchRepository.FetchMatchHistory(loggedInUser));
         }
