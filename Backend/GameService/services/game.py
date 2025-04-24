@@ -1,3 +1,4 @@
+from fastapi import HTTPException
 from starlette.websockets import WebSocket, WebSocketDisconnect
 
 from services.commands import request_match_command, request_join_match
@@ -78,9 +79,9 @@ async def handle_match_join(websocket: WebSocket, user_id: str, match_id):
 async def handle_game_roll_dice(user_id: str, match_id: str, roll: int):
     game_manager = game_data.get(match_id)
     if not game_manager:
-        raise ValueError("Game not found")
+        raise HTTPException(status_code=404, detail="Game not found")
     if user_id != game_manager.game.currentState.currentTurn:
-        raise ValueError("Not your turn")
+        raise HTTPException(status_code=403, detail="Not your turn")
 
     game_manager.game.currentState.roll = roll
     await game_manager.next_turn()
@@ -90,10 +91,21 @@ async def handle_game_roll_dice(user_id: str, match_id: str, roll: int):
 async def handle_game_claim_dice(user_id: str, match_id: str, claim: int):
     game_manager = game_data.get(match_id)
     if not game_manager:
-        raise ValueError("Game not found")
-    if user_id != game_manager.game.currentState.currentTurn:
-        raise ValueError("Not your turn")
+        raise HTTPException(status_code=404, detail="Game not found")
+    if user_id == game_manager.game.currentState.currentTurn:
+        raise HTTPException(status_code=403, detail="Not your turn")
 
     game_manager.game.currentState.claim = claim
+    await game_manager.next_turn()
+    game_data[match_id] = game_manager
+
+async def handle_game_round_decide(user_id: str, match_id: str, decision: bool):
+    game_manager = game_data.get(match_id)
+    if not game_manager:
+        raise HTTPException(status_code=404, detail="Game not found")
+    if user_id == game_manager.game.currentState.currentTurn:
+        raise HTTPException(status_code=403, detail="Not your turn")
+
+    game_manager.game.currentState.decide = decision
     await game_manager.next_turn()
     game_data[match_id] = game_manager

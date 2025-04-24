@@ -23,6 +23,7 @@ namespace SecureService.DAL.Services
         private readonly IDalClsRepository _cls;
         private readonly IDalJWTTokenRepository _jwt;
         private readonly SecureServiceDbContext _context;
+        private readonly string GAME_SERVICE;
 
         public DalMatchService(ILogRepository logger,
             IConfiguration config,
@@ -35,6 +36,7 @@ namespace SecureService.DAL.Services
             this._cls = cls;
             this._jwt = jwt;
             this._context = context;
+            GAME_SERVICE = _config["GAME_SERVICE"];
         }
 
         public StatusResult<object> InitializeMatchRequest(string playerID, UserDetail user)
@@ -58,14 +60,17 @@ namespace SecureService.DAL.Services
                     match.Player1 = userNewMatch.Player1;
                     match.Player2 = userNewMatch.Player2;
                     match.MatchStatus = userNewMatch.Status;
-                    _logger.LogError("MatchRequest-" + JsonConvert.SerializeObject(match));
 
                     //Server A Rest API call
-
-
-                    status.Status = "OK";
-                    status.Message = user.UserId + " has requested " + player2.UserId + " for a Match.";
-                    status.Result = null;
+                    var result = _cls.CallUnauthorizedApi(GAME_SERVICE, "match/request", "application/json", "POST", match);
+                    if (result)
+                    {
+                        status.Status = "OK";
+                        status.Message = user.UserId + " has requested " + player2.UserId + " for a Match.";
+                        status.Result = null;
+                    }
+                    else
+                        throw new Exception("Request to Ws Server is failed,");
 
                 }
                 else
@@ -111,13 +116,17 @@ namespace SecureService.DAL.Services
                         matchAccepted.Player2 = userExistingMatch.Player2;
                         matchAccepted.FirstTurn = matchAccepted.Player1;
                         matchAccepted.MatchToken = matchToken;
-                        _logger.LogError("MatchAccepted-" + JsonConvert.SerializeObject(matchAccepted));
+
                         //Server A Rest API call
-
-
-                        status.Status = "OK";
-                        status.Message = userExistingMatch.Player2 + " has accepted " + userExistingMatch.Player1 + "'s Match Request.";
-                        status.Result = null;
+                        var result = _cls.CallUnauthorizedApi(GAME_SERVICE, "match/accept", "application/json", "POST", matchAccepted);
+                        if (result)
+                        {
+                            status.Status = "OK";
+                            status.Message = userExistingMatch.Player2 + " has accepted " + userExistingMatch.Player1 + "'s Match Request.";
+                            status.Result = null;
+                        }
+                        else
+                            throw new Exception("Request to Ws Server is failed,");
                     }
                     else if (match.MatchStatus?.ToUpper() == "DECLINED")
                     {
