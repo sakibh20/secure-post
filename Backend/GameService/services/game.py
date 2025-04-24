@@ -45,7 +45,6 @@ async def handle_match_join(websocket: WebSocket, user_id: str, match_id):
     })
     match_players[match_id] = players
 
-
     print(f"{user_id} connected to game socket and joined lobby.")
     if len(players.keys()) == 2:
         game = game_data.get(match_id)
@@ -60,12 +59,13 @@ async def handle_match_join(websocket: WebSocket, user_id: str, match_id):
             print(f"{user_id} says: {data}")
     except WebSocketDisconnect:
         print(f"{user_id} disconnected.")
-        #TODO: handle disconnection
+        # TODO: handle disconnection
 
         # active_websockets.pop(user_id, None)
         # if user_id in lobby_users:
         #     lobby_users.remove(user_id)
         #     await broadcast_lobby_update()
+
 
 async def handle_game_roll_dice(user_id: str, match_id: str, roll: int):
     game_manager = game_data.get(match_id)
@@ -74,6 +74,18 @@ async def handle_game_roll_dice(user_id: str, match_id: str, roll: int):
     if user_id != game_manager.game.currentState.currentTurn:
         raise ValueError("Not your turn")
 
-    game_manager.game.currentState.roll= roll
+    game_manager.game.currentState.roll = roll
+    await game_manager.next_turn()
+    game_data[match_id] = game_manager
+
+
+async def handle_game_claim_dice(user_id: str, match_id: str, claim: int):
+    game_manager = game_data.get(match_id)
+    if not game_manager:
+        raise ValueError("Game not found")
+    if user_id != game_manager.game.currentState.currentTurn:
+        raise ValueError("Not your turn")
+
+    game_manager.game.currentState.claim = claim
     await game_manager.next_turn()
     game_data[match_id] = game_manager

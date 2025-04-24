@@ -3,7 +3,7 @@ import random
 from fastapi import APIRouter
 
 from services.common import notify_user
-from services.game import match_request_notifier, create_game, handle_game_roll_dice
+from services.game import match_request_notifier, create_game, handle_game_roll_dice, handle_game_claim_dice
 from services.models import DiceRollRequest, ClaimRequest, MatchCreateRequest, MatchAcceptRequest
 
 api_router = APIRouter()
@@ -23,7 +23,10 @@ async def roll_dice_api(payload: DiceRollRequest):
 
 @api_router.post("/claim")
 async def claim_dice_api(payload: ClaimRequest):
-    pass
+    await handle_game_claim_dice(payload.user_id, payload.match_id, payload.claim_value)
+    return {
+        "detail": "Claim processed",
+    }
 
 
 @api_router.post("/match/request")
