@@ -1,6 +1,6 @@
 from starlette.websockets import WebSocket, WebSocketDisconnect
 
-from services.commands import request_match_command
+from services.commands import request_match_command, request_join_match
 from services.common import notify_user
 from services.data import game_data, match_players
 from services.game_manager import GameManager
@@ -32,6 +32,14 @@ async def create_game(payload: MatchAcceptRequest):
         game=game,
     )
     game_data[payload.MatchId] = game_manager
+
+
+    for user in [payload.Player1, payload.Player2]:
+        await notify_user(user, request_join_match({
+            "requested_by": payload.Player1 if user == payload.Player2 else payload.Player2,
+            "match_id": payload.MatchId,
+        }))
+
 
 
 async def handle_match_join(websocket: WebSocket, user_id: str, match_id):
