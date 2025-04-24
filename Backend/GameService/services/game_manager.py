@@ -1,4 +1,4 @@
-from services.models import Game, GameStatus, GameProcess
+from services.models import Game, GameStatus, GameProcess, GameState
 
 
 # noinspection PyMethodMayBeStatic
@@ -16,6 +16,8 @@ class GameManager:
 
     async def next_turn(self):
         """Advance to the next turn."""
+
+        print(self.game.model_dump_json(indent=2))
         if self.is_game_over():
             raise ValueError("Game is already over.")
 
@@ -35,11 +37,19 @@ class GameManager:
                 player=state.currentTurn,
             )
         elif state.currentProcess == GameProcess.ROUND_OVER:
-            pass
+            if bool(state.claim == state.roll) == state.decide:
+                if state.currentTurn == self.game.player1:
+                    self.game.player1Score += 1
+                else:
+                    self.game.player2Score += 1
+            else:
+                if state.currentTurn == self.game.player1:
+                    self.game.player2Score += 1
+                else:
+                    self.game.player1Score += 1
         else:
             raise ValueError("Invalid game process.")
 
-        # Update the game state
         self.update_game_state()
 
 
@@ -76,14 +86,30 @@ class GameManager:
         })
 
     def update_game_state(self):
+        """Update the game state based on the current process."""
         current_state = self.game.currentState.currentProcess
 
         if current_state == GameProcess.ROLLING:
             self.game.currentState.currentProcess = GameProcess.CLAIMING
         elif current_state == GameProcess.CLAIMING:
             self.game.currentState.currentProcess = GameProcess.DECIDE
+            self.game.currentState.currentTurn = self.get_opponent()
         elif current_state == GameProcess.DECIDE:
             self.game.currentState.currentProcess = GameProcess.ROUND_OVER
-            # TODO: Handle round over logic
+        elif current_state == GameProcess.ROUND_OVER:
+            current_state = self.game.currentState
+            self.game.oldStates.append(current_state)
+            self.game.currentState = GameState(
+                currentTurn=self.get_opponent(),
+                currentProcess=GameProcess.ROLLING,
+            )
+            self.game.currentRound += 1
+
+    def get_opponent(self):
+        """Get the opponent of the current player."""
+        if self.game.player1 == self.game.currentState.currentTurn:
+            return self.game.player2
+        else:
+            return self.game.player1
 
 
