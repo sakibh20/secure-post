@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecureService\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{37CC6324-0218-4347-B8A7-1E8CA971C1C0}|SecureService.DAL\\SecureService.DAL.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureservice\\secureservice.dal\\services\\dalmatchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37CC6324-0218-4347-B8A7-1E8CA971C1C0}|SecureService.DAL\\SecureService.DAL.csproj|solutionrelative:secureservice.dal\\services\\dalmatchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15688F19-C6B8-40E1-BFF7-2CA7EA1E0A3B}|SecureService.Entity\\SecureService.Entity.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureservice\\secureservice.entity\\shared\\internal\\leaderboarddataviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15688F19-C6B8-40E1-BFF7-2CA7EA1E0A3B}|SecureService.Entity\\SecureService.Entity.csproj|solutionrelative:secureservice.entity\\shared\\internal\\leaderboarddataviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E8648250-66CB-4F5D-822A-AE78073C6350}|SecureService.BLL\\SecureService.BLL.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureservice\\secureservice.bll\\services\\matchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E8648250-66CB-4F5D-822A-AE78073C6350}|SecureService.BLL\\SecureService.BLL.csproj|solutionrelative:secureservice.bll\\services\\matchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -17,14 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{37CC6324-0218-4347-B8A7-1E8CA971C1C0}|SecureService.DAL\\SecureService.DAL.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureservice\\secureservice.dal\\repositories\\idalmatchrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{37CC6324-0218-4347-B8A7-1E8CA971C1C0}|SecureService.DAL\\SecureService.DAL.csproj|solutionrelative:secureservice.dal\\repositories\\idalmatchrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37CC6324-0218-4347-B8A7-1E8CA971C1C0}|SecureService.DAL\\SecureService.DAL.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureservice\\secureservice.dal\\services\\dalmatchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37CC6324-0218-4347-B8A7-1E8CA971C1C0}|SecureService.DAL\\SecureService.DAL.csproj|solutionrelative:secureservice.dal\\services\\dalmatchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{15688F19-C6B8-40E1-BFF7-2CA7EA1E0A3B}|SecureService.Entity\\SecureService.Entity.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureservice\\secureservice.entity\\shared\\internal\\leaderboarddataviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{15688F19-C6B8-40E1-BFF7-2CA7EA1E0A3B}|SecureService.Entity\\SecureService.Entity.csproj|solutionrelative:secureservice.entity\\shared\\internal\\leaderboarddataviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{837511A7-7C92-40E6-8329-208F9706FFB8}|SecureService.API\\SecureService.API.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureservice\\secureservice.api\\controllers\\registrationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -134,17 +134,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "DalMatchService.cs",
               "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecureService\\SecureService.DAL\\Services\\DalMatchService.cs",
               "RelativeDocumentMoniker": "SecureService.DAL\\Services\\DalMatchService.cs",
               "ToolTip": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecureService\\SecureService.DAL\\Services\\DalMatchService.cs",
               "RelativeToolTip": "SecureService.DAL\\Services\\DalMatchService.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAQwLIAAABEAAAAAAAAAA==",
+              "ViewState": "AgIAAL8AAAAAAAAAAAAuwMMAAABSAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-06T16:54:48.684Z",
               "IsPinned": true,
@@ -152,7 +152,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "IDalMatchRepository.cs",
               "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecureService\\SecureService.DAL\\Repositories\\IDalMatchRepository.cs",
               "RelativeDocumentMoniker": "SecureService.DAL\\Repositories\\IDalMatchRepository.cs",
@@ -166,7 +166,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "IMatchRepository.cs",
               "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecureService\\SecureService.BLL\\Repositories\\IMatchRepository.cs",
               "RelativeDocumentMoniker": "SecureService.BLL\\Repositories\\IMatchRepository.cs",
@@ -180,7 +180,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "MatchService.cs",
               "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecureService\\SecureService.BLL\\Services\\MatchService.cs",
               "RelativeDocumentMoniker": "SecureService.BLL\\Services\\MatchService.cs",
@@ -208,13 +208,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "LeaderBoardDataViewModel.cs",
               "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecureService\\SecureService.Entity\\Shared\\Internal\\LeaderBoardDataViewModel.cs",
               "RelativeDocumentMoniker": "SecureService.Entity\\Shared\\Internal\\LeaderBoardDataViewModel.cs",
               "ToolTip": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecureService\\SecureService.Entity\\Shared\\Internal\\LeaderBoardDataViewModel.cs",
               "RelativeToolTip": "SecureService.Entity\\Shared\\Internal\\LeaderBoardDataViewModel.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAAAAgAAAApAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAoAAABQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-22T20:20:20.901Z",
               "EditorCaption": ""
@@ -259,7 +259,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "DalClsService.cs",
               "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecureService\\SecureService.DAL\\Services\\DalClsService.cs",
               "RelativeDocumentMoniker": "SecureService.DAL\\Services\\DalClsService.cs",
