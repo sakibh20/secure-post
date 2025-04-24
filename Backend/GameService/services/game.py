@@ -3,6 +3,7 @@ from starlette.websockets import WebSocket, WebSocketDisconnect
 from services.commands import request_match_command
 from services.common import notify_user
 from services.data import game_data, match_players
+from services.game_manager import GameManager
 from services.models import MatchCreateRequest, MatchAcceptRequest, Game, GameStatus, GameState, GameProcess
 
 
@@ -22,11 +23,15 @@ async def create_game(payload: MatchAcceptRequest):
         status=GameStatus.WAITING,
         matchToken=payload.MatchToken,
         currentState=GameState(
-            currentTurn=payload.Player1,
+            currentTurn=payload.FirstTurn,
             currentProcess=GameProcess.ROLLING,
         )
     )
-    game_data[payload.MatchId] = game
+
+    game_manager = GameManager(
+        game=game,
+    )
+    game_data[payload.MatchId] = game_manager
 
 
 async def handle_match_join(websocket: WebSocket, user_id: str, match_id):
@@ -43,9 +48,12 @@ async def handle_match_join(websocket: WebSocket, user_id: str, match_id):
 
     print(f"{user_id} connected to game socket and joined lobby.")
     if len(players.keys()) == 2:
-        print("Starting the game")
-        pass
-
+        game = game_data.get(match_id)
+        if not game:
+            raise ValueError("Game not found")
+        game.match_players = players
+        await game.next_turn()
+        game_data[match_id] = game
     try:
         while True:
             data = await websocket.receive_json()

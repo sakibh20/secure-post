@@ -3,7 +3,7 @@ import random
 from fastapi import APIRouter
 
 from services.common import notify_user
-from services.game import match_request_notifier
+from services.game import match_request_notifier, create_game
 from services.models import DiceRollRequest, ClaimRequest, MatchCreateRequest, MatchAcceptRequest
 
 api_router = APIRouter()
@@ -36,5 +36,7 @@ async def match_request_api(payload: MatchCreateRequest):
 
 @api_router.post("/match/accept")
 async def match_accept_api(payload: MatchAcceptRequest):
-    # await create_match()
-    pass
+    await create_game(payload)
+    return {
+        "detail": "Match accepted",
+    }
