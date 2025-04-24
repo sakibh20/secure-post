@@ -17,6 +17,8 @@ services:
       - Jwt__Issuer=SecureService
     networks:
       - secure-network
+    volumes:
+      - ./backend/Error:/app/Error
 
   mysql:
     image: mysql:8.0
