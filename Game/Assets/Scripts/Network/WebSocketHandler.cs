@@ -1,3 +1,4 @@
+using System;
 using NativeWebSocket;
 using UnityEngine;
 
@@ -8,6 +9,8 @@ public class WebSocketHandler : MonoBehaviour
     
     public delegate void OnMessageReceived(string message);
     public event OnMessageReceived MessageReceived;
+
+    public event Action OnClosedCallback;
     
     protected virtual void Awake()
     {
@@ -35,11 +38,17 @@ public class WebSocketHandler : MonoBehaviour
 
     protected async void StartSocketConnection(string url)
     {
+        OnClosedCallback = null;
+        
         _websocket = new WebSocket(url);
 
         _websocket.OnOpen += () => Debug.Log("WebSocket opened.");
         _websocket.OnError += (e) => Debug.LogError($"WebSocket error: {e}");
-        _websocket.OnClose += (e) => Debug.Log("WebSocket closed.");
+        _websocket.OnClose += (e) =>
+        {
+            OnClosedCallback?.Invoke();
+            Debug.Log("WebSocket closed.");
+        };
         _websocket.OnMessage += (bytes) =>
         {
             var message = System.Text.Encoding.UTF8.GetString(bytes);
@@ -67,8 +76,17 @@ public class WebSocketHandler : MonoBehaviour
         }
     }
 
+    public async void CloseConnection(Action onClosed = null)
+    {
+        OnClosedCallback = onClosed;
+        await _websocket.Close();
+    }
+
     private async void OnApplicationQuit()
     {
-        await _websocket.Close();
+        if (_websocket != null)
+        {
+            CloseConnection();   
+        }
     }
 }

@@ -23,15 +23,17 @@ public class LobbyUiManager : MonoBehaviour
     
     private void Start()
     {
-        LobbyWebSocketClient.Instance.MessageReceived += HandleServerMessage;
+        LobbyWebSocketClient.Instance.MessageReceived += HandleServerMessageFromLobby;
+        MatchWebSocketClient.Instance.MessageReceived += HandleServerMessageFromUser;
     }
 
     private void OnDestroy()
     {
-        LobbyWebSocketClient.Instance.MessageReceived -= HandleServerMessage;
+        LobbyWebSocketClient.Instance.MessageReceived -= HandleServerMessageFromLobby;
+        MatchWebSocketClient.Instance.MessageReceived -= HandleServerMessageFromUser;
     }
 
-    private void HandleServerMessage(string message)
+    private void HandleServerMessageFromLobby(string message)
     {
         Debug.Log($"Server Message: {message}");
         
@@ -40,6 +42,24 @@ public class LobbyUiManager : MonoBehaviour
         ServerDataManager.Instance.wsLobbyMessage = JsonUtility.FromJson<WSLobbyMessage>(message);
 
         GenerateItems();
+    }
+    
+    private void HandleServerMessageFromUser(string message)
+    {
+        Debug.Log($"Server Message: {message}");
+        
+        if(string.IsNullOrWhiteSpace(message)) return;
+        
+        ServerDataManager.Instance.wsUserMessage = JsonUtility.FromJson<WSLobbyMessage>(message);
+
+        if (ServerDataManager.Instance.wsUserMessage.command == ServerDataManager.Instance.ReceivedChallengeCommand)
+        {
+            ShowNewMatchRequestView();
+        }
+        else if (ServerDataManager.Instance.wsUserMessage.command == ServerDataManager.Instance.JoinMatchCommand)
+        {
+            MatchWebSocketClient.Instance.JoinMatch();
+        }
     }
 
     public void ShowLobby()
@@ -67,7 +87,7 @@ public class LobbyUiManager : MonoBehaviour
     {
         InitLobbyPanel();
         
-        foreach (string user in ServerDataManager.Instance.wsLobbyMessage.users)
+        foreach (string user in ServerDataManager.Instance.wsLobbyMessage.payload.users)
         {
             if(user == ServerDataManager.Instance.serverResponse.Result.useID) continue;
             
@@ -82,7 +102,7 @@ public class LobbyUiManager : MonoBehaviour
     {
         matchRequestPanel.SetActive(true);
         
-        matchRequestPanelText.text = $"Received challenge from {ServerDataManager.Instance.player1}";
+        matchRequestPanelText.text = $"Received challenge from {ServerDataManager.Instance.wsUserMessage.payload.requested_by}";
     }
 
     private void HideMatchRequestView()
@@ -92,14 +112,14 @@ public class LobbyUiManager : MonoBehaviour
 
     public void AcceptMatch()
     {
-        RESTAPIManager.Instance.AcceptDeclineMatch(ServerDataManager.Instance.matchId, ServerDataManager.Instance.player1, 
-            ServerDataManager.Instance.player2, ServerDataManager.Instance.AcceptStatus, OnSuccessAcceptDecline, OnFailAcceptDecline);
+        RESTAPIManager.Instance.AcceptDeclineMatch(ServerDataManager.Instance.wsUserMessage.payload.match_id, ServerDataManager.Instance.wsUserMessage.payload.requested_by, 
+            ServerDataManager.Instance.serverResponse.Result.useID, ServerDataManager.Instance.AcceptStatus, OnSuccessAcceptDecline, OnFailAcceptDecline);
     }
 
     public void DeclineMatch()
     {
-        RESTAPIManager.Instance.AcceptDeclineMatch(ServerDataManager.Instance.matchId, ServerDataManager.Instance.player1, ServerDataManager.Instance.player2, 
-            ServerDataManager.Instance.DeclineStatus, OnSuccessAcceptDecline, OnFailAcceptDecline);
+        RESTAPIManager.Instance.AcceptDeclineMatch(ServerDataManager.Instance.wsUserMessage.payload.match_id, ServerDataManager.Instance.wsUserMessage.payload.requested_by, 
+            ServerDataManager.Instance.serverResponse.Result.useID, ServerDataManager.Instance.DeclineStatus, OnSuccessAcceptDecline, OnFailAcceptDecline);
     }
 
     private void OnSuccessAcceptDecline(string message)

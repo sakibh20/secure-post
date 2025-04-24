@@ -18,18 +18,18 @@ public class MatchWebSocketClient : WebSocketHandler
     //     base.OnDestroy();
     // }
     
-    protected override void Subscribe()
-    {
-        AuthUIManager.Instance.OnLoginSuccess += OnLoginSuccess;
-    }
+    // protected override void Subscribe()
+    // {
+    //     AuthUIManager.Instance.OnLoginSuccess += OnLoginSuccess;
+    // }
+    //
+    // protected override void UnSubscribe()
+    // {
+    //     AuthUIManager.Instance.OnLoginSuccess -= OnLoginSuccess;
+    // }
 
-    protected override void UnSubscribe()
+    public void JoinMatch()
     {
-        AuthUIManager.Instance.OnLoginSuccess -= OnLoginSuccess;
-    }
-
-    private void OnLoginSuccess()
-    {
-        //StartSocketConnection(NetworkConstants.GetLobbyUrl());
+        StartSocketConnection(ServerDataManager.Instance.GetJoinMatchUrl());
     }
 }

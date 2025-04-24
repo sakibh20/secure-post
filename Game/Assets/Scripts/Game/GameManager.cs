@@ -15,16 +15,32 @@ public class GameManager : MonoBehaviour
     {
         //WebSocketClient.Instance.MessageReceived += HandleServerMessage;
         
-        //JoinWebSocketClient.Instance.MessageReceived += HandleServerMessage;
-        //LobbyWebSocketClient.Instance.MessageReceived += HandleServerMessage;
+        MatchWebSocketClient.Instance.MessageReceived += OnMatchMessageReceived;
     }
 
     private void OnDestroy()
     {
         //WebSocketClient.Instance.MessageReceived -= HandleServerMessage;
         
-        //JoinWebSocketClient.Instance.MessageReceived -= HandleServerMessage;
-        //LobbyWebSocketClient.Instance.MessageReceived -= HandleServerMessage;
+        MatchWebSocketClient.Instance.MessageReceived -= OnMatchMessageReceived;
+    }
+
+    private void OnMatchMessageReceived(string message)
+    {
+        Debug.Log($"[MatchWebSocketClient] :: Server Message: {message}");
+        
+        if(string.IsNullOrWhiteSpace(message)) return;
+        
+        WSLobbyMessage data = JsonUtility.FromJson<WSLobbyMessage>(message);
+
+        if (data.command == ServerDataManager.Instance.RollDiceCommand)
+        {
+            
+        }
+        else if (data.command == ServerDataManager.Instance.ClaimCommand)
+        {
+            
+        }
     }
 
     private void HandleServerMessage(string message)

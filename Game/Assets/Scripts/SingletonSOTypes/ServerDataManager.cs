@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [Serializable]
 [CreateAssetMenu(menuName = "SingletonSOs/ServerDataManager")]
 public class ServerDataManager : SingletonSO<ServerDataManager>
 {
-    public string baseUrl;
+    public string serverABaseUrl;
     public string registrationEndPoint;
     public string loginEndpoint;
     public string logoutEndpoint;
@@ -14,27 +15,42 @@ public class ServerDataManager : SingletonSO<ServerDataManager>
     public string refreshAccessToken;
     public string requestMatch;
     public string acceptMatch;
+
+    [Space]
+    public string serverBBaseUrl = "http://localhost:8000";
+    public string rollDice = "roll-dice";
     
     [Space]
     public string wsBaseUrl = "ws://localhost:8000/ws";
     public string lobbyEndpoint = "lobby";
     public string joinEndpoint = "user";
+    public string joinMatch = "game";
 
-    [Space] 
-    public string matchId;
-    public string player1;
-    public string player2;
+    // [Space] 
+    // public string matchId;
+    // public string player1;
+    // public string player2;
     
     public ServerResponse serverResponse;
     public LeaderboardResponse leaderboardResponse;
 
     public WSLobbyMessage wsLobbyMessage;
+    public WSLobbyMessage wsUserMessage;
 
+    [Space]
     public string FailedStatus = "failed";
     public string SuccessStatus = "ok";
     
+    [Space]
     public string AcceptStatus = "ACCEPTED";
     public string DeclineStatus = "DECLINED";
+    
+    [Space]
+    public string ReceivedChallengeCommand = "match_request";
+    public string JoinMatchCommand = "join_match";
+    public string RollDiceCommand = "roll_dice";
+    public string ClaimCommand = "claim_dice";
+    public string DecisionCommand = "decide";
     
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     public static void OnBeforeSceneLoad()
@@ -55,44 +71,54 @@ public class ServerDataManager : SingletonSO<ServerDataManager>
         return $"{wsBaseUrl}/{lobbyEndpoint}";
     }
     
-    public string GetJoinUrl(string userId)
+    public string GetJoinUrl()
     {
-        return $"{wsBaseUrl}/{joinEndpoint}/{userId}";
+        return $"{wsBaseUrl}/{joinEndpoint}/{serverResponse.Result.useID}";
+    }    
+    
+    public string GetJoinMatchUrl()
+    {
+        return $"{wsBaseUrl}/{joinMatch}/{serverResponse.Result.useID}/{wsUserMessage.payload.match_id}";
     }
-
+    
+    public string GetRollUrl()
+    {
+        return $"{serverBBaseUrl}/{rollDice}";
+    }        
+    
     public string GetLoginUrl()
     {
-        return $"{baseUrl}/{loginEndpoint}";
+        return $"{serverABaseUrl}/{loginEndpoint}";
     }    
     
     public string GetLogoutUrl()
     {
-        return $"{baseUrl}/{logoutEndpoint}";
+        return $"{serverABaseUrl}/{logoutEndpoint}";
     }
     
     public string GetRegistrationUrl()
     {
-        return $"{baseUrl}/{registrationEndPoint}";
+        return $"{serverABaseUrl}/{registrationEndPoint}";
     }    
     
     public string GetLeaderboardUrl()
     {
-        return $"{baseUrl}/{leaderboardEndpoint}";
+        return $"{serverABaseUrl}/{leaderboardEndpoint}";
     }
     
     public string GetRefreshUrl()
     {
-        return $"{baseUrl}/{refreshAccessToken}";
+        return $"{serverABaseUrl}/{refreshAccessToken}";
     }
     
     public string GetMatchRequestUrl(string targetUserID)
     {
-        return $"{baseUrl}/{requestMatch}?playerID={targetUserID}";
+        return $"{serverABaseUrl}/{requestMatch}?playerID={targetUserID}";
     }    
     
     public string AcceptDeclineMatchUrl()
     {
-        return $"{baseUrl}/{acceptMatch}";
+        return $"{serverABaseUrl}/{acceptMatch}";
     }
 }
 
@@ -158,7 +184,16 @@ public class LoginRequestData
 [Serializable]
 public class WSLobbyMessage
 {
-    //public string eventType;
+    public string command;
+    public Payload payload = new Payload();
+}
+
+[Serializable]
+public class Payload
+{
+    public string status;
+    public string requested_by;
+    public string match_id;
     public List<string> users = new List<string>();
 }
 

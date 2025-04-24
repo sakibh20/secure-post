@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cc31445e9fff8645b37c2d53124ce3a, type: 3}
   m_Name: ServerDataManager
   m_EditorClassIdentifier: 
-  baseUrl: http://localhost:8080/api
+  serverABaseUrl: http://localhost:8080/api
   registrationEndPoint: Register
   loginEndpoint: Login
   logoutEndpoint: Logout
@@ -20,12 +20,12 @@ MonoBehaviour:
   refreshAccessToken: GenerateAccessTokenByRefreshToken
   requestMatch: InitializeMatchRequest
   acceptMatch: ResponseMatchRequest
+  serverBBaseUrl: http://localhost:8000
+  rollDice: roll-dice
   wsBaseUrl: ws://localhost:8000/ws
   lobbyEndpoint: lobby
   joinEndpoint: user
-  matchId: 1
-  player1: samith
-  player2: sakibsec
+  joinMatch: game
   serverResponse:
     Status: 
     Message: 
@@ -46,10 +46,25 @@ MonoBehaviour:
         wins: 
         position: 
   wsLobbyMessage:
-    users:
-    - samith
-    - sakibsec
+    command: 
+    payload:
+      status: 
+      requested_by: 
+      match_id: 
+      users: []
+  wsUserMessage:
+    command: 
+    payload:
+      status: 
+      requested_by: 
+      match_id: 
+      users: []
   FailedStatus: failed
   SuccessStatus: ok
   AcceptStatus: ACCEPTED
   DeclineStatus: DECLINED
+  ReceivedChallengeCommand: match_request
+  JoinMatchCommand: join_match
+  RollDiceCommand: roll_dice
+  ClaimCommand: claim_dice
+  DecisionCommand: decide

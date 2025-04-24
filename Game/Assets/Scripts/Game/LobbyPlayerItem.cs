@@ -37,7 +37,7 @@ public class LobbyPlayerItem : MonoBehaviour
     
     private void OnFail(string message)
     {
-        
+        AuthUIManager.Instance.ShowPopupPanel(message);
     }
 
     public void ActivateButtons(bool value)

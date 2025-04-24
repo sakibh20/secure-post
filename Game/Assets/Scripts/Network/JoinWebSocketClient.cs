@@ -30,6 +30,6 @@ public class JoinWebSocketClient : WebSocketHandler
 
     private void OnLoginSuccess()
     {
-        StartSocketConnection(ServerDataManager.Instance.GetJoinUrl(ServerDataManager.Instance.serverResponse.Result.useID));
+        StartSocketConnection(ServerDataManager.Instance.GetJoinUrl());
     }
 }
