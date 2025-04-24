@@ -1,3 +1,6 @@
+from enum import Enum
+from typing import List
+
 from pydantic import BaseModel
 
 
@@ -25,3 +28,35 @@ class MatchAcceptRequest(BaseModel):
     Player2: str
     FirstTurn: str
     MatchToken: str
+
+
+
+######### GAME #########
+
+class GameStatus(Enum):
+    WAITING = "waiting"
+    IN_PROGRESS = "in_progress"
+    FINISHED = "finished"
+
+class GameProcess(Enum):
+    ROLLING = "rolling"
+    CLAIMING = "claiming"
+    DECIDE = "decide"
+    ROUND_OVER = "round_over"
+
+class GameState(BaseModel):
+    currentTurn: str
+    currentProcess: GameProcess
+
+class Game(BaseModel):
+    matchId: str
+    player1: str
+    player2: str
+    status: GameStatus
+    player1Score: int = 0
+    player2Score: int = 0
+    totalRound: int = 7
+    currentRound: int = 1
+    matchToken: str
+    currentState: GameState
+    oldStates : List[GameState] = []
