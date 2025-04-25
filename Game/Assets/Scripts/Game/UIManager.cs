@@ -20,6 +20,10 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI playerBScoreText;
     public TextMeshProUGUI finalResultText;
 
+    [SerializeField] private List<Sprite> dices;
+    [SerializeField] private Sprite emptyDices;
+    [SerializeField] private Image rolledImage;
+
     [Header("Buttons")]
     public Button playerARollBtn;
     public List<Button> playerAClaimBtns;
@@ -111,6 +115,7 @@ public class UIManager : MonoBehaviour
     private void InitTexts()
     {
         playerARollText.text = "";
+        rolledImage.sprite = emptyDices;
         playerAClaimText.text = "";
 
         playerBRollText.text = "";
@@ -140,6 +145,7 @@ public class UIManager : MonoBehaviour
 
         resultText.text = "";
         playerARollText.text = "";
+        rolledImage.sprite = emptyDices;
     }
 
     public void OnGameOver(string winner)
@@ -300,6 +306,7 @@ public class UIManager : MonoBehaviour
     public void UpdateRoll(int value)
     {
         playerARollText.text = value.ToString();
+        rolledImage.sprite = dices[value - 1];
     }    
     
     public void UpdateRoll(string player, int value)
