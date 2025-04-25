@@ -1,3 +1,4 @@
+from services.external_requests import update_match_result
 from services.models import Game, GameStatus, GameProcess, GameState
 
 
@@ -66,6 +67,9 @@ class GameManager:
         await self.update_game_state()
         if self.is_game_over():
             await self.notify_game_over()
+            update_match_result(self.game.matchToken, self.game.matchId, self.game.player1Score, self.game.player2Score,
+                                self.get_winner())
+
         print(self.game.model_dump_json(indent=2))
 
     async def handle_rolling(self, player):
@@ -102,14 +106,19 @@ class GameManager:
             "payload": payload
         })
 
+    def get_winner(self):
+        """Determine the winner of the game."""
+        if self.game.player1Score > self.game.player2Score:
+            winner = self.game.player1
+        elif self.game.player1Score < self.game.player2Score:
+            winner = self.game.player2
+        else:
+            winner = None
+        return winner
+
     async def notify_game_over(self):
         for player in [self.game.player1, self.game.player2]:
-            if self.game.player1Score > self.game.player2Score:
-                winner = self.game.player1
-            elif self.game.player1Score < self.game.player2Score:
-                winner = self.game.player2
-            else:
-                winner = None
+            winner = self.get_winner()
             if winner is None:
                 win_status = "draw"
             else:
