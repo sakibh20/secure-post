@@ -2,13 +2,13 @@ import requests
 
 def update_match_result(token: str,  match_id: str, player1_moves: int, player2_moves: int, winner: str):
     url = "http://localhost:8080/api/UpdateMatchResult"
-    token = "xxxx"  # Replace with your actual token
+    token = token
 
     payload = {
-        "MatchId": "0f915ef7-8feb-4ba4-95de-976b41e67b6f",
-        "Player1Moves": 5,
-        "Player2Moves": 6,
-        "Winner": "samith"
+        "MatchId": match_id,
+        "Player1Moves": player1_moves,
+        "Player2Moves": player2_moves,
+        "Winner": winner
     }
 
     headers = {
