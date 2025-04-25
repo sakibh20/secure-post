@@ -69,9 +69,9 @@ class GameManager:
             await self.notify_game_over()
             update_match_result(self.game.matchToken, self.game.matchId, self.game.player1Score, self.game.player2Score,
                                 self.get_winner())
+            return
 
         print(self.game.model_dump_json(indent=2))
-
         if self.game.currentState.currentProcess == GameProcess.ROLLING:
             await self.next_turn()
 
