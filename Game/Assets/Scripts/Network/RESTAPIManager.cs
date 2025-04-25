@@ -292,7 +292,6 @@ public class RESTAPIManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Request failed: " + request.error);
             OnFail?.Invoke(serverResponse.Message);
         }
     }
@@ -352,8 +351,10 @@ public class RESTAPIManager : MonoBehaviour
         }
     }
 
-    private Action OnSuccessRefreshAccToken;
-    private Action OnFailedRefreshAccToken;
+    public void RefreshAccessToken()
+    {
+        StartCoroutine(HandleAccessTokenTimeout());
+    }
 
     private IEnumerator HandleAccessTokenTimeout()
     {
@@ -369,7 +370,8 @@ public class RESTAPIManager : MonoBehaviour
         if (request.result == UnityWebRequest.Result.Success)
         {
             Debug.Log("Response: " + request.downloadHandler.text);
-            
+            ServerDataManager.Instance.serverResponse =
+                JsonUtility.FromJson<ServerResponse>(request.downloadHandler.text);
             if (serverResponse.Status.ToLower() == ServerDataManager.Instance.FailedStatus)
             {
                 //OnFail?.Invoke(ServerDataManager.Instance.leaderboardResponse.Message);
@@ -384,5 +386,10 @@ public class RESTAPIManager : MonoBehaviour
             Debug.LogError("Request failed: " + request.error);
             //OnFail?.Invoke(request.result.ToString());
         }
+    }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
     }
 }
