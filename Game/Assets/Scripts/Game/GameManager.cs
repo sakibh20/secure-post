@@ -35,19 +35,44 @@ public class GameManager : MonoBehaviour
 
         if (data.command == ServerDataManager.Instance.RollDiceCommand)
         {
-            RESTAPIManager.Instance.RollDice(ServerDataManager.Instance.serverResponse.Result.userID, 
-                ServerDataManager.Instance.wsUserMessage.payload.match_id, OnSuccessRoll, OnFailRoll);
+            UIManager.Instance.PlayerARoll();
+            
+            // RESTAPIManager.Instance.RollDice(ServerDataManager.Instance.serverResponse.Result.userID, 
+            //     ServerDataManager.Instance.wsUserMessage.payload.match_id, OnSuccessRoll, OnFailRoll);
         }
         else if (data.command == ServerDataManager.Instance.ClaimCommand)
         {
-            RESTAPIManager.Instance.ClaimDice(ServerDataManager.Instance.serverResponse.Result.userID, 
-                ServerDataManager.Instance.wsUserMessage.payload.match_id, Random.Range(1,7), OnSuccessClaim, OnFailClaim);
+            UIManager.Instance.OnPlayerARoll();
+            // RESTAPIManager.Instance.ClaimDice(ServerDataManager.Instance.serverResponse.Result.userID, 
+            //     ServerDataManager.Instance.wsUserMessage.payload.match_id, Random.Range(1,7), OnSuccessClaim, OnFailClaim);
         }
         else if (data.command == ServerDataManager.Instance.DecisionCommand)
         {
-            RESTAPIManager.Instance.Decide(ServerDataManager.Instance.serverResponse.Result.userID, 
-                ServerDataManager.Instance.wsUserMessage.payload.match_id, true, OnSuccessDecide, OnFailDecide);
+            UIManager.Instance.OnPlayerBClaim();
+            // RESTAPIManager.Instance.Decide(ServerDataManager.Instance.serverResponse.Result.userID, 
+            //     ServerDataManager.Instance.wsUserMessage.payload.match_id, true, OnSuccessDecide, OnFailDecide);
         }
+    }
+
+    [ContextMenu("RollDice")]
+    public void RollDice()
+    {
+        RESTAPIManager.Instance.RollDice(ServerDataManager.Instance.serverResponse.Result.userID, 
+            ServerDataManager.Instance.wsUserMessage.payload.match_id, OnSuccessRoll, OnFailRoll);
+    }
+
+    [ContextMenu("Claim")]
+    public void Claim()
+    {
+        RESTAPIManager.Instance.ClaimDice(ServerDataManager.Instance.serverResponse.Result.userID, 
+            ServerDataManager.Instance.wsUserMessage.payload.match_id, Random.Range(1,7), OnSuccessClaim, OnFailClaim);
+    }    
+    
+    [ContextMenu("Decide")]
+    public void Decide()
+    {
+        RESTAPIManager.Instance.Decide(ServerDataManager.Instance.serverResponse.Result.userID, 
+            ServerDataManager.Instance.wsUserMessage.payload.match_id, true, OnSuccessDecide, OnFailDecide);
     }
 
     private void OnSuccessRoll(string message)

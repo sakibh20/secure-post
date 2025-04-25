@@ -104,7 +104,7 @@ public class RESTAPIManager : MonoBehaviour
             decision = decision
         };
 
-        StartCoroutine(HitRollDice(JsonUtility.ToJson(data), ServerDataManager.Instance.GetClaimUrl()));
+        StartCoroutine(HitRollDice(JsonUtility.ToJson(data), ServerDataManager.Instance.GetDecisionUrl()));
     }
     
     public void LogOut(Action<string> onSuccess, Action<string> onFailed)

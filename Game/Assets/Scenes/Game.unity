@@ -2254,7 +2254,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 219539202}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 442748942}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: Decide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &219539202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4048,7 +4060,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 504882882}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 442748942}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: RollDice
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &504882882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8245,7 +8269,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 960786141}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 442748942}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: Claim
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &960786141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14383,7 +14419,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1528091570}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 442748942}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: Decide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1528091570
 MonoBehaviour:
   m_ObjectHideFlags: 0

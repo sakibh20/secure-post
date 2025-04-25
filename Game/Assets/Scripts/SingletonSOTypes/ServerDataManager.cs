@@ -32,12 +32,6 @@ public class ServerDataManager : SingletonSO<ServerDataManager>
     // public string matchId;
     // public string player1;
     // public string player2;
-    
-    public ServerResponse serverResponse;
-    public LeaderboardResponse leaderboardResponse;
-
-    public WSLobbyMessage wsLobbyMessage;
-    public WSLobbyMessage wsUserMessage;
 
     [Space]
     public string FailedStatus = "failed";
@@ -53,6 +47,13 @@ public class ServerDataManager : SingletonSO<ServerDataManager>
     public string RollDiceCommand = "roll_dice";
     public string ClaimCommand = "claim_dice";
     public string DecisionCommand = "decide";
+    
+    [Space]
+    public ServerResponse serverResponse;
+    public LeaderboardResponse leaderboardResponse;
+
+    public WSLobbyMessage wsLobbyMessage;
+    public WSLobbyMessage wsUserMessage;
     
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     public static void OnBeforeSceneLoad()
@@ -132,6 +133,13 @@ public class ServerDataManager : SingletonSO<ServerDataManager>
     {
         return $"{serverABaseUrl}/{acceptMatch}";
     }
+}
+
+[Serializable]
+public class MatchStatus
+{
+    public string command;
+    public Payload payload = new Payload();
 }
 
 [Serializable]
@@ -224,6 +232,13 @@ public class Payload
     public string requested_by;
     public string match_id;
     public List<string> users = new List<string>();
+    public int player1_score;
+    public int player2_score;
+    public string player1;
+    public string player2;
+    public string game_status;
+    public int total_round;
+    public int current_round;
 }
 
 [Serializable]

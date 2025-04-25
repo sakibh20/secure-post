@@ -22,11 +22,11 @@ public class UIManager : MonoBehaviour
     public Button playerAClaimBtn;
     public Button playerABelieveBtn;
     public Button playerABluffBtn;
-
-    public Button playerBRollBtn;
-    public Button playerBClaimBtn;
-    public Button playerBBelieveBtn;
-    public Button playerBBluffBtn;
+    //
+    // public Button playerBRollBtn;
+    // public Button playerBClaimBtn;
+    // public Button playerBBelieveBtn;
+    // public Button playerBBluffBtn;
 
     [Space] 
     public GameObject gameView;
@@ -67,11 +67,11 @@ public class UIManager : MonoBehaviour
         playerAClaimBtn.onClick.AddListener(OnPlayerAClaim);
         playerABelieveBtn.onClick.AddListener(OnPlayerABelieve);
         playerABluffBtn.onClick.AddListener(OnPlayerACallBluff);
-
-        playerBRollBtn.onClick.AddListener(OnPlayerBRoll);
-        playerBClaimBtn.onClick.AddListener(OnPlayerBClaim);
-        playerBBelieveBtn.onClick.AddListener(OnPlayerBBelieve);
-        playerBBluffBtn.onClick.AddListener(OnPlayerBCallBluff);
+        //
+        // playerBRollBtn.onClick.AddListener(OnPlayerBRoll);
+        // playerBClaimBtn.onClick.AddListener(OnPlayerBClaim);
+        // playerBBelieveBtn.onClick.AddListener(OnPlayerBBelieve);
+        // playerBBluffBtn.onClick.AddListener(OnPlayerBCallBluff);
     }
 
     private void InitButtons()
@@ -81,10 +81,10 @@ public class UIManager : MonoBehaviour
         ActivePlayerABelieveBtn(false);
         ActivePlayerABluffBtn(false);
         
-        ActivePlayerBRollBtn(false);
-        ActivePlayerBClaimBtn(false);
-        ActivePlayerBBelieveBtn(false);
-        ActivePlayerBBluffBtn(false);
+        // ActivePlayerBRollBtn(false);
+        // ActivePlayerBClaimBtn(false);
+        // ActivePlayerBBelieveBtn(false);
+        // ActivePlayerBBluffBtn(false);
     }
 
     private void InitTexts()
@@ -96,6 +96,11 @@ public class UIManager : MonoBehaviour
         playerBClaimText.text = "";
 
         resultText.text = "";
+    }
+
+    public void PlayerARoll()
+    {
+        ActivePlayerARollBtn(true);
     }
 
     public void GameOver()
@@ -126,9 +131,9 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    private void OnPlayerARoll()
+    public void OnPlayerARoll()
     {
-        MockGameServer.Instance.PlayerARoll();
+        //MockGameServer.Instance.PlayerARoll();
         ActivePlayerARollBtn(false);
         ActivePlayerAClaimBtn(true);
     }
@@ -136,8 +141,8 @@ public class UIManager : MonoBehaviour
     {
         WebSocketClient.Instance.Mock_PlayerAClaim();
         ActivePlayerAClaimBtn(false);
-        ActivePlayerBBelieveBtn(true);
-        ActivePlayerBBluffBtn(true);
+        // ActivePlayerBBelieveBtn(true);
+        // ActivePlayerBBluffBtn(true);
     }
     private void OnPlayerABelieve()
     {
@@ -156,34 +161,34 @@ public class UIManager : MonoBehaviour
         OnNextRoundButtonPressed();
     }
     
-    private void OnPlayerBRoll()
+    // private void OnPlayerBRoll()
+    // {
+    //     MockGameServer.Instance.PlayerBRoll();
+    //     ActivePlayerBClaimBtn(true);
+    //     ActivePlayerBRollBtn(false);
+    // }
+    public void OnPlayerBClaim()
     {
-        MockGameServer.Instance.PlayerBRoll();
-        ActivePlayerBClaimBtn(true);
-        ActivePlayerBRollBtn(false);
-    }
-    private void OnPlayerBClaim()
-    {
-        WebSocketClient.Instance.Mock_PlayerBClaim();
-        ActivePlayerBClaimBtn(false);
+        //WebSocketClient.Instance.Mock_PlayerBClaim();
+        //ActivePlayerBClaimBtn(false);
         
         ActivePlayerABelieveBtn(true);
         ActivePlayerABluffBtn(true);
     }
-    private void OnPlayerBBelieve()
-    {
-        WebSocketClient.Instance.Mock_PlayerBBelieves();
-        ActivePlayerBRollBtn(true);
-        ActivePlayerBBelieveBtn(false);
-        ActivePlayerBBluffBtn(false);
-    }
-    private void OnPlayerBCallBluff()
-    {
-        WebSocketClient.Instance.Mock_PlayerBBluff();
-        ActivePlayerBRollBtn(true);
-        ActivePlayerBBelieveBtn(false);
-        ActivePlayerBBluffBtn(false);
-    }
+    // private void OnPlayerBBelieve()
+    // {
+    //     WebSocketClient.Instance.Mock_PlayerBBelieves();
+    //     ActivePlayerBRollBtn(true);
+    //     ActivePlayerBBelieveBtn(false);
+    //     ActivePlayerBBluffBtn(false);
+    // }
+    // private void OnPlayerBCallBluff()
+    // {
+    //     WebSocketClient.Instance.Mock_PlayerBBluff();
+    //     ActivePlayerBRollBtn(true);
+    //     ActivePlayerBBelieveBtn(false);
+    //     ActivePlayerBBluffBtn(false);
+    // }
 
     private void ActivePlayerARollBtn(bool value)
     {
@@ -205,25 +210,25 @@ public class UIManager : MonoBehaviour
         playerABluffBtn.interactable = value;
     }
     
-    private void ActivePlayerBRollBtn(bool value)
-    {
-        playerBRollBtn.interactable = value;
-    }
-    
-    private void ActivePlayerBClaimBtn(bool value)
-    {
-        playerBClaimBtn.interactable = value;
-    }
-    
-    private void ActivePlayerBBelieveBtn(bool value)
-    {
-        playerBBelieveBtn.interactable = value;
-    }
-    
-    private void ActivePlayerBBluffBtn(bool value)
-    {
-        playerBBluffBtn.interactable = value;
-    }    
+    // private void ActivePlayerBRollBtn(bool value)
+    // {
+    //     playerBRollBtn.interactable = value;
+    // }
+    //
+    // private void ActivePlayerBClaimBtn(bool value)
+    // {
+    //     playerBClaimBtn.interactable = value;
+    // }
+    //
+    // private void ActivePlayerBBelieveBtn(bool value)
+    // {
+    //     playerBBelieveBtn.interactable = value;
+    // }
+    //
+    // private void ActivePlayerBBluffBtn(bool value)
+    // {
+    //     playerBBluffBtn.interactable = value;
+    // }    
     
     private void OnNextRoundButtonPressed()
     {
