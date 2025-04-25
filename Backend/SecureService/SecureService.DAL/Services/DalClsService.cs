@@ -150,7 +150,7 @@ namespace SecureService.DAL.Services
                 httpWebRequest.Method = method.ToUpper();
                 //httpWebRequest.Headers.Add("Authorization", "Bearer " + token);
 
-                ¨//_logger.LogError("(Request) SecureService --> " + uri + " , Json : " + jsonObj);
+                //_logger.LogError("(Request) SecureService --> " + uri + " , Json : " + jsonObj);
 
                 if (method == "GET")
                 {
