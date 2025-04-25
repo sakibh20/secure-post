@@ -207,8 +207,8 @@ namespace SecureService.DAL.Services
             var accessclaims = new[] {
                 new Claim("UserId", _cls.Encrypt(usersNewSession.UserId)),
                 new Claim("SessionID", _cls.Encrypt(usersNewSession.SessionID)),
-                new Claim("StartDate", usersNewSession.SessionStartTime.ToString()),
-                new Claim("ExpiryDate", usersNewSession.SessionEndTime.ToString())
+                new Claim("StartDate", usersNewSession.SessionStartTime.ToString("dd-MMM-yyyy HH:mm:ss")),
+                new Claim("ExpiryDate", usersNewSession.SessionEndTime?.ToString("dd-MMM-yyyy HH:mm:ss"))
             };
             var accessToken = new JwtSecurityToken(_config["Jwt:Issuer"],
               _config["Jwt:Issuer"],
@@ -223,8 +223,8 @@ namespace SecureService.DAL.Services
             var refreshClaims = new[] {
                 new Claim("UserId", _cls.Encrypt(userNewRefreshToken.UserId)),
                 new Claim("TokenID", _cls.Encrypt(userNewRefreshToken.TokenId)),
-                new Claim("StartDate", userNewRefreshToken.CreatedAt.ToString()),
-                new Claim("ExpiryDate", userNewRefreshToken.ExpiryDate.ToString())
+                new Claim("StartDate", userNewRefreshToken.CreatedAt.ToString("dd-MMM-yyyy HH:mm:ss")),
+                new Claim("ExpiryDate", userNewRefreshToken.ExpiryDate.ToString("dd-MMM-yyyy HH:mm:ss"))
             };
             var refreshToken = new JwtSecurityToken(_config["Jwt:Issuer"],
               _config["Jwt:Issuer"],
@@ -247,8 +247,8 @@ namespace SecureService.DAL.Services
             var accessclaims = new[] {
                 new Claim("UserId", _cls.Encrypt(userNewMatch.Player1 + "#" + userNewMatch.Player2)),
                 new Claim("SessionID", _cls.Encrypt(userNewMatch.MatchId)),
-                new Claim("StartDate", userNewMatch.StartTime.ToString()),
-                new Claim("ExpiryDate", userNewMatch.StartTime.AddMinutes(30).ToString())
+                new Claim("StartDate", userNewMatch.StartTime.ToString("dd-MMM-yyyy HH:mm:ss")),
+                new Claim("ExpiryDate", userNewMatch.StartTime.AddMinutes(30).ToString("dd-MMM-yyyy HH:mm:ss"))
             };
             var accessToken = new JwtSecurityToken(_config["Jwt:Issuer"],
               _config["Jwt:Issuer"],

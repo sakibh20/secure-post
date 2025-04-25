@@ -114,7 +114,7 @@ namespace SecureService.DAL.Services
                 if (string.IsNullOrEmpty(pDateValue))
                     return new DateTime();
 
-                string allowedformates = "dd/MM/yyyy HH:mm:ss,dd-MM-yyyy HH:mm:ss,dd.MM.yyyy HH:mm:ss,dd MM yyyy HH:mm:ss,MM/dd/yyyy HH:mm:ss,MM-dd-yyyy HH:mm:ss,MM.dd.yyyy HH:mm:ss,yyyy/MM/dd HH:mm:ss,yyyy-MM-dd HH:mm:ss,yyyy.MM.dd HH:mm:ss,yyyy MM dd HH:mm:ss,d/M/yyyy HH:mm:ss,d-M-yyyy HH:mm:ss,d.M.yyyy HH:mm:ss,M/d/yyyy HH:mm:ss,M-d-yyyy HH:mm:ss,M.d.yyyy HH:mm:ss,dd/MM/yyyy hh:mm:ss tt,dd-MM-yyyy hh:mm:ss tt,dd.MM.yyyy hh:mm:ss tt,MM/dd/yyyy hh:mm:ss tt,yyyy/MM/dd hh:mm:ss tt,dd/MM/yyyy HH:mm,MM/dd/yyyy HH:mm,yyyy/MM/dd HH:mm,dd/MM/yyyy hh:mm tt,MM/dd/yyyy hh:mm tt,yyyy/MM/dd hh:mm tt,dd MMM yyyy HH:mm:ss,dd MMMM yyyy HH:mm:ss,yyyy MMM dd HH:mm:ss,dd/MM/yy HH:mm:ss,MM/dd/yy HH:mm:ss,yy/MM/dd HH:mm:ss,yyyyMMdd HHmmss,yyyy-MM-ddTHH:mm:ss,yyyy/MM/dd'T'HH:mm:ss,dd/MM/yyyy HH:mm:ss.SSS,MM/dd/yyyy HH:mm:ss.SSS,yyyy/MM/dd HH:mm:ss.SSS";
+                string allowedformates = "dd/MM/yyyy HH:mm:ss,dd-MM-yyyy HH:mm:ss,dd.MM.yyyy HH:mm:ss,dd MM yyyy HH:mm:ss,MM/dd/yyyy HH:mm:ss,MM-dd-yyyy HH:mm:ss,MM.dd.yyyy HH:mm:ss,yyyy/MM/dd HH:mm:ss,yyyy-MM-dd HH:mm:ss,yyyy.MM.dd HH:mm:ss,yyyy MM dd HH:mm:ss,d/M/yyyy HH:mm:ss,d-M-yyyy HH:mm:ss,d.M.yyyy HH:mm:ss,M/d/yyyy HH:mm:ss,M-d-yyyy HH:mm:ss,M.d.yyyy HH:mm:ss,dd/MM/yyyy hh:mm:ss tt,dd-MM-yyyy hh:mm:ss tt,dd.MM.yyyy hh:mm:ss tt,MM/dd/yyyy hh:mm:ss tt,yyyy/MM/dd hh:mm:ss tt,dd/MM/yyyy HH:mm,MM/dd/yyyy HH:mm,yyyy/MM/dd HH:mm,dd/MM/yyyy hh:mm tt,MM/dd/yyyy hh:mm tt,yyyy/MM/dd hh:mm tt,dd MMM yyyy HH:mm:ss,dd MMMM yyyy HH:mm:ss,yyyy MMM dd HH:mm:ss,dd/MM/yy HH:mm:ss,MM/dd/yy HH:mm:ss,yy/MM/dd HH:mm:ss,yyyyMMdd HHmmss,yyyy-MM-ddTHH:mm:ss,yyyy/MM/dd'T'HH:mm:ss,dd/MM/yyyy HH:mm:ss.SSS,MM/dd/yyyy HH:mm:ss.SSS,yyyy/MM/dd HH:mm:ss.SSS,dd-MMM-yyyy HH:mm:ss";
 
                 if (!string.IsNullOrEmpty(allowedformates))
                 {
@@ -150,7 +150,7 @@ namespace SecureService.DAL.Services
                 httpWebRequest.Method = method.ToUpper();
                 //httpWebRequest.Headers.Add("Authorization", "Bearer " + token);
 
-                _logger.LogError("(Request) SecureService --> " + uri + " , Json : " + jsonObj);
+                ¨//_logger.LogError("(Request) SecureService --> " + uri + " , Json : " + jsonObj);
 
                 if (method == "GET")
                 {
@@ -162,7 +162,7 @@ namespace SecureService.DAL.Services
                     using (StreamReader reader = new StreamReader(stream))
                     {
                         JObject JObject = JObject.Parse(reader.ReadToEnd());
-                        _logger.LogError("(Response) SecureService <-- " + uri + " , Json : " + JObject);
+                        //_logger.LogError("(Response) SecureService <-- " + uri + " , Json : " + JObject);
 
                         if (response.StatusCode == HttpStatusCode.OK)
                             return true;
@@ -184,7 +184,7 @@ namespace SecureService.DAL.Services
                     var text = streamReader.ReadToEnd();
                     JObject JObject = JObject.Parse(text);
 
-                    _logger.LogError("(Response) SecureService <-- " + uri + " , Json : " + JObject);
+                    //_logger.LogError("(Response) SecureService <-- " + uri + " , Json : " + JObject);
 
                     if (httpResponse.StatusCode == HttpStatusCode.OK)
                         return true;
