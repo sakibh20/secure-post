@@ -15,6 +15,9 @@ def update_match_result(token: str,  match_id: str, player1_moves: int, player2_
         "Authorization": f"Bearer {token}",
         "Content-Type": "application/json"
     }
+
+    print("Payload:", payload)
+    print("Headers:", headers)
     try:
 
         response = requests.post(url, json=payload, headers=headers)
