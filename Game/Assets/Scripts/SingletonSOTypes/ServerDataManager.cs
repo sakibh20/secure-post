@@ -19,6 +19,8 @@ public class ServerDataManager : SingletonSO<ServerDataManager>
     [Space]
     public string serverBBaseUrl = "http://localhost:8000";
     public string rollDice = "roll-dice";
+    public string claimDice = "claim";
+    public string decide = "decide";
     
     [Space]
     public string wsBaseUrl = "ws://localhost:8000/ws";
@@ -73,18 +75,28 @@ public class ServerDataManager : SingletonSO<ServerDataManager>
     
     public string GetJoinUrl()
     {
-        return $"{wsBaseUrl}/{joinEndpoint}/{serverResponse.Result.useID}";
+        return $"{wsBaseUrl}/{joinEndpoint}/{serverResponse.Result.userID}";
     }    
     
     public string GetJoinMatchUrl()
     {
-        return $"{wsBaseUrl}/{joinMatch}/{serverResponse.Result.useID}/{wsUserMessage.payload.match_id}";
+        return $"{wsBaseUrl}/{joinMatch}/{serverResponse.Result.userID}/{wsUserMessage.payload.match_id}";
     }
     
     public string GetRollUrl()
     {
         return $"{serverBBaseUrl}/{rollDice}";
+    }      
+    
+    public string GetClaimUrl()
+    {
+        return $"{serverBBaseUrl}/{claimDice}";
     }        
+    
+    public string GetDecisionUrl()
+    {
+        return $"{serverBBaseUrl}/{decide}";
+    }   
     
     public string GetLoginUrl()
     {
@@ -123,6 +135,23 @@ public class ServerDataManager : SingletonSO<ServerDataManager>
 }
 
 [Serializable]
+public class DiceRollRequest
+{
+    public string match_id;
+    public string user_id;
+    public int claim_value;
+    public bool decision;
+}
+
+[Serializable]
+public class DiceRollResponse
+{
+    public string match_id;
+    public string user_id;
+    public int dice_roll;
+}
+
+[Serializable]
 public class ServerResponse
 {
     public string Status;
@@ -156,7 +185,7 @@ public class LeaderBoardItem
 [Serializable]
 public class Result
 {
-    public string useID;
+    public string userID;
     public string email;
     public string accessToken;
     public string refreshToken;

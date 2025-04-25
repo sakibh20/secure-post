@@ -28,14 +28,37 @@ public class UIManager : MonoBehaviour
     public Button playerBBelieveBtn;
     public Button playerBBluffBtn;
 
+    [Space] 
+    public GameObject gameView;
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
 
+        // BindButtons();
+        // InitButtons();
+        // InitTexts();
+        
+        InitNewGame();
+    }
+
+    private void InitNewGame()
+    {
         BindButtons();
         InitButtons();
         InitTexts();
+    }
+
+    public void ShowGameView()
+    {
+        InitNewGame();
+        gameView.SetActive(true);
+    }
+    
+    public void HideGameView()
+    {
+        gameView.SetActive(false);
     }
 
     private void BindButtons()
@@ -53,7 +76,7 @@ public class UIManager : MonoBehaviour
 
     private void InitButtons()
     {
-        ActivePlayerARollBtn(true);
+        ActivePlayerARollBtn(false);
         ActivePlayerAClaimBtn(false);
         ActivePlayerABelieveBtn(false);
         ActivePlayerABluffBtn(false);
@@ -66,7 +89,6 @@ public class UIManager : MonoBehaviour
 
     private void InitTexts()
     {
-        
         playerARollText.text = "";
         playerAClaimText.text = "";
 

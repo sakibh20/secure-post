@@ -38,7 +38,7 @@ public class LeaderboardUIManager : ConnectionUIManager
             LeaderboardPlayerItem instantiatedItem = Instantiate(leaderboardPlayerItem, leaderboardItemParent);
             instantiatedItem.InitInfo((count+1).ToString(), item.player, item.wins);
 
-            if (item.player == ServerDataManager.Instance.serverResponse.Result.useID)
+            if (item.player == ServerDataManager.Instance.serverResponse.Result.userID)
             {
                 generatedMine = true;
             }

@@ -11,6 +11,7 @@ public class WebSocketHandler : MonoBehaviour
     public event OnMessageReceived MessageReceived;
 
     public event Action OnClosedCallback;
+    public event Action OnOpenedCallback;
     
     protected virtual void Awake()
     {
@@ -36,13 +37,18 @@ public class WebSocketHandler : MonoBehaviour
         
     }
 
-    protected async void StartSocketConnection(string url)
+    protected async void StartSocketConnection(string url, Action onOpen = null, Action onClose = null)
     {
-        OnClosedCallback = null;
+        OnClosedCallback = onClose;
+        OnOpenedCallback = onOpen;
         
         _websocket = new WebSocket(url);
 
-        _websocket.OnOpen += () => Debug.Log("WebSocket opened.");
+        _websocket.OnOpen += () =>
+        {
+            OnOpenedCallback?.Invoke();
+            Debug.Log("WebSocket opened.");
+        };
         _websocket.OnError += (e) => Debug.LogError($"WebSocket error: {e}");
         _websocket.OnClose += (e) =>
         {
@@ -76,17 +82,11 @@ public class WebSocketHandler : MonoBehaviour
         }
     }
 
-    public async void CloseConnection(Action onClosed = null)
-    {
-        OnClosedCallback = onClosed;
-        await _websocket.Close();
-    }
-
     private async void OnApplicationQuit()
     {
         if (_websocket != null)
         {
-            CloseConnection();   
+            await _websocket.Close();  
         }
     }
 }

@@ -63,6 +63,50 @@ public class RESTAPIManager : MonoBehaviour
         StartCoroutine(HitAcceptDeclineMatch(JsonUtility.ToJson(data), ServerDataManager.Instance.AcceptDeclineMatchUrl()));
     }   
     
+    public void RollDice(string userId, string matchId, Action<string> onSuccess, Action<string> onFailed)
+    {
+        OnSuccess = onSuccess;
+        OnFail = onFailed;
+        
+        DiceRollRequest data = new DiceRollRequest
+        {
+            match_id = matchId,
+            user_id = userId
+        };
+
+        StartCoroutine(HitRollDice(JsonUtility.ToJson(data), ServerDataManager.Instance.GetRollUrl()));
+    }
+    
+    public void ClaimDice(string userId, string matchId, int claimValue, Action<string> onSuccess, Action<string> onFailed)
+    {
+        OnSuccess = onSuccess;
+        OnFail = onFailed;
+        
+        DiceRollRequest data = new DiceRollRequest
+        {
+            match_id = matchId,
+            user_id = userId,
+            claim_value = claimValue
+        };
+
+        StartCoroutine(HitRollDice(JsonUtility.ToJson(data), ServerDataManager.Instance.GetClaimUrl()));
+    }
+    
+    public void Decide(string userId, string matchId, bool decision, Action<string> onSuccess, Action<string> onFailed)
+    {
+        OnSuccess = onSuccess;
+        OnFail = onFailed;
+        
+        DiceRollRequest data = new DiceRollRequest
+        {
+            match_id = matchId,
+            user_id = userId,
+            decision = decision
+        };
+
+        StartCoroutine(HitRollDice(JsonUtility.ToJson(data), ServerDataManager.Instance.GetClaimUrl()));
+    }
+    
     public void LogOut(Action<string> onSuccess, Action<string> onFailed)
     {
         OnSuccess = onSuccess;
@@ -250,6 +294,33 @@ public class RESTAPIManager : MonoBehaviour
         {
             Debug.LogError("Request failed: " + request.error);
             OnFail?.Invoke(serverResponse.Message);
+        }
+    }
+    
+    private IEnumerator HitRollDice(string data, string url)
+    {
+        Debug.Log($"Url: {url}");
+        byte[] bodyRaw = Encoding.UTF8.GetBytes(data);
+
+        UnityWebRequest request = new UnityWebRequest(url, "POST");
+        request.uploadHandler = new UploadHandlerRaw(bodyRaw);
+        request.downloadHandler = new DownloadHandlerBuffer();
+        request.SetRequestHeader("Content-Type", "application/json");
+
+        yield return request.SendWebRequest();
+        
+        DiceRollResponse response = JsonUtility.FromJson<DiceRollResponse>(request.downloadHandler.text);
+        
+        if (request.result == UnityWebRequest.Result.Success)
+        {
+            Debug.Log("Success: " + request.downloadHandler.text);
+            
+            OnSuccess?.Invoke(request.result.ToString());
+        }
+        else
+        {
+            Debug.LogError("Error: " + request.error);
+            OnFail?.Invoke(request.error);
         }
     }
 

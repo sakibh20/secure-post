@@ -1,5 +1,5 @@
-using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
@@ -35,12 +35,49 @@ public class GameManager : MonoBehaviour
 
         if (data.command == ServerDataManager.Instance.RollDiceCommand)
         {
-            
+            RESTAPIManager.Instance.RollDice(ServerDataManager.Instance.serverResponse.Result.userID, 
+                ServerDataManager.Instance.wsUserMessage.payload.match_id, OnSuccessRoll, OnFailRoll);
         }
         else if (data.command == ServerDataManager.Instance.ClaimCommand)
         {
-            
+            RESTAPIManager.Instance.ClaimDice(ServerDataManager.Instance.serverResponse.Result.userID, 
+                ServerDataManager.Instance.wsUserMessage.payload.match_id, Random.Range(1,7), OnSuccessClaim, OnFailClaim);
         }
+        else if (data.command == ServerDataManager.Instance.DecisionCommand)
+        {
+            RESTAPIManager.Instance.Decide(ServerDataManager.Instance.serverResponse.Result.userID, 
+                ServerDataManager.Instance.wsUserMessage.payload.match_id, true, OnSuccessDecide, OnFailDecide);
+        }
+    }
+
+    private void OnSuccessRoll(string message)
+    {
+        
+    }
+
+    private void OnFailRoll(string message)
+    {
+        AuthUIManager.Instance.ShowPopupPanel(message);
+    }
+    
+    private void OnSuccessClaim(string message)
+    {
+        
+    }
+
+    private void OnFailClaim(string message)
+    {
+        AuthUIManager.Instance.ShowPopupPanel(message);
+    }
+    
+    private void OnSuccessDecide(string message)
+    {
+        
+    }
+
+    private void OnFailDecide(string message)
+    {
+        AuthUIManager.Instance.ShowPopupPanel(message);
     }
 
     private void HandleServerMessage(string message)

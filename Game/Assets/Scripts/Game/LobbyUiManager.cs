@@ -24,13 +24,13 @@ public class LobbyUiManager : MonoBehaviour
     private void Start()
     {
         LobbyWebSocketClient.Instance.MessageReceived += HandleServerMessageFromLobby;
-        MatchWebSocketClient.Instance.MessageReceived += HandleServerMessageFromUser;
+        JoinWebSocketClient.Instance.MessageReceived += HandleServerMessageFromUser;
     }
 
     private void OnDestroy()
     {
         LobbyWebSocketClient.Instance.MessageReceived -= HandleServerMessageFromLobby;
-        MatchWebSocketClient.Instance.MessageReceived -= HandleServerMessageFromUser;
+        JoinWebSocketClient.Instance.MessageReceived -= HandleServerMessageFromUser;
     }
 
     private void HandleServerMessageFromLobby(string message)
@@ -58,10 +58,21 @@ public class LobbyUiManager : MonoBehaviour
         }
         else if (ServerDataManager.Instance.wsUserMessage.command == ServerDataManager.Instance.JoinMatchCommand)
         {
-            MatchWebSocketClient.Instance.JoinMatch();
+            MatchWebSocketClient.Instance.JoinMatch(OnSuccessJoinMatch, OnFailJoinMatch);
         }
     }
 
+    private void OnSuccessJoinMatch()
+    {
+        UIManager.Instance.ShowGameView();
+    }
+
+    private void OnFailJoinMatch()
+    {
+        UIManager.Instance.HideGameView();
+        AuthUIManager.Instance.ShowPopupPanel("Matchmaking failed");
+    }
+    
     public void ShowLobby()
     {
         GenerateItems();
@@ -89,7 +100,7 @@ public class LobbyUiManager : MonoBehaviour
         
         foreach (string user in ServerDataManager.Instance.wsLobbyMessage.payload.users)
         {
-            if(user == ServerDataManager.Instance.serverResponse.Result.useID) continue;
+            if(user == ServerDataManager.Instance.serverResponse.Result.userID) continue;
             
             LobbyPlayerItem instantiatedItem = Instantiate(lobbyPlayerItemPrefab, playerItemParent);
             instantiatedItem.InitInfo(user);
@@ -113,13 +124,13 @@ public class LobbyUiManager : MonoBehaviour
     public void AcceptMatch()
     {
         RESTAPIManager.Instance.AcceptDeclineMatch(ServerDataManager.Instance.wsUserMessage.payload.match_id, ServerDataManager.Instance.wsUserMessage.payload.requested_by, 
-            ServerDataManager.Instance.serverResponse.Result.useID, ServerDataManager.Instance.AcceptStatus, OnSuccessAcceptDecline, OnFailAcceptDecline);
+            ServerDataManager.Instance.serverResponse.Result.userID, ServerDataManager.Instance.AcceptStatus, OnSuccessAcceptDecline, OnFailAcceptDecline);
     }
 
     public void DeclineMatch()
     {
         RESTAPIManager.Instance.AcceptDeclineMatch(ServerDataManager.Instance.wsUserMessage.payload.match_id, ServerDataManager.Instance.wsUserMessage.payload.requested_by, 
-            ServerDataManager.Instance.serverResponse.Result.useID, ServerDataManager.Instance.DeclineStatus, OnSuccessAcceptDecline, OnFailAcceptDecline);
+            ServerDataManager.Instance.serverResponse.Result.userID, ServerDataManager.Instance.DeclineStatus, OnSuccessAcceptDecline, OnFailAcceptDecline);
     }
 
     private void OnSuccessAcceptDecline(string message)
