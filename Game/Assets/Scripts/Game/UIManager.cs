@@ -23,6 +23,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private List<Sprite> dices;
     [SerializeField] private Sprite emptyDices;
     [SerializeField] private Image rolledImage;
+    [SerializeField] private GameObject rolledAnimatedImage;
 
     [Header("Buttons")]
     public Button playerARollBtn;
@@ -115,7 +116,11 @@ public class UIManager : MonoBehaviour
     private void InitTexts()
     {
         playerARollText.text = "";
+        
+        rolledAnimatedImage.gameObject.SetActive(false);
         rolledImage.sprite = emptyDices;
+        rolledImage.gameObject.SetActive(true);
+        
         playerAClaimText.text = "";
 
         playerBRollText.text = "";
@@ -145,7 +150,9 @@ public class UIManager : MonoBehaviour
 
         resultText.text = "";
         playerARollText.text = "";
+        rolledAnimatedImage.gameObject.SetActive(false);
         rolledImage.sprite = emptyDices;
+        rolledImage.gameObject.SetActive(true);
     }
 
     public void OnGameOver(string winner)
@@ -188,6 +195,9 @@ public class UIManager : MonoBehaviour
         //MockGameServer.Instance.PlayerARoll();
         ActivePlayerARollBtn(false);
         ActivePlayerAClaimBtn(true);
+        
+        rolledAnimatedImage.gameObject.SetActive(false);
+        rolledImage.gameObject.SetActive(true);
     }
     private void OnPlayerAClaim()
     {
@@ -245,6 +255,9 @@ public class UIManager : MonoBehaviour
     private void ActivePlayerARollBtn(bool value)
     {
         playerARollBtn.interactable = value;
+        
+        rolledAnimatedImage.gameObject.SetActive(true);
+        rolledImage.gameObject.SetActive(false);
     }
     
     private void ActivePlayerAClaimBtn(bool value)
@@ -307,6 +320,8 @@ public class UIManager : MonoBehaviour
     {
         playerARollText.text = value.ToString();
         rolledImage.sprite = dices[value - 1];
+        
+        rolledAnimatedImage.gameObject.SetActive(false);
     }    
     
     public void UpdateRoll(string player, int value)
