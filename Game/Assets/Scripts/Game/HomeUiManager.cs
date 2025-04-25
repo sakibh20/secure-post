@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -23,11 +24,11 @@ public class HomeUiManager : MonoBehaviour
     {
         HideProfilePanel();
         
-        initialInHomeText.text = ServerDataManager.Instance.serverResponse.Result.useID[0].ToString().ToUpper();
-        userNameInHomeText.text = ServerDataManager.Instance.serverResponse.Result.useID; 
+        initialInHomeText.text = ServerDataManager.Instance.serverResponse.Result.userID[0].ToString().ToUpper();
+        userNameInHomeText.text = ServerDataManager.Instance.serverResponse.Result.userID; 
         
         initialInProfileText.text = initialInHomeText.text;
-        userNameInProfileText.text = $"<b>UserID:</b> {ServerDataManager.Instance.serverResponse.Result.useID}";
+        userNameInProfileText.text = $"<b>UserID:</b> {ServerDataManager.Instance.serverResponse.Result.userID}";
         emailInProfileText.text = $"<b>Email:</b> {ServerDataManager.Instance.serverResponse.Result.email}";
     }
 

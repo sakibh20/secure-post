@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -19,54 +20,79 @@ public class UIManager : MonoBehaviour
 
     [Header("Buttons")]
     public Button playerARollBtn;
-    public Button playerAClaimBtn;
+    public List<Button> playerAClaimBtns;
     public Button playerABelieveBtn;
     public Button playerABluffBtn;
+    //
+    // public Button playerBRollBtn;
+    // public Button playerBClaimBtn;
+    // public Button playerBBelieveBtn;
+    // public Button playerBBluffBtn;
 
-    public Button playerBRollBtn;
-    public Button playerBClaimBtn;
-    public Button playerBBelieveBtn;
-    public Button playerBBluffBtn;
+    [Space] 
+    public GameObject gameView;
 
     private void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
 
+        // BindButtons();
+        // InitButtons();
+        // InitTexts();
+        
+        InitNewGame();
+    }
+
+    private void InitNewGame()
+    {
         BindButtons();
         InitButtons();
         InitTexts();
     }
 
+    public void ShowGameView()
+    {
+        InitNewGame();
+        gameView.SetActive(true);
+    }
+    
+    public void HideGameView()
+    {
+        gameView.SetActive(false);
+    }
+
     private void BindButtons()
     {
         playerARollBtn.onClick.AddListener(OnPlayerARoll);
-        playerAClaimBtn.onClick.AddListener(OnPlayerAClaim);
+        foreach (Button claimBtn in playerAClaimBtns)
+        {
+            claimBtn.onClick.AddListener(OnPlayerAClaim);
+        }
         playerABelieveBtn.onClick.AddListener(OnPlayerABelieve);
         playerABluffBtn.onClick.AddListener(OnPlayerACallBluff);
-
-        playerBRollBtn.onClick.AddListener(OnPlayerBRoll);
-        playerBClaimBtn.onClick.AddListener(OnPlayerBClaim);
-        playerBBelieveBtn.onClick.AddListener(OnPlayerBBelieve);
-        playerBBluffBtn.onClick.AddListener(OnPlayerBCallBluff);
+        //
+        // playerBRollBtn.onClick.AddListener(OnPlayerBRoll);
+        // playerBClaimBtn.onClick.AddListener(OnPlayerBClaim);
+        // playerBBelieveBtn.onClick.AddListener(OnPlayerBBelieve);
+        // playerBBluffBtn.onClick.AddListener(OnPlayerBCallBluff);
     }
 
     private void InitButtons()
     {
-        ActivePlayerARollBtn(true);
+        ActivePlayerARollBtn(false);
         ActivePlayerAClaimBtn(false);
         ActivePlayerABelieveBtn(false);
         ActivePlayerABluffBtn(false);
         
-        ActivePlayerBRollBtn(false);
-        ActivePlayerBClaimBtn(false);
-        ActivePlayerBBelieveBtn(false);
-        ActivePlayerBBluffBtn(false);
+        // ActivePlayerBRollBtn(false);
+        // ActivePlayerBClaimBtn(false);
+        // ActivePlayerBBelieveBtn(false);
+        // ActivePlayerBBluffBtn(false);
     }
 
     private void InitTexts()
     {
-        
         playerARollText.text = "";
         playerAClaimText.text = "";
 
@@ -74,6 +100,11 @@ public class UIManager : MonoBehaviour
         playerBClaimText.text = "";
 
         resultText.text = "";
+    }
+
+    public void PlayerARoll()
+    {
+        ActivePlayerARollBtn(true);
     }
 
     public void GameOver()
@@ -104,22 +135,22 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    private void OnPlayerARoll()
+    public void OnPlayerARoll()
     {
-        MockGameServer.Instance.PlayerARoll();
+        //MockGameServer.Instance.PlayerARoll();
         ActivePlayerARollBtn(false);
         ActivePlayerAClaimBtn(true);
     }
     private void OnPlayerAClaim()
     {
-        WebSocketClient.Instance.Mock_PlayerAClaim();
+        //WebSocketClient.Instance.Mock_PlayerAClaim();
         ActivePlayerAClaimBtn(false);
-        ActivePlayerBBelieveBtn(true);
-        ActivePlayerBBluffBtn(true);
+        // ActivePlayerBBelieveBtn(true);
+        // ActivePlayerBBluffBtn(true);
     }
     private void OnPlayerABelieve()
     {
-        WebSocketClient.Instance.Mock_PlayerABelieves();
+        //WebSocketClient.Instance.Mock_PlayerABelieves();
         ActivePlayerABelieveBtn(false);
         ActivePlayerABluffBtn(false);
 
@@ -127,41 +158,41 @@ public class UIManager : MonoBehaviour
     }
     private void OnPlayerACallBluff()
     {
-        WebSocketClient.Instance.Mock_PlayerACallsBluff();
+        //WebSocketClient.Instance.Mock_PlayerACallsBluff();
         ActivePlayerABelieveBtn(false);
         ActivePlayerABluffBtn(false);
 
         OnNextRoundButtonPressed();
     }
     
-    private void OnPlayerBRoll()
+    // private void OnPlayerBRoll()
+    // {
+    //     MockGameServer.Instance.PlayerBRoll();
+    //     ActivePlayerBClaimBtn(true);
+    //     ActivePlayerBRollBtn(false);
+    // }
+    public void OnPlayerBClaim()
     {
-        MockGameServer.Instance.PlayerBRoll();
-        ActivePlayerBClaimBtn(true);
-        ActivePlayerBRollBtn(false);
-    }
-    private void OnPlayerBClaim()
-    {
-        WebSocketClient.Instance.Mock_PlayerBClaim();
-        ActivePlayerBClaimBtn(false);
+        //WebSocketClient.Instance.Mock_PlayerBClaim();
+        //ActivePlayerBClaimBtn(false);
         
         ActivePlayerABelieveBtn(true);
         ActivePlayerABluffBtn(true);
     }
-    private void OnPlayerBBelieve()
-    {
-        WebSocketClient.Instance.Mock_PlayerBBelieves();
-        ActivePlayerBRollBtn(true);
-        ActivePlayerBBelieveBtn(false);
-        ActivePlayerBBluffBtn(false);
-    }
-    private void OnPlayerBCallBluff()
-    {
-        WebSocketClient.Instance.Mock_PlayerBBluff();
-        ActivePlayerBRollBtn(true);
-        ActivePlayerBBelieveBtn(false);
-        ActivePlayerBBluffBtn(false);
-    }
+    // private void OnPlayerBBelieve()
+    // {
+    //     WebSocketClient.Instance.Mock_PlayerBBelieves();
+    //     ActivePlayerBRollBtn(true);
+    //     ActivePlayerBBelieveBtn(false);
+    //     ActivePlayerBBluffBtn(false);
+    // }
+    // private void OnPlayerBCallBluff()
+    // {
+    //     WebSocketClient.Instance.Mock_PlayerBBluff();
+    //     ActivePlayerBRollBtn(true);
+    //     ActivePlayerBBelieveBtn(false);
+    //     ActivePlayerBBluffBtn(false);
+    // }
 
     private void ActivePlayerARollBtn(bool value)
     {
@@ -170,7 +201,10 @@ public class UIManager : MonoBehaviour
     
     private void ActivePlayerAClaimBtn(bool value)
     {
-        playerAClaimBtn.interactable = value;
+        foreach (Button claimBtn in playerAClaimBtns)
+        {
+            claimBtn.interactable = value;
+        }
     }
     
     private void ActivePlayerABelieveBtn(bool value)
@@ -183,29 +217,29 @@ public class UIManager : MonoBehaviour
         playerABluffBtn.interactable = value;
     }
     
-    private void ActivePlayerBRollBtn(bool value)
-    {
-        playerBRollBtn.interactable = value;
-    }
-    
-    private void ActivePlayerBClaimBtn(bool value)
-    {
-        playerBClaimBtn.interactable = value;
-    }
-    
-    private void ActivePlayerBBelieveBtn(bool value)
-    {
-        playerBBelieveBtn.interactable = value;
-    }
-    
-    private void ActivePlayerBBluffBtn(bool value)
-    {
-        playerBBluffBtn.interactable = value;
-    }    
+    // private void ActivePlayerBRollBtn(bool value)
+    // {
+    //     playerBRollBtn.interactable = value;
+    // }
+    //
+    // private void ActivePlayerBClaimBtn(bool value)
+    // {
+    //     playerBClaimBtn.interactable = value;
+    // }
+    //
+    // private void ActivePlayerBBelieveBtn(bool value)
+    // {
+    //     playerBBelieveBtn.interactable = value;
+    // }
+    //
+    // private void ActivePlayerBBluffBtn(bool value)
+    // {
+    //     playerBBluffBtn.interactable = value;
+    // }    
     
     private void OnNextRoundButtonPressed()
     {
-        MockGameServer.Instance.NextRound();
+        //MockGameServer.Instance.NextRound();
 
         ClearTexts();
     }
@@ -220,6 +254,11 @@ public class UIManager : MonoBehaviour
     {
         resultText.text = $"{msg}";
     }
+    
+    public void UpdateRoll(int value)
+    {
+        playerARollText.text = value.ToString();
+    }    
     
     public void UpdateRoll(string player, int value)
     {

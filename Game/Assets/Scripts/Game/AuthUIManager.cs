@@ -1,10 +1,11 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class AuthUIManager : ConnectionUIManager
 {
-    [SerializeField] private RESTAPIManager restapiManager;
+    //[SerializeField] private RESTAPIManager restapiManager;
     [SerializeField] private HomeUiManager homeUiManager;
 
     [SerializeField] private TMP_InputField userIdRegField;
@@ -24,9 +25,21 @@ public class AuthUIManager : ConnectionUIManager
     [SerializeField] private GameObject signUpPanel;
 
     private const string UserIdKey = "userId";
+    private const string PasswordKey = "pass";
+    
+    public event Action OnLoginSuccess;
+
+    public static AuthUIManager Instance;
 
     private void Awake()
     {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        
+        Instance = this;
         InitAuthUI();
     }
 
@@ -44,7 +57,7 @@ public class AuthUIManager : ConnectionUIManager
     {
         if (PlayerPrefs.HasKey(UserIdKey))
         {
-            passwordLoginField.text = "";
+            passwordLoginField.text = PlayerPrefs.GetString(PasswordKey);
             userIdLoginField.text = PlayerPrefs.GetString(UserIdKey);
             ShowLoginPanel();
         }
@@ -54,16 +67,17 @@ public class AuthUIManager : ConnectionUIManager
         }
     }
 
-    private void UpdateUserId(string userId)
+    private void UpdateUserId(string userId, string password)
     {
         PlayerPrefs.SetString(UserIdKey, userId);
+        PlayerPrefs.SetString(PasswordKey, password);
     }
     
     public void OnClickLogOut()
     {
         ShowLoadingPanel();
         
-        restapiManager.LogOut(OnSuccessLogOut, OnFailLogOut);
+        RESTAPIManager.Instance.LogOut(OnSuccessLogOut, OnFailLogOut);
     }
     
     private void OnSuccessLogOut(string message)
@@ -87,7 +101,7 @@ public class AuthUIManager : ConnectionUIManager
         
         ShowLoadingPanel();
         
-        restapiManager.LogIn(userIdLoginField.text, passwordLoginField.text, OnSuccessLogIn, OnFailLogIn);
+        RESTAPIManager.Instance.LogIn(userIdLoginField.text, passwordLoginField.text, OnSuccessLogIn, OnFailLogIn);
     }
 
     private void ClearLogInFields()
@@ -108,10 +122,12 @@ public class AuthUIManager : ConnectionUIManager
         HideSignUpPanel();
 
         HideLoadingPanel();
-        UpdateUserId(userIdLoginField.text);
+        UpdateUserId(userIdLoginField.text, passwordLoginField.text);
         
         homeUiManager.ShowHomeUi();
         ClearLogInFields();
+        
+        OnLoginSuccess?.Invoke();
     }
     
     private void OnFailLogIn(string message)
@@ -127,7 +143,7 @@ public class AuthUIManager : ConnectionUIManager
         
         ShowLoadingPanel();
         
-        restapiManager.Register(userIdRegField.text, userNameRegField.text, passwordRegField.text, passwordConfirmRegField.text, emailRegField.text, OnSuccessSignUp, OnFailSignUp);
+        RESTAPIManager.Instance.Register(userIdRegField.text, userNameRegField.text, passwordRegField.text, passwordConfirmRegField.text, emailRegField.text, OnSuccessSignUp, OnFailSignUp);
     }
     
     private void ClearSignUpFields()
@@ -143,7 +159,7 @@ public class AuthUIManager : ConnectionUIManager
     {
         HideLoadingPanel();
         ShowPopupPanel(message);
-        UpdateUserId(userIdRegField.text);
+        UpdateUserId(userIdRegField.text, passwordRegField.text);
         ClearSignUpFields();
         InitAuthUI();
     }

@@ -3,8 +3,9 @@ import random
 from fastapi import APIRouter
 
 from services.common import notify_user
-from services.game import match_request_notifier, create_game, handle_game_roll_dice, handle_game_claim_dice
-from services.models import DiceRollRequest, ClaimRequest, MatchCreateRequest, MatchAcceptRequest
+from services.game import match_request_notifier, create_game, handle_game_roll_dice, handle_game_claim_dice, \
+    handle_game_round_decide
+from services.models import DiceRollRequest, ClaimRequest, MatchCreateRequest, MatchAcceptRequest, DecideRequest
 
 api_router = APIRouter()
 
@@ -28,6 +29,12 @@ async def claim_dice_api(payload: ClaimRequest):
         "detail": "Claim processed",
     }
 
+@api_router.post("/decide")
+async def decide_dice_api(payload: DecideRequest):
+    await handle_game_round_decide(payload.user_id, payload.match_id, payload.decision)
+    return {
+        "detail": "Decision processed",
+    }
 
 @api_router.post("/match/request")
 async def match_request_api(payload: MatchCreateRequest):

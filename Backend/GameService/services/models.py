@@ -14,6 +14,10 @@ class ClaimRequest(BaseModel):
     user_id: str
     claim_value: int
 
+class DecideRequest(BaseModel):
+    match_id: str
+    user_id: str
+    decision: bool
 
 class MatchCreateRequest(BaseModel):
     MatchId: str
@@ -49,7 +53,8 @@ class GameState(BaseModel):
     currentProcess: GameProcess
     roll: int | None = None
     claim: int | None = None
-    decide: int | None = None
+    decide: bool | None = None
+    round_winner: str | None = None
 
 class Game(BaseModel):
     matchId: str

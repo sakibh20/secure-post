@@ -12,28 +12,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cc31445e9fff8645b37c2d53124ce3a, type: 3}
   m_Name: ServerDataManager
   m_EditorClassIdentifier: 
-  baseUrl: http://localhost:8080
-  registrationEndPoint: api/Register
-  loginEndpoint: api/Login
-  logoutEndpoint: api/Logout
-  leaderboardEndpoint: api/FetchLeaderBoard
+  serverABaseUrl: http://localhost:8080/api
+  registrationEndPoint: Register
+  loginEndpoint: Login
+  logoutEndpoint: Logout
+  leaderboardEndpoint: FetchLeaderBoard
+  refreshAccessToken: GenerateAccessTokenByRefreshToken
+  requestMatch: InitializeMatchRequest
+  acceptMatch: ResponseMatchRequest
+  serverBBaseUrl: http://localhost:8000
+  rollDice: roll-dice
+  wsBaseUrl: ws://localhost:8000/ws
+  lobbyEndpoint: lobby
+  joinEndpoint: user
+  joinMatch: game
   serverResponse:
-    Status: OK
-    Message: Login Successfull.
+    Status: 
+    Message: 
     Result:
-      useID: sakibsec2
-      email: sakibh202@gmail.com
-      accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiJGTCt6ajY5TzBKNXQrdGxTVmRjaTdZQlQyelNCZHdGVUhJdSs4Q0NvRUxZPSIsIlNlc3Npb25JRCI6IkZMK3pqNjlPMEo1dCt0bFNWZGNpN1o2My81eUQ1cW1JMWEyQTZ0REpkV3BFc0N3VFQ3QlJpaE9wbjFNemIrenFVRTJ1SmpRRWovZkk0MFlETS80STRRPT0iLCJTdGFydERhdGUiOiIwNC8yMS8yMDI1IDAwOjI5OjA4IiwiRXhwaXJ5RGF0ZSI6IjA0LzIxLzIwMjUgMDA6NDQ6MDgiLCJleHAiOjE3NDUxOTYyNDgsImlzcyI6IlNlY3VyZVNlcnZpY2UiLCJhdWQiOiJTZWN1cmVTZXJ2aWNlIn0.RZy160EDsPkWocBWxeWX6crYYzJsNT1S7jtniAisDdc
-      refreshToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiJGTCt6ajY5TzBKNXQrdGxTVmRjaTdZQlQyelNCZHdGVUhJdSs4Q0NvRUxZPSIsIlRva2VuSUQiOiJGTCt6ajY5TzBKNXQrdGxTVmRjaTdaNjMvNXlENXFtSTFhMkE2dERKZFdwRXNDd1RUN0JSaWhPcG4xTXpiK3pxUG9GeFliNU1wT0pUeTNVak16Z29vQ0c4NmZTOTNNRFlLTjVOam9ZZnREbUFZSlJ6eFpJRzNENjNEemVEaEd1bSIsIlN0YXJ0RGF0ZSI6IjA0LzIxLzIwMjUgMDA6Mjk6MDgiLCJFeHBpcnlEYXRlIjoiMDQvMjgvMjAyNSAwMDoyOTowOCIsImV4cCI6MTc0NTgwMDE0OCwiaXNzIjoiU2VjdXJlU2VydmljZSIsImF1ZCI6IlNlY3VyZVNlcnZpY2UifQ.6f_SthnEGRfBcpCQRxiJx311_CT3adQecj5Eo1mHch4
-      accessTokenExpiry: 2025-04-21T00:44:08.9404258+00:00
-      refreshTokenExpiry: 2025-04-28T00:29:08.949137+00:00
+      useID: 
+      email: 
+      accessToken: 
+      refreshToken: 
+      accessTokenExpiry: 
+      refreshTokenExpiry: 
   leaderboardResponse:
     Status: SUCCESS
     Message: Leaderboard fetched successfully.
     Result:
-    - player: samith
-      win: 
-    - player: sourav
-      win: 
+      topUsers: []
+      user:
+        player: 
+        wins: 
+        position: 
+  wsLobbyMessage:
+    command: 
+    payload:
+      status: 
+      requested_by: 
+      match_id: 
+      users: []
+  wsUserMessage:
+    command: 
+    payload:
+      status: 
+      requested_by: 
+      match_id: 
+      users: []
   FailedStatus: failed
   SuccessStatus: ok
+  AcceptStatus: ACCEPTED
+  DeclineStatus: DECLINED
+  ReceivedChallengeCommand: match_request
+  JoinMatchCommand: join_match
+  RollDiceCommand: roll_dice
+  ClaimCommand: claim_dice
+  DecisionCommand: decide
