@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SecureService.BLL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6cd8d091390e717ca16252a82ce460db08e77611")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4dee3dbfce290216efedc893990a15e74f62eedf")]
 [assembly: System.Reflection.AssemblyProductAttribute("SecureService.BLL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SecureService.BLL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

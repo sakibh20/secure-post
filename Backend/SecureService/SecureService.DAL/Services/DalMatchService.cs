@@ -169,6 +169,8 @@ namespace SecureService.DAL.Services
             StatusResult<object> status = new StatusResult<object>();
             try
             {
+                _logger.LogError("UpdateMatchResult Received : " + JsonConvert.SerializeObject(matchInfo));
+
                 if (matchInfo.MatchId != match.MatchId)
                     throw new Exception("Invalid Match ID.");
                 else if (match.Status?.ToUpper() != "ACCEPTED")
