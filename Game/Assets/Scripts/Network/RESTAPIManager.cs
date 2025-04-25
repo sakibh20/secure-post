@@ -351,8 +351,12 @@ public class RESTAPIManager : MonoBehaviour
         }
     }
 
-    public void RefreshAccessToken()
+    private Action OnSuccessRefresh;
+    private Action OnFailRefresh;
+    public void RefreshAccessToken(Action onSuccess, Action onFailed)
     {
+        OnSuccessRefresh = onSuccess;
+        OnFailRefresh = onFailed;
         StartCoroutine(HandleAccessTokenTimeout());
     }
 
@@ -374,10 +378,12 @@ public class RESTAPIManager : MonoBehaviour
                 JsonUtility.FromJson<ServerResponse>(request.downloadHandler.text);
             if (serverResponse.Status.ToLower() == ServerDataManager.Instance.FailedStatus)
             {
+                OnFailRefresh?.Invoke();
                 //OnFail?.Invoke(ServerDataManager.Instance.leaderboardResponse.Message);
             }
             else
             {
+                OnSuccessRefresh?.Invoke();
                 //OnSuccess?.Invoke(ServerDataManager.Instance.leaderboardResponse.Message);
             }
         }
@@ -385,6 +391,7 @@ public class RESTAPIManager : MonoBehaviour
         {
             Debug.LogError("Request failed: " + request.error);
             //OnFail?.Invoke(request.result.ToString());
+            OnFailRefresh?.Invoke();
         }
     }
 

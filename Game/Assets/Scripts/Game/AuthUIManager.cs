@@ -128,19 +128,41 @@ public class AuthUIManager : ConnectionUIManager
         homeUiManager.ShowHomeUi();
         ClearLogInFields();
         
-        TimeSpan remaining = ServerDataManager.Instance.serverResponse.Result.accessTokenExpiry.ToUniversalTime() - DateTime.UtcNow;
-        double secondsRemaining = remaining.TotalSeconds-60;
-        if (secondsRemaining <= 0) secondsRemaining = 0;
-        
-        Invoke(nameof(RefreshAccessToken), (float)secondsRemaining);
+        Invoke(nameof(RefreshAccessToken), GetInSec());
         
         OnLoginSuccess?.Invoke();
+    }
+
+
+    [SerializeField] private float early = 880;
+    private float GetInSec()
+    {
+        //Debug.Log($"tokenExpiry: {ServerDataManager.Instance.serverResponse.Result.accessTokenExpiry}");
+        DateTime tokenExpiry = DateTime.Parse(ServerDataManager.Instance.serverResponse.Result.accessTokenExpiry);
+        TimeSpan remaining = tokenExpiry.ToUniversalTime() - DateTime.UtcNow;
+        double secondsRemaining = remaining.TotalSeconds - early;
+        if (secondsRemaining <= 0) secondsRemaining = 0;
+        
+        //Debug.Log($"sec: {secondsRemaining}");
+        
+        return (float)secondsRemaining;
     }
 
     [ContextMenu("RefreshAccessToken")]
     private void RefreshAccessToken()
     {
-        RESTAPIManager.Instance.RefreshAccessToken();
+        RESTAPIManager.Instance.RefreshAccessToken(OnSuccessRefresh, OnFailRefresh);
+    }
+
+    private void OnSuccessRefresh()
+    {
+        Invoke(nameof(RefreshAccessToken), GetInSec());
+    }
+
+    [ContextMenu("OnFailRefresh")]
+    private void OnFailRefresh()
+    {
+        ShowLoginPanel();
     }
     
     private void OnFailLogIn(string message)

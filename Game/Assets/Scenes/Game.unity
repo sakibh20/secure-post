@@ -11726,12 +11726,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1457187064}
-  - {fileID: 1233560751}
   - {fileID: 1325370697}
   - {fileID: 1037426982}
   - {fileID: 708949383}
   - {fileID: 1935160390}
   - {fileID: 327944466}
+  - {fileID: 1233560751}
   - {fileID: 1434841287}
   - {fileID: 487421998}
   m_Father: {fileID: 0}
@@ -17491,6 +17491,7 @@ MonoBehaviour:
   signInButton: {fileID: 1417114821}
   logInPanel: {fileID: 1233560750}
   signUpPanel: {fileID: 1037426981}
+  early: 120
 --- !u!1 &1728486020
 GameObject:
   m_ObjectHideFlags: 0
