@@ -205,8 +205,8 @@ public class Result
     public string email;
     public string accessToken;
     public string refreshToken;
-    public string accessTokenExpiry;
-    public string refreshTokenExpiry;
+    public DateTime accessTokenExpiry;
+    public DateTime refreshTokenExpiry;
 }
 
 [Serializable]

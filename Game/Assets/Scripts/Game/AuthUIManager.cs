@@ -50,7 +50,7 @@ public class AuthUIManager : ConnectionUIManager
 
     private void OnDisable()
     {
-        
+        CancelInvoke(nameof(RefreshAccessToken));
     }
 
     private void InitAuthUI()
@@ -128,7 +128,19 @@ public class AuthUIManager : ConnectionUIManager
         homeUiManager.ShowHomeUi();
         ClearLogInFields();
         
+        TimeSpan remaining = ServerDataManager.Instance.serverResponse.Result.accessTokenExpiry.ToUniversalTime() - DateTime.UtcNow;
+        double secondsRemaining = remaining.TotalSeconds-60;
+        if (secondsRemaining <= 0) secondsRemaining = 0;
+        
+        Invoke(nameof(RefreshAccessToken), (float)secondsRemaining);
+        
         OnLoginSuccess?.Invoke();
+    }
+
+    [ContextMenu("RefreshAccessToken")]
+    private void RefreshAccessToken()
+    {
+        RESTAPIManager.Instance.RefreshAccessToken();
     }
     
     private void OnFailLogIn(string message)
