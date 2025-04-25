@@ -56,7 +56,7 @@ class GameManager:
         else:
             raise ValueError("Invalid game process.")
 
-        self.update_game_state()
+        await self.update_game_state()
         print(self.game.model_dump_json(indent=2))
 
     async def handle_rolling(self, player):
@@ -91,18 +91,18 @@ class GameManager:
             "payload": payload
         })
 
-    def notify_game_status(self, current_state):
+    async def notify_game_status(self, current_state):
         for player in [self.game.player1, self.game.player2]:
-            self.send_command(player, "round_over", {
+            await self.send_command(player, "round_over", {
                 "round_winner": current_state.round_winner,
                 "round_status": "win" if current_state.round_winner == player else "lose",
-                "game_status": self.game.status,
+                "game_status": str(self.game.status),
                 "player1_score": self.game.player1Score,
                 "player2_score": self.game.player2Score,
                 "current_round": self.game.currentRound,
                 "total_round": self.game.totalRound,
             })
-    def update_game_state(self):
+    async def update_game_state(self):
         """Update the game state based on the current process."""
         current_state = self.game.currentState.currentProcess
 
@@ -121,7 +121,7 @@ class GameManager:
                 currentProcess=GameProcess.ROLLING,
             )
             self.game.currentRound += 1
-            self.notify_game_status(current_state)
+            await self.notify_game_status(current_state)
 
 
     def get_opponent(self):
