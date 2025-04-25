@@ -72,6 +72,9 @@ class GameManager:
 
         print(self.game.model_dump_json(indent=2))
 
+        if self.game.CurrentProcess == GameProcess.ROLLING:
+            await self.handle_rolling(self.game.currentState.currentTurn)
+
     async def handle_rolling(self, player):
         """Handle the rolling process."""
         print(f"Handling rolling for player: {player}")
