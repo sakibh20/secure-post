@@ -181,7 +181,7 @@ namespace SecureService.DAL.Services
                             if (_context.SaveChanges() > 0)
                             {
                                 TokenResponseViewModel token = GenerateToken(usersNewSession, checkActiveRefreshToken);
-                                token.UseID = Validuser.UserId;
+                                token.UserID = Validuser.UserId;
                                 token.Email = Validuser.Email;
                                 return token;
                             }

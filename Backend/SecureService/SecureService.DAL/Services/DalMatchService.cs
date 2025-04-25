@@ -65,9 +65,11 @@ namespace SecureService.DAL.Services
                     var result = _cls.CallUnauthorizedApi(GAME_SERVICE, "match/request", "application/json", "POST", match);
                     if (result)
                     {
+                        var checkActiveSession = _context.UserSession.Where(it => it.UserId == user.UserId && it.IsActiveSessionFlag == true).OrderByDescending(it=> it.SessionStartTime).FirstOrDefault();
+
                         status.Status = "OK";
                         status.Message = user.UserId + " has requested " + player2.UserId + " for a Match.";
-                        status.Result = null;
+                        status.Result = _cls.EncryptSha256Hash(checkActiveSession.SessionID);
                     }
                     else
                         throw new Exception("Request to Ws Server is failed,");
@@ -110,10 +112,18 @@ namespace SecureService.DAL.Services
 
                         string matchToken = _jwt.GenerateMatchToken(userExistingMatch);
 
+
+                        var checkActiveSessionPlayer1 = _context.UserSession.Where(it => it.UserId == userExistingMatch.Player1 && it.IsActiveSessionFlag == true).OrderByDescending(it => it.SessionStartTime).FirstOrDefault();
+
+                        var checkActiveSessionPlayer2 = _context.UserSession.Where(it => it.UserId == userExistingMatch.Player2 && it.IsActiveSessionFlag == true).OrderByDescending(it => it.SessionStartTime).FirstOrDefault();
+
+
                         MatchAcceptedViewModel matchAccepted = new MatchAcceptedViewModel();
                         matchAccepted.MatchId = userExistingMatch.MatchId;
                         matchAccepted.Player1 = userExistingMatch.Player1;
+                        matchAccepted.Player1SecretKey = _cls.EncryptSha256Hash(checkActiveSessionPlayer1.SessionID);
                         matchAccepted.Player2 = userExistingMatch.Player2;
+                        matchAccepted.Player2SecretKey = _cls.EncryptSha256Hash(checkActiveSessionPlayer2.SessionID);
                         matchAccepted.FirstTurn = matchAccepted.Player1;
                         matchAccepted.MatchToken = matchToken;
 
@@ -123,7 +133,7 @@ namespace SecureService.DAL.Services
                         {
                             status.Status = "OK";
                             status.Message = userExistingMatch.Player2 + " has accepted " + userExistingMatch.Player1 + "'s Match Request.";
-                            status.Result = null;
+                            status.Result = _cls.EncryptSha256Hash(checkActiveSessionPlayer2.SessionID);
                         }
                         else
                             throw new Exception("Request to Ws Server is failed,");
