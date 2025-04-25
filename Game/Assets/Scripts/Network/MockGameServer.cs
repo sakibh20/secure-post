@@ -31,7 +31,7 @@ public class MockGameServer : MonoBehaviour
     {
         _playerAScore = 0;
         _playerBScore = 0;
-        UIManager.Instance.UpdateScore(0, 0);
+        //UIManager.Instance.UpdateScore(0, 0);
         UIManager.Instance.UpdateRound(_round);
         
         NextRound();

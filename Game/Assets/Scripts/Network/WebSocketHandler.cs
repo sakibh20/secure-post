@@ -82,6 +82,14 @@ public class WebSocketHandler : MonoBehaviour
         }
     }
 
+    public async void CloseConnection()
+    {
+        if (_websocket != null)
+        {
+            await _websocket.Close();  
+        }
+    }
+
     private async void OnApplicationQuit()
     {
         if (_websocket != null)

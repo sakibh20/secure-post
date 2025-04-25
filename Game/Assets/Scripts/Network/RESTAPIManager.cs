@@ -327,6 +327,7 @@ public class RESTAPIManager : MonoBehaviour
     private IEnumerator HitClaimDecideDice(string data, string url)
     {
         Debug.Log($"Url: {url}");
+        Debug.Log($"data: {data}");
         byte[] bodyRaw = Encoding.UTF8.GetBytes(data);
 
         UnityWebRequest request = new UnityWebRequest(url, "POST");

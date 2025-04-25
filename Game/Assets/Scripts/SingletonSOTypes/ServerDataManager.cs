@@ -47,6 +47,9 @@ public class ServerDataManager : SingletonSO<ServerDataManager>
     public string RollDiceCommand = "roll_dice";
     public string ClaimCommand = "claim_dice";
     public string DecisionCommand = "decide";
+    public string MatchStartCommand = "match_start";
+    public string RoundOverCommand = "round_over";
+    public string GameOverCommandCommand = "game_over";
     
     [Space]
     public ServerResponse serverResponse;
@@ -54,6 +57,7 @@ public class ServerDataManager : SingletonSO<ServerDataManager>
 
     public WSLobbyMessage wsLobbyMessage;
     public WSLobbyMessage wsUserMessage;
+    public WSLobbyMessage wsMatchMessage;
 
     public DiceRollResponse diceRollResponse;
     public DiceRollResponse decideResponse;
@@ -243,6 +247,7 @@ public class Payload
     public string game_status;
     public int total_round;
     public int current_round;
+    public int claim;
 }
 
 [Serializable]

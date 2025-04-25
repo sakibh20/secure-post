@@ -31,26 +31,41 @@ public class GameManager : MonoBehaviour
         
         if(string.IsNullOrWhiteSpace(message)) return;
         
-        WSLobbyMessage data = JsonUtility.FromJson<WSLobbyMessage>(message);
+        ServerDataManager.Instance.wsMatchMessage = JsonUtility.FromJson<WSLobbyMessage>(message);
 
-        if (data.command == ServerDataManager.Instance.RollDiceCommand)
+        if (ServerDataManager.Instance.wsMatchMessage.command == ServerDataManager.Instance.RollDiceCommand)
         {
             UIManager.Instance.PlayerARoll();
             
             // RESTAPIManager.Instance.RollDice(ServerDataManager.Instance.serverResponse.Result.userID, 
             //     ServerDataManager.Instance.wsUserMessage.payload.match_id, OnSuccessRoll, OnFailRoll);
         }
-        else if (data.command == ServerDataManager.Instance.ClaimCommand)
+        else if (ServerDataManager.Instance.wsMatchMessage.command == ServerDataManager.Instance.ClaimCommand)
         {
             UIManager.Instance.OnPlayerARoll();
             // RESTAPIManager.Instance.ClaimDice(ServerDataManager.Instance.serverResponse.Result.userID, 
             //     ServerDataManager.Instance.wsUserMessage.payload.match_id, Random.Range(1,7), OnSuccessClaim, OnFailClaim);
         }
-        else if (data.command == ServerDataManager.Instance.DecisionCommand)
+        else if (ServerDataManager.Instance.wsMatchMessage.command == ServerDataManager.Instance.DecisionCommand)
         {
-            UIManager.Instance.OnPlayerBClaim();
+            UIManager.Instance.OnPlayerBClaim(ServerDataManager.Instance.wsMatchMessage.payload.claim);
             // RESTAPIManager.Instance.Decide(ServerDataManager.Instance.serverResponse.Result.userID, 
             //     ServerDataManager.Instance.wsUserMessage.payload.match_id, true, OnSuccessDecide, OnFailDecide);
+        }
+        else if (ServerDataManager.Instance.wsMatchMessage.command == ServerDataManager.Instance.MatchStartCommand)
+        {
+            UIManager.Instance.HideWaitingPanel();
+        }
+        else if (ServerDataManager.Instance.wsMatchMessage.command == ServerDataManager.Instance.RoundOverCommand)
+        {
+            UIManager.Instance.OnRoundOver();
+        }
+        else if (ServerDataManager.Instance.wsMatchMessage.command == ServerDataManager.Instance.GameOverCommandCommand)
+        {
+            var winner = ServerDataManager.Instance.wsMatchMessage.payload.player1_score == 4 ? ServerDataManager.Instance.wsMatchMessage.payload.player1 : ServerDataManager.Instance.wsMatchMessage.payload.player2;   
+            
+            UIManager.Instance.OnGameOver(winner);
+            MatchWebSocketClient.Instance.CloseConnection();
         }
     }
 
@@ -105,42 +120,42 @@ public class GameManager : MonoBehaviour
         AuthUIManager.Instance.ShowPopupPanel(message);
     }
 
-    private void HandleServerMessage(string message)
-    {
-        Debug.Log($"Server Message: {message}");
-
-        if (message.StartsWith(NetworkConstants.RollPrefix))
-        {
-            string value = message.Substring(NetworkConstants.RollPrefix.Length);
-            int realRoll = int.Parse(value);
-            //PlayerController.Instance.ReceiveRoll(realRoll);
-        }
-        else if (message.StartsWith(NetworkConstants.ClaimPrefix))
-        {
-            // Format: ClaimPrefixA:4 or ClaimPrefixB:6
-            string fullValue = message.Substring(NetworkConstants.ClaimPrefix.Length); // "A:4" or "B:6"
-            string[] parts = fullValue.Split(':');
-            if (parts.Length == 2)
-            {
-                string player = parts[0];
-                string claimedValue = parts[1];
-                UIManager.Instance.ShowClaim(player, claimedValue);
-            }
-        }
-        else if (message.StartsWith(NetworkConstants.ResultPrefix))
-        {
-            string result = message.Substring(NetworkConstants.ResultPrefix.Length);
-            UIManager.Instance.ShowResult(result);
-        }
-        else if (message.StartsWith(NetworkConstants.ScorePrefix))
-        {
-            string scoreString = message.Substring(NetworkConstants.ScorePrefix.Length); // A:2|B:1
-            string[] parts = scoreString.Split('|');
-            int scoreA = int.Parse(parts[0].Split(':')[1]);
-            int scoreB = int.Parse(parts[1].Split(':')[1]);
-            UIManager.Instance.UpdateScore(scoreA, scoreB);
-        }
-    }
+    // private void HandleServerMessage(string message)
+    // {
+    //     Debug.Log($"Server Message: {message}");
+    //
+    //     if (message.StartsWith(NetworkConstants.RollPrefix))
+    //     {
+    //         string value = message.Substring(NetworkConstants.RollPrefix.Length);
+    //         int realRoll = int.Parse(value);
+    //         //PlayerController.Instance.ReceiveRoll(realRoll);
+    //     }
+    //     else if (message.StartsWith(NetworkConstants.ClaimPrefix))
+    //     {
+    //         // Format: ClaimPrefixA:4 or ClaimPrefixB:6
+    //         string fullValue = message.Substring(NetworkConstants.ClaimPrefix.Length); // "A:4" or "B:6"
+    //         string[] parts = fullValue.Split(':');
+    //         if (parts.Length == 2)
+    //         {
+    //             string player = parts[0];
+    //             string claimedValue = parts[1];
+    //             UIManager.Instance.ShowClaim(player, claimedValue);
+    //         }
+    //     }
+    //     else if (message.StartsWith(NetworkConstants.ResultPrefix))
+    //     {
+    //         string result = message.Substring(NetworkConstants.ResultPrefix.Length);
+    //         UIManager.Instance.ShowResult(result);
+    //     }
+    //     else if (message.StartsWith(NetworkConstants.ScorePrefix))
+    //     {
+    //         string scoreString = message.Substring(NetworkConstants.ScorePrefix.Length); // A:2|B:1
+    //         string[] parts = scoreString.Split('|');
+    //         int scoreA = int.Parse(parts[0].Split(':')[1]);
+    //         int scoreB = int.Parse(parts[1].Split(':')[1]);
+    //         UIManager.Instance.UpdateScore(scoreA, scoreB);
+    //     }
+    // }
 
     public void SendClaim(string player, int number)
     {

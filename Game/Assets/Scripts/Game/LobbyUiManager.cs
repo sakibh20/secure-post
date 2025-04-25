@@ -70,7 +70,7 @@ public class LobbyUiManager : MonoBehaviour
     private void OnFailJoinMatch()
     {
         UIManager.Instance.HideGameView();
-        AuthUIManager.Instance.ShowPopupPanel("Matchmaking failed");
+        //AuthUIManager.Instance.ShowPopupPanel("Matchmaking failed");
     }
     
     public void ShowLobby()
@@ -114,6 +114,8 @@ public class LobbyUiManager : MonoBehaviour
         matchRequestPanel.SetActive(true);
         
         matchRequestPanelText.text = $"Received challenge from {ServerDataManager.Instance.wsUserMessage.payload.requested_by}";
+        
+        Invoke(nameof(HideMatchRequestView), waitingTime-2);
     }
 
     private void HideMatchRequestView()

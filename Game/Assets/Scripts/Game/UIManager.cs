@@ -16,7 +16,9 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI resultText;
     public TextMeshProUGUI roundText;
     public TextMeshProUGUI playerAScoreText;
+    public TextMeshProUGUI opponentScoreText;
     public TextMeshProUGUI playerBScoreText;
+    public TextMeshProUGUI finalResultText;
 
     [Header("Buttons")]
     public Button playerARollBtn;
@@ -31,6 +33,8 @@ public class UIManager : MonoBehaviour
 
     [Space] 
     public GameObject gameView;
+    public GameObject winnerView;
+    public GameObject waiting;
 
     private void Awake()
     {
@@ -55,6 +59,19 @@ public class UIManager : MonoBehaviour
     {
         InitNewGame();
         gameView.SetActive(true);
+        ShowWaitingPanel();
+    }
+
+    public void ShowWaitingPanel()
+    {
+        waiting.SetActive(true);
+    }
+
+    public void HideWaitingPanel()
+    {
+        roundText.text = $"Round: {ServerDataManager.Instance.wsUserMessage.payload.current_round}/{ServerDataManager.Instance.wsUserMessage.payload.total_round}";
+        
+        waiting.SetActive(false);
     }
     
     public void HideGameView()
@@ -107,6 +124,31 @@ public class UIManager : MonoBehaviour
         ActivePlayerARollBtn(true);
     }
 
+    public void OnRoundOver()
+    {
+        int yourScore = 0;
+        int opponentScore = 0;
+        yourScore = ServerDataManager.Instance.wsMatchMessage.payload.player1 ==
+                ServerDataManager.Instance.serverResponse.Result.userID ? ServerDataManager.Instance.wsMatchMessage.payload.player1_score : ServerDataManager.Instance.wsMatchMessage.payload.player2_score;        
+        
+        opponentScore = ServerDataManager.Instance.wsMatchMessage.payload.player1 ==
+                        ServerDataManager.Instance.serverResponse.Result.userID ? ServerDataManager.Instance.wsMatchMessage.payload.player2_score : ServerDataManager.Instance.wsMatchMessage.payload.player1_score;
+        
+        roundText.text = $"Round: {ServerDataManager.Instance.wsMatchMessage.payload.current_round}/{ServerDataManager.Instance.wsMatchMessage.payload.total_round}";
+        playerAScoreText.text = $"Your Score: {yourScore}";
+        opponentScoreText.text = $"Opponent's Score: {opponentScore}";
+
+        resultText.text = "";
+        playerARollText.text = "";
+    }
+
+    public void OnGameOver(string winner)
+    {
+        HideGameView();
+        winnerView.SetActive(true);
+        finalResultText.text = $"{winner} own the match!";
+    }    
+    
     public void GameOver()
     {
         InitButtons();
@@ -171,11 +213,11 @@ public class UIManager : MonoBehaviour
     //     ActivePlayerBClaimBtn(true);
     //     ActivePlayerBRollBtn(false);
     // }
-    public void OnPlayerBClaim()
+    public void OnPlayerBClaim(int claim)
     {
         //WebSocketClient.Instance.Mock_PlayerBClaim();
         //ActivePlayerBClaimBtn(false);
-        
+        resultText.text = $"Opponent claimed {claim}. Now you decide !";
         ActivePlayerABelieveBtn(true);
         ActivePlayerABluffBtn(true);
     }
@@ -281,12 +323,12 @@ public class UIManager : MonoBehaviour
         resultText.text = $"Result: {result}";
     }
 
-    public void UpdateScore(int scoreA, int scoreB)
-    {
-        int maxScore = MockGameServer.Instance.MaxScore;
-        playerAScoreText.text = $"Score: {scoreA}/{maxScore}";
-        playerBScoreText.text = $"Score: {scoreB}/{maxScore}";
-    }
+    // public void UpdateScore(int scoreA, int scoreB)
+    // {
+    //     int maxScore = MockGameServer.Instance.MaxScore;
+    //     playerAScoreText.text = $"Score: {scoreA}/{maxScore}";
+    //     playerBScoreText.text = $"Score: {scoreB}/{maxScore}";
+    // }
 
     public void UpdateRound(int round)
     {

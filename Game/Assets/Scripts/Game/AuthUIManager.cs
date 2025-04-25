@@ -55,6 +55,7 @@ public class AuthUIManager : ConnectionUIManager
 
     private void InitAuthUI()
     {
+        HidePopupPanel();
         if (PlayerPrefs.HasKey(UserIdKey))
         {
             passwordLoginField.text = PlayerPrefs.GetString(PasswordKey);
