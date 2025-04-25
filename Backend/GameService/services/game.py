@@ -103,7 +103,7 @@ async def handle_game_round_decide(user_id: str, match_id: str, decision: bool):
     game_manager = game_data.get(match_id)
     if not game_manager:
         raise HTTPException(status_code=404, detail="Game not found")
-    if user_id == game_manager.game.currentState.currentTurn:
+    if user_id != game_manager.game.currentState.currentTurn:
         raise HTTPException(status_code=403, detail="Not your turn")
 
     game_manager.game.currentState.decide = decision
