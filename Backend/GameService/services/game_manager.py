@@ -73,7 +73,7 @@ class GameManager:
         print(self.game.model_dump_json(indent=2))
 
         if self.game.currentState.currentProcess == GameProcess.ROLLING:
-            await self.handle_rolling(self.game.currentState.currentTurn)
+            await self.next_turn()
 
     async def handle_rolling(self, player):
         """Handle the rolling process."""
@@ -178,7 +178,7 @@ class GameManager:
             current_state = self.game.currentState
             self.game.oldStates.append(current_state)
             self.game.currentState = GameState(
-                currentTurn=self.get_opponent(),
+                currentTurn=self.game.currentState.currentTurn,
                 currentProcess=GameProcess.ROLLING,
             )
             self.game.currentRound += 1
