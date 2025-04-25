@@ -62,22 +62,22 @@ public class GameManager : MonoBehaviour
     }
 
     [ContextMenu("Claim")]
-    public void Claim()
+    public void Claim(int value)
     {
         RESTAPIManager.Instance.ClaimDice(ServerDataManager.Instance.serverResponse.Result.userID, 
-            ServerDataManager.Instance.wsUserMessage.payload.match_id, Random.Range(1,7), OnSuccessClaim, OnFailClaim);
+            ServerDataManager.Instance.wsUserMessage.payload.match_id, value, OnSuccessClaim, OnFailClaim);
     }    
     
     [ContextMenu("Decide")]
-    public void Decide()
+    public void Decide(bool value)
     {
         RESTAPIManager.Instance.Decide(ServerDataManager.Instance.serverResponse.Result.userID, 
-            ServerDataManager.Instance.wsUserMessage.payload.match_id, true, OnSuccessDecide, OnFailDecide);
+            ServerDataManager.Instance.wsUserMessage.payload.match_id, value, OnSuccessDecide, OnFailDecide);
     }
 
     private void OnSuccessRoll(string message)
     {
-        
+        UIManager.Instance.UpdateRoll(ServerDataManager.Instance.diceRollResponse.dice_roll);
     }
 
     private void OnFailRoll(string message)

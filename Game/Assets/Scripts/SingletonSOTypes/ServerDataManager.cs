@@ -54,6 +54,10 @@ public class ServerDataManager : SingletonSO<ServerDataManager>
 
     public WSLobbyMessage wsLobbyMessage;
     public WSLobbyMessage wsUserMessage;
+
+    public DiceRollResponse diceRollResponse;
+    public DiceRollResponse decideResponse;
+    public DiceRollResponse claimResponse;
     
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     public static void OnBeforeSceneLoad()

@@ -89,7 +89,7 @@ public class RESTAPIManager : MonoBehaviour
             claim_value = claimValue
         };
 
-        StartCoroutine(HitRollDice(JsonUtility.ToJson(data), ServerDataManager.Instance.GetClaimUrl()));
+        StartCoroutine(HitClaimDecideDice(JsonUtility.ToJson(data), ServerDataManager.Instance.GetClaimUrl()));
     }
     
     public void Decide(string userId, string matchId, bool decision, Action<string> onSuccess, Action<string> onFailed)
@@ -104,7 +104,7 @@ public class RESTAPIManager : MonoBehaviour
             decision = decision
         };
 
-        StartCoroutine(HitRollDice(JsonUtility.ToJson(data), ServerDataManager.Instance.GetDecisionUrl()));
+        StartCoroutine(HitClaimDecideDice(JsonUtility.ToJson(data), ServerDataManager.Instance.GetDecisionUrl()));
     }
     
     public void LogOut(Action<string> onSuccess, Action<string> onFailed)
@@ -298,6 +298,33 @@ public class RESTAPIManager : MonoBehaviour
     }
     
     private IEnumerator HitRollDice(string data, string url)
+    {
+        Debug.Log($"Url: {url}");
+        byte[] bodyRaw = Encoding.UTF8.GetBytes(data);
+
+        UnityWebRequest request = new UnityWebRequest(url, "POST");
+        request.uploadHandler = new UploadHandlerRaw(bodyRaw);
+        request.downloadHandler = new DownloadHandlerBuffer();
+        request.SetRequestHeader("Content-Type", "application/json");
+
+        yield return request.SendWebRequest();
+        
+        ServerDataManager.Instance.diceRollResponse = JsonUtility.FromJson<DiceRollResponse>(request.downloadHandler.text);
+        
+        if (request.result == UnityWebRequest.Result.Success)
+        {
+            Debug.Log("Success: " + request.downloadHandler.text);
+            
+            OnSuccess?.Invoke(request.result.ToString());
+        }
+        else
+        {
+            Debug.LogError("Error: " + request.error);
+            OnFail?.Invoke(request.error);
+        }
+    }
+    
+    private IEnumerator HitClaimDecideDice(string data, string url)
     {
         Debug.Log($"Url: {url}");
         byte[] bodyRaw = Encoding.UTF8.GetBytes(data);

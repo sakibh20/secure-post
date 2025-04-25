@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -19,7 +20,7 @@ public class UIManager : MonoBehaviour
 
     [Header("Buttons")]
     public Button playerARollBtn;
-    public Button playerAClaimBtn;
+    public List<Button> playerAClaimBtns;
     public Button playerABelieveBtn;
     public Button playerABluffBtn;
     //
@@ -64,7 +65,10 @@ public class UIManager : MonoBehaviour
     private void BindButtons()
     {
         playerARollBtn.onClick.AddListener(OnPlayerARoll);
-        playerAClaimBtn.onClick.AddListener(OnPlayerAClaim);
+        foreach (Button claimBtn in playerAClaimBtns)
+        {
+            claimBtn.onClick.AddListener(OnPlayerAClaim);
+        }
         playerABelieveBtn.onClick.AddListener(OnPlayerABelieve);
         playerABluffBtn.onClick.AddListener(OnPlayerACallBluff);
         //
@@ -139,14 +143,14 @@ public class UIManager : MonoBehaviour
     }
     private void OnPlayerAClaim()
     {
-        WebSocketClient.Instance.Mock_PlayerAClaim();
+        //WebSocketClient.Instance.Mock_PlayerAClaim();
         ActivePlayerAClaimBtn(false);
         // ActivePlayerBBelieveBtn(true);
         // ActivePlayerBBluffBtn(true);
     }
     private void OnPlayerABelieve()
     {
-        WebSocketClient.Instance.Mock_PlayerABelieves();
+        //WebSocketClient.Instance.Mock_PlayerABelieves();
         ActivePlayerABelieveBtn(false);
         ActivePlayerABluffBtn(false);
 
@@ -154,7 +158,7 @@ public class UIManager : MonoBehaviour
     }
     private void OnPlayerACallBluff()
     {
-        WebSocketClient.Instance.Mock_PlayerACallsBluff();
+        //WebSocketClient.Instance.Mock_PlayerACallsBluff();
         ActivePlayerABelieveBtn(false);
         ActivePlayerABluffBtn(false);
 
@@ -197,7 +201,10 @@ public class UIManager : MonoBehaviour
     
     private void ActivePlayerAClaimBtn(bool value)
     {
-        playerAClaimBtn.interactable = value;
+        foreach (Button claimBtn in playerAClaimBtns)
+        {
+            claimBtn.interactable = value;
+        }
     }
     
     private void ActivePlayerABelieveBtn(bool value)
@@ -232,7 +239,7 @@ public class UIManager : MonoBehaviour
     
     private void OnNextRoundButtonPressed()
     {
-        MockGameServer.Instance.NextRound();
+        //MockGameServer.Instance.NextRound();
 
         ClearTexts();
     }
@@ -247,6 +254,11 @@ public class UIManager : MonoBehaviour
     {
         resultText.text = $"{msg}";
     }
+    
+    public void UpdateRoll(int value)
+    {
+        playerARollText.text = value.ToString();
+    }    
     
     public void UpdateRoll(string player, int value)
     {
