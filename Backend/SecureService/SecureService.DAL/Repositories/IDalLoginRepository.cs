@@ -10,6 +10,6 @@ namespace SecureService.DAL.Repositories
 {
     public interface IDalLoginRepository
     {
-        public StatusResult<object> Login(LoginViewModel loginModel);
+        public StatusResult<object> Login(string encryptData);
     }
 }

@@ -24,7 +24,7 @@ namespace SecureService.DAL.Services
         private readonly IMemoryCache _memoryCache;
         private readonly byte[] _key;
         private readonly byte[] _iv;
-        private readonly string key = "40YPHs5wzB/Q5Blg7EN5h75pHzut9TkvUYUOItfMdP4=+EQ/v7/URS2b8dgIpx6ekQ==";
+        private readonly string key;
 
         public DalClsService(ILogRepository logger,
             IConfiguration config,
@@ -33,6 +33,12 @@ namespace SecureService.DAL.Services
             this._logger = logger;
             this._config = config;
             this._memoryCache = memoryCache;
+
+            this.key = Environment.GetEnvironmentVariable("AES_ENCRYPTION_KEY");
+            if (string.IsNullOrEmpty(this.key))
+            {
+                throw new Exception("AES Encryption key not found in environment variables.");
+            }
 
             using (SHA256 sha256 = SHA256.Create())
             {
@@ -76,26 +82,35 @@ namespace SecureService.DAL.Services
         }
         public string Decrypt(string cipherText)
         {
-            byte[] fullCipher = Convert.FromBase64String(cipherText);
-
-            byte[] iv = new byte[16]; // Extract IV from encrypted text
-            byte[] cipherBytes = new byte[fullCipher.Length - iv.Length];
-
-            Buffer.BlockCopy(fullCipher, 0, iv, 0, iv.Length);
-            Buffer.BlockCopy(fullCipher, iv.Length, cipherBytes, 0, cipherBytes.Length);
-
-            using (Aes aesAlg = Aes.Create())
+            if (string.IsNullOrEmpty(cipherText))
+                return cipherText;
+            try
             {
-                aesAlg.Key = _key;
-                aesAlg.IV = iv;
-                aesAlg.Padding = PaddingMode.PKCS7;
+                byte[] fullCipher = Convert.FromBase64String(cipherText);
 
-                using (MemoryStream msDecrypt = new MemoryStream(cipherBytes))
-                using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, aesAlg.CreateDecryptor(), CryptoStreamMode.Read))
-                using (StreamReader srDecrypt = new StreamReader(csDecrypt))
+                byte[] iv = new byte[16]; // Extract IV from encrypted text
+                byte[] cipherBytes = new byte[fullCipher.Length - iv.Length];
+
+                Buffer.BlockCopy(fullCipher, 0, iv, 0, iv.Length);
+                Buffer.BlockCopy(fullCipher, iv.Length, cipherBytes, 0, cipherBytes.Length);
+
+                using (Aes aesAlg = Aes.Create())
                 {
-                    return srDecrypt.ReadToEnd();
+                    aesAlg.Key = _key;
+                    aesAlg.IV = iv;
+                    aesAlg.Padding = PaddingMode.PKCS7;
+
+                    using (MemoryStream msDecrypt = new MemoryStream(cipherBytes))
+                    using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, aesAlg.CreateDecryptor(), CryptoStreamMode.Read))
+                    using (StreamReader srDecrypt = new StreamReader(csDecrypt))
+                    {
+                        return srDecrypt.ReadToEnd();
+                    }
                 }
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("Decryption Failed.");
             }
         }
         public string EncryptSha256Hash(string plainText)

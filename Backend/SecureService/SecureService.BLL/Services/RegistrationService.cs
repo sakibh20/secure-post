@@ -18,9 +18,9 @@ namespace SecureService.BLL.Services
         {
             this._IDalRegistrationRepository = IDalRegistrationRepository;
         }
-        public StatusResult<object> Register(RegistrationViewModel registrationModel)
+        public StatusResult<object> Register(string encryptData)
         {
-            return _IDalRegistrationRepository.Register(registrationModel);
+            return _IDalRegistrationRepository.Register(encryptData);
         }
     }
 }

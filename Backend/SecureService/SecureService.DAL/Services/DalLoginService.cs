@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.Xml;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using SecureService.Context;
 using SecureService.DAL.Repositories;
 using SecureService.Entity.Shared.Database;
@@ -35,12 +37,13 @@ namespace SecureService.DAL.Services
             this._context = context;
         }
 
-        public StatusResult<object> Login(LoginViewModel loginModel)
+        public StatusResult<object> Login(string encryptData)
         {
             StatusResult<object> status = new StatusResult<object>();
             UserDetail checkForExistingUserByUserID = new UserDetail();
             try
             {
+                LoginViewModel loginModel = JsonConvert.DeserializeObject<LoginViewModel>(_cls.Decrypt(encryptData));
                 checkForExistingUserByUserID = _context.UserDetail.Where(it => it.UserId.Equals(loginModel.UserId)).FirstOrDefault();
 
                 if (checkForExistingUserByUserID != null)
