@@ -12301,7 +12301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2d653eb7d97c4941abb6016cb648bf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingPanel: {fileID: 1233560750}
+  loadingPanel: {fileID: 487421997}
   popupPanel: {fileID: 1434841286}
   popupPanelText: {fileID: 1390173318}
   restapiManager: {fileID: 1411250320}
