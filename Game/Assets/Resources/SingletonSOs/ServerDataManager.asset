@@ -17,48 +17,18 @@ MonoBehaviour:
   loginEndpoint: Login
   logoutEndpoint: Logout
   leaderboardEndpoint: FetchLeaderBoard
+  historyEndpoint: FetchMatchHistory
   refreshAccessToken: GenerateAccessTokenByRefreshToken
   requestMatch: InitializeMatchRequest
   acceptMatch: ResponseMatchRequest
   serverBBaseUrl: http://localhost:8000
   rollDice: roll-dice
+  claimDice: claim
+  decide: decide
   wsBaseUrl: ws://localhost:8000/ws
   lobbyEndpoint: lobby
   joinEndpoint: user
   joinMatch: game
-  serverResponse:
-    Status: 
-    Message: 
-    Result:
-      useID: 
-      email: 
-      accessToken: 
-      refreshToken: 
-      accessTokenExpiry: 
-      refreshTokenExpiry: 
-  leaderboardResponse:
-    Status: SUCCESS
-    Message: Leaderboard fetched successfully.
-    Result:
-      topUsers: []
-      user:
-        player: 
-        wins: 
-        position: 
-  wsLobbyMessage:
-    command: 
-    payload:
-      status: 
-      requested_by: 
-      match_id: 
-      users: []
-  wsUserMessage:
-    command: 
-    payload:
-      status: 
-      requested_by: 
-      match_id: 
-      users: []
   FailedStatus: failed
   SuccessStatus: ok
   AcceptStatus: ACCEPTED
@@ -68,3 +38,87 @@ MonoBehaviour:
   RollDiceCommand: roll_dice
   ClaimCommand: claim_dice
   DecisionCommand: decide
+  MatchStartCommand: match_start
+  RoundOverCommand: round_over
+  GameOverCommandCommand: game_over
+  serverResponse:
+    Status: OK
+    Message: Login Successfull.
+    Result:
+      userID: skbsec3
+      email: sakibh203@gmail.com
+      accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiJ2by9KczFQdWppdlY5WG5pQjhwV3UzRTVuV3JwTExJZXBPTlFHL2x3eE9BPSIsIlNlc3Npb25JRCI6InZvL0pzMVB1aml2VjlYbmlCOHBXdThkT2NNMVU0OWdFWlZ3aXB2M3dRZzB4N0hIYUhVSzNLRkNlSkovNDcrU2M4Mlg0MnMxVGEwd3BIVlkrT214dzZ3PT0iLCJTdGFydERhdGUiOiIwNS1NYXktMjAyNSAyMzowMzo1MCIsIkV4cGlyeURhdGUiOiIwNS1NYXktMjAyNSAyMzoxODo1MCIsImV4cCI6MTc0NjQ4NzEzMCwiaXNzIjoiU2VjdXJlU2VydmljZSIsImF1ZCI6IlNlY3VyZVNlcnZpY2UifQ.gIOawQe3YK9VIJVvYgLYXenuSpbVALIKy3Uk43byGgc
+      refreshToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiJ2by9KczFQdWppdlY5WG5pQjhwV3UzRTVuV3JwTExJZXBPTlFHL2x3eE9BPSIsIlRva2VuSUQiOiJ2by9KczFQdWppdlY5WG5pQjhwV3U4ZE9jTTFVNDlnRVpWd2lwdjN3UWcweDdISGFIVUszS0ZDZUpKLzQ3K1NjZkxXWXdKQ2FrQ2lUZFJLR0ZSUWRPeDE0TjlqZVZ0L3NlVytUL0h3YnZKZFB5V09adkZjcWhBYmJQVXJsaVd0byIsIlN0YXJ0RGF0ZSI6IjA1LU1heS0yMDI1IDIzOjAzOjUwIiwiRXhwaXJ5RGF0ZSI6IjEyLU1heS0yMDI1IDIzOjAzOjUwIiwiZXhwIjoxNzQ3MDkxMDMwLCJpc3MiOiJTZWN1cmVTZXJ2aWNlIiwiYXVkIjoiU2VjdXJlU2VydmljZSJ9.d8aPBzX0LSQbne7C-eFI2s7YSomub0z5otF0-OHHapA
+      accessTokenExpiry: 2025-05-05T23:18:50.7483751+00:00
+      refreshTokenExpiry: 2025-05-12T23:03:50.7578618+00:00
+  leaderboardResponse:
+    Status: SUCCESS
+    Message: Leaderboard fetched successfully.
+    Result:
+      topUsers: []
+      user:
+        player: 
+        wins: 
+        position: 
+  historyResponse:
+    Status: 
+    Message: 
+    Result: []
+  wsLobbyMessage:
+    command: lobby_update
+    payload:
+      status: 
+      requested_by: 
+      match_id: 
+      users:
+      - skbsec3
+      player1_score: 0
+      player2_score: 0
+      player1: 
+      player2: 
+      game_status: 
+      total_round: 0
+      current_round: 0
+      claim: 0
+  wsUserMessage:
+    command: 
+    payload:
+      status: 
+      requested_by: 
+      match_id: 
+      users: []
+      player1_score: 0
+      player2_score: 0
+      player1: 
+      player2: 
+      game_status: 
+      total_round: 0
+      current_round: 0
+      claim: 0
+  wsMatchMessage:
+    command: 
+    payload:
+      status: 
+      requested_by: 
+      match_id: 
+      users: []
+      player1_score: 0
+      player2_score: 0
+      player1: 
+      player2: 
+      game_status: 
+      total_round: 0
+      current_round: 0
+      claim: 0
+  diceRollResponse:
+    match_id: 
+    user_id: 
+    dice_roll: 0
+  decideResponse:
+    match_id: 
+    user_id: 
+    dice_roll: 0
+  claimResponse:
+    match_id: 
+    user_id: 
+    dice_roll: 0

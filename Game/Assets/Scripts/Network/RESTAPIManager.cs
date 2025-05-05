@@ -118,12 +118,21 @@ public class RESTAPIManager : MonoBehaviour
 
         StartCoroutine(HitLogout());
     }
+    
     public void GetLeaderboard(Action<string> onSuccess, Action<string> onFailed)
     {
         OnSuccess = onSuccess;
         OnFail = onFailed;
 
         StartCoroutine(HitGetLeaderboard());
+    }
+    
+    public void GetHistory(Action<string> onSuccess, Action<string> onFailed)
+    {
+        OnSuccess = onSuccess;
+        OnFail = onFailed;
+
+        StartCoroutine(HitGetHistory());
     }
     
     public void RequestMatch(string userId, Action<string> onSuccess, Action<string> onFailed)
@@ -267,6 +276,37 @@ public class RESTAPIManager : MonoBehaviour
             else
             {
                 OnSuccess?.Invoke(ServerDataManager.Instance.leaderboardResponse.Message);
+            }
+        }
+        else
+        {
+            Debug.LogError("Request failed: " + request.error);
+            OnFail?.Invoke(request.result.ToString());
+        }
+    }
+    
+    private IEnumerator HitGetHistory()
+    {
+        UnityWebRequest request = UnityWebRequest.Get(ServerDataManager.Instance.GetHistoryUrl());
+
+        request.SetRequestHeader("Accept", "application/json");
+        request.SetRequestHeader("Authorization", "Bearer " + ServerDataManager.Instance.serverResponse.Result.accessToken);
+
+        yield return request.SendWebRequest();
+        
+        ServerDataManager.Instance.historyResponse = JsonUtility.FromJson<HistoryResponse>(request.downloadHandler.text);
+
+        if (request.result == UnityWebRequest.Result.Success)
+        {
+            Debug.Log("Response: " + request.downloadHandler.text);
+            
+            if (ServerDataManager.Instance.historyResponse.Status.ToLower() == ServerDataManager.Instance.FailedStatus)
+            {
+                OnFail?.Invoke(ServerDataManager.Instance.historyResponse.Message);
+            }
+            else
+            {
+                OnSuccess?.Invoke(ServerDataManager.Instance.historyResponse.Message);
             }
         }
         else
