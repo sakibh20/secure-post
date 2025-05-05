@@ -10,6 +10,6 @@ namespace SecureService.BLL.Repositories
 {
     public interface IRegistrationRepository
     {
-        public StatusResult<object> Register(RegistrationViewModel registrationModel);
+        public StatusResult<object> Register(string encryptData);
     }
 }

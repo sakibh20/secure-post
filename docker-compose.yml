@@ -16,6 +16,7 @@ services:
       - GAME_SERVICE=http://game-service:8000/
       - Jwt__Key=zO53wibJ2ga4wu2zgOppgvBQS8WrAVdf76gsHUrwDoY=kNmITYFYcn4s/yIC4jtgUw==
       - Jwt__Issuer=SecureService
+      - AES_ENCRYPTION_KEY=40YPHs5wzB/Q5Blg7EN5h75pHzut9TkvUYUOItfMdP4=+EQ/v7/URS2b8dgIpx6ekQ==
     networks:
       - secure-network
     volumes:

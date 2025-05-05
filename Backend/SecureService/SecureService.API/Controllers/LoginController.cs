@@ -21,9 +21,9 @@ namespace SecureService.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(LoginViewModel loginModel)
+        public IActionResult Login([FromForm]string encryptData)
         {
-            return Ok(_ILoginRepository.Login(loginModel));
+            return Ok(_ILoginRepository.Login(encryptData));
         }
 
         [HttpGet]

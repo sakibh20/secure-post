@@ -21,9 +21,9 @@ namespace SecureService.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Register(RegistrationViewModel registrationModel)
+        public IActionResult Register([FromForm]string encryptData)
         {
-            return Ok(_IRegistrationRepository.Register(registrationModel));
+            return Ok(_IRegistrationRepository.Register(encryptData));
         }
     }
 }

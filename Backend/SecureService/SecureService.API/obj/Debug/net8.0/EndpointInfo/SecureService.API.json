@@ -13,24 +13,19 @@
         ],
         "requestBody": {
           "content": {
-            "application/json-patch+json": {
+            "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/LoginViewModel"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LoginViewModel"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LoginViewModel"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/LoginViewModel"
+                "type": "object",
+                "properties": {
+                  "encryptData": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "encryptData": {
+                  "style": "form"
+                }
               }
             }
           }
@@ -202,24 +197,19 @@
         ],
         "requestBody": {
           "content": {
-            "application/json-patch+json": {
+            "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/RegistrationViewModel"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RegistrationViewModel"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RegistrationViewModel"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/RegistrationViewModel"
+                "type": "object",
+                "properties": {
+                  "encryptData": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "encryptData": {
+                  "style": "form"
+                }
               }
             }
           }
@@ -234,24 +224,6 @@
   },
   "components": {
     "schemas": {
-      "LoginViewModel": {
-        "required": [
-          "Password",
-          "UserId"
-        ],
-        "type": "object",
-        "properties": {
-          "UserId": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "Password": {
-            "minLength": 1,
-            "type": "string"
-          }
-        },
-        "additionalProperties": false
-      },
       "MatchRequestViewModel": {
         "type": "object",
         "properties": {
@@ -292,39 +264,6 @@
           "Winner": {
             "type": "string",
             "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "RegistrationViewModel": {
-        "required": [
-          "ConfirmPassword",
-          "Email",
-          "Password",
-          "UserId",
-          "UserName"
-        ],
-        "type": "object",
-        "properties": {
-          "UserId": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "UserName": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "Email": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "Password": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "ConfirmPassword": {
-            "minLength": 1,
-            "type": "string"
           }
         },
         "additionalProperties": false

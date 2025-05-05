@@ -10,6 +10,6 @@ namespace SecureService.BLL.Repositories
 {
     public interface ILoginRepository
     {
-        public StatusResult<object> Login(LoginViewModel loginModel);
+        public StatusResult<object> Login(string encryptData);
     }
 }
