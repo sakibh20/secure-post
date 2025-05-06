@@ -43,11 +43,6 @@ public class AuthUIManager : ConnectionUIManager
         InitAuthUI();
     }
 
-    private void OnEnable()
-    {
-        
-    }
-
     private void OnDisable()
     {
         CancelInvoke(nameof(RefreshAccessToken));

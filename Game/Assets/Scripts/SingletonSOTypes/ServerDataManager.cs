@@ -12,6 +12,7 @@ public class ServerDataManager : SingletonSO<ServerDataManager>
     public string loginEndpoint;
     public string logoutEndpoint;
     public string leaderboardEndpoint;
+    public string historyEndpoint;
     public string refreshAccessToken;
     public string requestMatch;
     public string acceptMatch;
@@ -54,6 +55,7 @@ public class ServerDataManager : SingletonSO<ServerDataManager>
     [Space]
     public ServerResponse serverResponse;
     public LeaderboardResponse leaderboardResponse;
+    public HistoryResponse historyResponse;
 
     public WSLobbyMessage wsLobbyMessage;
     public WSLobbyMessage wsUserMessage;
@@ -127,6 +129,11 @@ public class ServerDataManager : SingletonSO<ServerDataManager>
         return $"{serverABaseUrl}/{leaderboardEndpoint}";
     }
     
+    public string GetHistoryUrl()
+    {
+        return $"{serverABaseUrl}/{historyEndpoint}";
+    }
+    
     public string GetRefreshUrl()
     {
         return $"{serverABaseUrl}/{refreshAccessToken}";
@@ -196,6 +203,27 @@ public class LeaderBoardItem
     public string player;
     public string wins;
     public string position;
+}
+
+[Serializable]
+public class HistoryResponse
+{
+    public string Status;
+    public string Message;
+    public List<HistoryItem> Result;
+}
+
+[Serializable]
+public class HistoryItem
+{
+    public string matchId;
+    public string player1;
+    public string player2;
+    public string startTime;
+    public string endTime;
+    public string player1Moves;
+    public string player2Moves;
+    public string winner;
 }
 
 [Serializable]
