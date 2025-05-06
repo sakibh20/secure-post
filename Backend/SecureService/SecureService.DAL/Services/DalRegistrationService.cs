@@ -77,7 +77,7 @@ namespace SecureService.DAL.Services
                 newUser.UserName = registrationModel.UserName;
                 newUser.Email = registrationModel.Email;
                 newUser.Password = _cls.EncryptSha256Hash(registrationModel.Password);
-                newUser.CreatedAt = DateTime.Now;
+                newUser.CreatedAt = DateTime.UtcNow;
                 newUser.Role = "USER";
 
                 _context.UserDetail.Add(newUser);

@@ -23,15 +23,15 @@ namespace SecureService.Logging
                 var logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
                 XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
 
-                //string messageFormat = $"************************************************************************************************************* {Environment.NewLine}{Environment.NewLine}{DateTime.Now} <======> {errorMessage} {Environment.NewLine}{Environment.NewLine}*************************************************************************************************************{Environment.NewLine}";
+                //string messageFormat = $"************************************************************************************************************* {Environment.NewLine}{Environment.NewLine}{DateTime.UtcNow} <======> {errorMessage} {Environment.NewLine}{Environment.NewLine}*************************************************************************************************************{Environment.NewLine}";
 
-                string messageFormat = $"{DateTime.Now} <======> {errorMessage} {Environment.NewLine}{Environment.NewLine}*************************************************************************************************************{Environment.NewLine}{Environment.NewLine}";
+                string messageFormat = $"{DateTime.UtcNow} <======> {errorMessage} {Environment.NewLine}{Environment.NewLine}*************************************************************************************************************{Environment.NewLine}{Environment.NewLine}";
 
                 StreamWriter sw = null;
-                string sLogFormat = DateTime.Now.ToShortDateString().ToString() + " " + DateTime.Now.ToLongTimeString().ToString() + " ==> ";
-                string sYear = DateTime.Now.Year.ToString();
-                string sMonth = DateTime.Now.Month.ToString();
-                string sDay = DateTime.Now.Day.ToString();
+                string sLogFormat = DateTime.UtcNow.ToShortDateString().ToString() + " " + DateTime.UtcNow.ToLongTimeString().ToString() + " ==> ";
+                string sYear = DateTime.UtcNow.Year.ToString();
+                string sMonth = DateTime.UtcNow.Month.ToString();
+                string sDay = DateTime.UtcNow.Day.ToString();
                 string sErrorTime = sDay + "-" + sMonth + "-" + sYear;
                 string userMobile = string.Empty;
                 string product = string.Empty;
