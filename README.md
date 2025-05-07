@@ -19,7 +19,7 @@ It's a test of confidence, trickery, and psychological gameplay—ideal for quic
 
 ---
 
-## 💻 Executable
+## Executable
 
 [Download Executable](/Executable) <!-- Replace with actual link -->
 - Inside the Executable folder there is a **Game.exe**
@@ -71,3 +71,6 @@ It's a test of confidence, trickery, and psychological gameplay—ideal for quic
    * You roll, claim a number, and the other player decides to **Believe** or **Call Bluff**.
 
    The system ensures turn-based flow and tracks score securely via server logic.
+
+6. **Demo**
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3lEFldGMXjo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
