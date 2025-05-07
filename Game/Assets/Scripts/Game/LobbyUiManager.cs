@@ -70,7 +70,6 @@ public class LobbyUiManager : MonoBehaviour
     private void OnFailJoinMatch()
     {
         UIManager.Instance.HideGameView();
-        //AuthUIManager.Instance.ShowPopupPanel("Matchmaking failed");
     }
     
     public void ShowLobby()

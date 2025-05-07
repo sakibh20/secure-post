@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class AuthUIManager : ConnectionUIManager
 {
-    //[SerializeField] private RESTAPIManager restapiManager;
     [SerializeField] private HomeUiManager homeUiManager;
 
     [SerializeField] private TMP_InputField userIdRegField;
@@ -132,13 +131,10 @@ public class AuthUIManager : ConnectionUIManager
     [SerializeField] private float early = 880;
     private float GetInSec()
     {
-        //Debug.Log($"tokenExpiry: {ServerDataManager.Instance.serverResponse.Result.accessTokenExpiry}");
         DateTime tokenExpiry = DateTime.Parse(ServerDataManager.Instance.serverResponse.Result.accessTokenExpiry);
         TimeSpan remaining = tokenExpiry.ToUniversalTime() - DateTime.UtcNow;
         double secondsRemaining = remaining.TotalSeconds - early;
         if (secondsRemaining <= 0) secondsRemaining = 0;
-        
-        //Debug.Log($"sec: {secondsRemaining}");
         
         return (float)secondsRemaining;
     }

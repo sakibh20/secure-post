@@ -7,16 +7,6 @@ public class LobbyWebSocketClient : WebSocketHandler
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
     }
-
-    // protected override void Start()
-    // {
-    //     base.Start();
-    // }
-    //
-    // protected override void OnDestroy()
-    // {
-    //     base.OnDestroy();
-    // }
     
     protected override void Subscribe()
     {
