@@ -15,16 +15,6 @@ public class AesEncryptionHelper
             _key = sha256.ComputeHash(Encoding.UTF8.GetBytes(_baseKey)); // 256-bit AES key
         }
     }
-    
-    // public static string GenerateKey(int byteLength = 32)
-    // {
-    //     byte[] keyBytes = new byte[byteLength];
-    //     using (var rng = new RNGCryptoServiceProvider())
-    //     {
-    //         rng.GetBytes(keyBytes);
-    //     }
-    //     return Convert.ToBase64String(keyBytes);
-    // }
 
     public string Encrypt(string plainText)
     {

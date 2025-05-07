@@ -22,9 +22,6 @@ public class AuthUIManager : ConnectionUIManager
     [Space]
     [SerializeField] private GameObject logInPanel;
     [SerializeField] private GameObject signUpPanel;
-
-    private const string UserIdKey = "userId";
-    private const string PasswordKey = "pass";
     
     public event Action OnLoginSuccess;
 
@@ -50,10 +47,12 @@ public class AuthUIManager : ConnectionUIManager
     private void InitAuthUI()
     {
         HidePopupPanel();
-        if (PlayerPrefs.HasKey(UserIdKey))
+        var (userId, password) = SecureDataHandler.LoadCredentials();
+        
+        if (!string.IsNullOrWhiteSpace(userId))
         {
-            passwordLoginField.text = PlayerPrefs.GetString(PasswordKey);
-            userIdLoginField.text = PlayerPrefs.GetString(UserIdKey);
+            passwordLoginField.text = password;
+            userIdLoginField.text = userId;
             ShowLoginPanel();
         }
         else
@@ -64,8 +63,7 @@ public class AuthUIManager : ConnectionUIManager
 
     private void UpdateUserId(string userId, string password)
     {
-        PlayerPrefs.SetString(UserIdKey, userId);
-        PlayerPrefs.SetString(PasswordKey, password);
+        SecureDataHandler.SaveCredentials(userId, password);
     }
     
     public void OnClickLogOut()

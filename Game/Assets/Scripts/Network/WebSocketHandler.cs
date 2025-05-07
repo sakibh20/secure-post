@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WebSocketHandler : MonoBehaviour
 {
-    //public static WebSocketHandler Instance;
     protected WebSocket _websocket;
     
     public delegate void OnMessageReceived(string message);
