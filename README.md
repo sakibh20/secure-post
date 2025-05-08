@@ -15,7 +15,7 @@ It's a test of confidence, trickery, and psychological gameplay—ideal for quic
 
 ## Report
 
-[Click here to view the full project report](/Documentation/Bulff%20Game_Final%20Report.docx) <!-- Replace with actual link -->
+[Click here to view the full project report](/Documentation/Bulff%20Game_Final%20Report.pdf) <!-- Replace with actual link -->
 
 ---
 
@@ -73,7 +73,7 @@ It's a test of confidence, trickery, and psychological gameplay—ideal for quic
    The system ensures turn-based flow and tracks score securely via server logic.
 
 
-6. **Demo**
+6. **Demo**  
 Click the thumb to watch the demo on [YouTube](https://www.youtube.com/watch?v=3lEFldGMXjo)
 
 [![Watch the video](https://img.youtube.com/vi/3lEFldGMXjo/0.jpg)](https://www.youtube.com/watch?v=3lEFldGMXjo)
