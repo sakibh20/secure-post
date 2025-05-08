@@ -26,7 +26,7 @@ namespace SecureService.Entity.Shared.Database
         public string Player2 { get; set; }
 
         [Column("start_time")]
-        public DateTime StartTime { get; set; } = DateTime.Now;
+        public DateTime StartTime { get; set; } = DateTime.UtcNow;
 
         [Column("end_time")]
         public DateTime? EndTime { get; set; }

@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Security.Cryptography.Xml;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using SecureService.Context;
 using SecureService.DAL.Repositories;
 using SecureService.Entity.Shared.Database;
@@ -35,22 +38,25 @@ namespace SecureService.DAL.Services
             this._context = context;
         }
 
-        public StatusResult<object> Login(LoginViewModel loginModel)
+        public StatusResult<object> Login(string encryptData)
         {
             StatusResult<object> status = new StatusResult<object>();
             UserDetail checkForExistingUserByUserID = new UserDetail();
             try
             {
+                LoginViewModel loginModel = JsonConvert.DeserializeObject<LoginViewModel>(_cls.Decrypt(encryptData));
                 checkForExistingUserByUserID = _context.UserDetail.Where(it => it.UserId.Equals(loginModel.UserId)).FirstOrDefault();
 
                 if (checkForExistingUserByUserID != null)
                 {
-                    if (_cls.EncryptSha256Hash(loginModel.Password) == checkForExistingUserByUserID.Password)
+                    if (CryptographicOperations.FixedTimeEquals(
+                        Encoding.UTF8.GetBytes(_cls.EncryptSha256Hash(loginModel.Password)),
+                        Encoding.UTF8.GetBytes(checkForExistingUserByUserID.Password)))
                     {
                         if (checkForExistingUserByUserID.IsActiveFlag)
                         {
                             checkForExistingUserByUserID.FailedLoginAttemptNo = 0;
-                            checkForExistingUserByUserID.LastLoginAt = DateTime.Now;
+                            checkForExistingUserByUserID.LastLoginAt = DateTime.UtcNow;
                             checkForExistingUserByUserID.Isupdated = true;
 
                             status.Status = "OK";
@@ -90,8 +96,8 @@ namespace SecureService.DAL.Services
                         usersNewSession.UserId = checkForExistingUserByUserID.UserId;
                         usersNewSession.SessionID = Guid.NewGuid().ToString();
                         usersNewSession.IsActiveSessionFlag = true;
-                        usersNewSession.SessionStartTime = DateTime.Now;
-                        usersNewSession.SessionEndTime = DateTime.Now.AddMinutes(15);
+                        usersNewSession.SessionStartTime = DateTime.UtcNow;
+                        usersNewSession.SessionEndTime = DateTime.UtcNow.AddMinutes(15);
                         _context.UserSession.Add(usersNewSession);
                         if (_context.SaveChanges() > 0)
                         {
@@ -99,8 +105,8 @@ namespace SecureService.DAL.Services
                             userNewRefreshToken.UserId = checkForExistingUserByUserID.UserId;
                             userNewRefreshToken.TokenId = usersNewSession.SessionID + "#" + Guid.NewGuid().ToString();
                             userNewRefreshToken.IsActive = true;
-                            userNewRefreshToken.CreatedAt = DateTime.Now;
-                            userNewRefreshToken.ExpiryDate = DateTime.Now.AddDays(7);
+                            userNewRefreshToken.CreatedAt = DateTime.UtcNow;
+                            userNewRefreshToken.ExpiryDate = DateTime.UtcNow.AddDays(7);
                             _context.UserRefreshToken.Add(userNewRefreshToken);
 
                             if (_context.SaveChanges() > 0)

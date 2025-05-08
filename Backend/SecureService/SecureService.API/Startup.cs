@@ -1,5 +1,6 @@
 using System.Text;
 using System.Threading.Tasks;
+using AspNetCoreRateLimit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -26,7 +27,6 @@ namespace SecureService.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
-
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             {
@@ -56,7 +56,6 @@ namespace SecureService.API
             services.AddMvc().AddNewtonsoftJson();
             services.Configure<ApplicationOptions>(Configuration.GetSection("ApplicationOptions"));
 
-            services.ConfigureAutoMapper(); //Auto mapping Configuration
 
             services.ConfigureMySqlContext     (Configuration); //Database Connection Configuration
 
@@ -99,6 +98,11 @@ namespace SecureService.API
                 options.OperationFilter<SecurityRequirementsOperationFilter>();
 
             });
+
+            services.AddMemoryCache();
+            services.Configure<IpRateLimitOptions>(Configuration.GetSection("IpRateLimiting"));
+            services.AddInMemoryRateLimiting();
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -120,6 +124,9 @@ namespace SecureService.API
                 .AllowAnyHeader()
                 .SetIsOriginAllowed(origin => true) // allow any origin
                 .AllowCredentials());
+
+            app.UseIpRateLimiting();
+
             app.UseAuthentication();
             app.UseAuthorization();
 

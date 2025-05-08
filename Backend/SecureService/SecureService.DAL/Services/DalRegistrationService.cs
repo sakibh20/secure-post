@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using SecureService.Context;
 using SecureService.DAL.Repositories;
 using SecureService.Entity.Shared.Database;
@@ -33,11 +34,12 @@ namespace SecureService.DAL.Services
             this._context = context;
         }
 
-        public StatusResult<object> Register(RegistrationViewModel registrationModel)
+        public StatusResult<object> Register(string encryptData)
         {
             StatusResult<object> status = new StatusResult<object>();
             try
             {
+                RegistrationViewModel registrationModel = JsonConvert.DeserializeObject<RegistrationViewModel>(_cls.Decrypt(encryptData));
                 #region Validation
                 if (!Regex.IsMatch(registrationModel.UserId, @"^[A-Za-z0-9]{1,10}$"))
                     throw new Exception("Invalid User ID. User ID should be within 10 digits and contain only alphanumeric characters.");
@@ -55,7 +57,7 @@ namespace SecureService.DAL.Services
                 if (!Regex.IsMatch(registrationModel.Password, @"[\W_]+")) 
                     throw new Exception("Password must contain at least one special character (e.g., @, #, $, etc.).");
 
-                if (!registrationModel.Email.Contains("@"))
+                if (!Regex.IsMatch(registrationModel.Email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
                     throw new Exception("Invalid Email.");
 
                 var checkForExistingUserByUserID = _context.UserDetail.Where(it=>it.UserId.Equals(registrationModel.UserId)).FirstOrDefault();
@@ -75,7 +77,7 @@ namespace SecureService.DAL.Services
                 newUser.UserName = registrationModel.UserName;
                 newUser.Email = registrationModel.Email;
                 newUser.Password = _cls.EncryptSha256Hash(registrationModel.Password);
-                newUser.CreatedAt = DateTime.Now;
+                newUser.CreatedAt = DateTime.UtcNow;
                 newUser.Role = "USER";
 
                 _context.UserDetail.Add(newUser);

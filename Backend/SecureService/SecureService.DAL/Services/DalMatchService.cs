@@ -105,7 +105,7 @@ namespace SecureService.DAL.Services
                     if (match.MatchStatus?.ToUpper() == "ACCEPTED")
                     {
                         userExistingMatch.Status = "ACCEPTED";
-                        userExistingMatch.StartTime = DateTime.Now;
+                        userExistingMatch.StartTime = DateTime.UtcNow;
                         _context.UserMatch.Update(userExistingMatch);
                         _context.SaveChanges();
 
@@ -179,7 +179,7 @@ namespace SecureService.DAL.Services
                 match.Player1Moves = matchInfo.Player1Moves;
                 match.Player2Moves= matchInfo.Player2Moves;
                 match.Winner= matchInfo.Winner;
-                match.EndTime = DateTime.Now;
+                match.EndTime = DateTime.UtcNow;
                 match.Status = "FINNISHED";
 
                 _context.UserMatch.Update(match);

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AspNetCoreRateLimit;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using SecureService.BLL.Repositories;
 using SecureService.BLL.Services;
@@ -14,6 +15,11 @@ namespace SecureService.API.Extensions
         {
             services.AddTransient<ILogRepository, LogService>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            services.AddSingleton<IRateLimitCounterStore, MemoryCacheRateLimitCounterStore>();
+            services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();
+            services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
+            services.AddSingleton<IProcessingStrategy, AsyncKeyLockProcessingStrategy>();
 
             services.AddScoped<IDalClsRepository, DalClsService>();
             services.AddScoped<IClsRepository, ClsService>();

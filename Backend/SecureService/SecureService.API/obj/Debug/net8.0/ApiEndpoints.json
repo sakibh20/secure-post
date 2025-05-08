@@ -64,9 +64,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "loginModel",
-        "Type": "SecureService.Entity.Shared.Internal.LoginViewModel",
-        "IsRequired": true
+        "Name": "encryptData",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -90,9 +90,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "registrationModel",
-        "Type": "SecureService.Entity.Shared.Internal.RegistrationViewModel",
-        "IsRequired": true
+        "Name": "encryptData",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

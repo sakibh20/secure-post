@@ -20,9 +20,9 @@ namespace SecureService.BLL.Services
             this._IDalLoginRepository = IDalLoginRepository;
         }
 
-        public StatusResult<object> Login(LoginViewModel loginModel)
+        public StatusResult<object> Login(string encryptData)
         {
-            return _IDalLoginRepository.Login(loginModel);
+            return _IDalLoginRepository.Login(encryptData);
         }
     }
 }

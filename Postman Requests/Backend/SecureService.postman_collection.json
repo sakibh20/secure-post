@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "be3f0e5b-4e3d-45de-ac17-d63b1377372e",
+		"_postman_id": "bbc7bfd3-eb05-4aab-ab5d-06bd06347c07",
 		"name": "SecureService",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "39007890"
@@ -15,21 +15,22 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"UserId\": \"samith\",\r\n  \"Password\": \"Asdf@1234\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "encryptData",
+									"value": "cgFQ4bSXq+8qzB1AvGQBBIte4QIl1PeSa8m+4GcOQsHvhg8/wwOe/aaysq+6Vs148nkMYh3h+KZeSK9WsEu3jylloEZpt7kHh+6LrbTJfck=",
+									"type": "text"
 								}
-							}
+							]
 						},
 						"url": {
-							"raw": "http://localhost:54750/api/Login",
+							"raw": "http://localhost:8080/api/Login",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "54750",
+							"port": "8080",
 							"path": [
 								"api",
 								"Login"
@@ -41,7 +42,13 @@
 							"name": "Login",
 							"originalRequest": {
 								"method": "POST",
-								"header": [],
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
 								"body": {
 									"mode": "raw",
 									"raw": "{\r\n  \"UserId\": \"sourav\",\r\n  \"Password\": \"Asdf@1234\"\r\n}",
@@ -102,7 +109,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiJhSkFWa2UxMm9VOHp1MjhkUHhndkZUVXZXRXJuV1NBN0dLcHdKbUU4UU80PSIsIlRva2VuSUQiOiJhSkFWa2UxMm9VOHp1MjhkUHhndkZVVjduT3ZTeDNJbXFIL1BQSm5QSFNoTkVjeFRlclVSTG80T3VZQnNFSFFYd2NwcmVCV3ZLa3cycXVjNExNV2c0eTZjVEFBY1VvMmVvQ3FEOWtqMHh6dys2SW1Tc0E2Q28ydThUTlVVanRDeiIsIlN0YXJ0RGF0ZSI6IjA2LzA0LzIwMjUgMjMuMDguMDQiLCJFeHBpcnlEYXRlIjoiMTMvMDQvMjAyNSAyMy4wOC4wNCIsImV4cCI6MTc0NDU3NDg4NCwiaXNzIjoiU2VjdXJlU2VydmljZSIsImF1ZCI6IlNlY3VyZVNlcnZpY2UifQ.0yICvL_TXEHxHYR-bhkfFvOVZpO9VcwcmRDCFj30DoU",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiJrZ0puZ0dveHV6V094VmFQU0svcTNMYXE3am1rc015VmpMZEVLM2dwTGZFPSIsIlRva2VuSUQiOiJrZ0puZ0dveHV6V094VmFQU0svcTNHeTM0MEtnR3A3MVJXZ1FYRkgxYTBneStDVS9ueWhNSXhvWDBIaEs5WDIxK2F3MS8zYllkVDduN1RjRmZQZWNCVWRGcDJtQmFtUjk5clBUZDZlelN0N0plbXVEYk9BY2d0WFBiZXRyREhYZCIsIlN0YXJ0RGF0ZSI6IjA0LzI0LzIwMjUgMTk6MzU6NTciLCJFeHBpcnlEYXRlIjoiMDUvMDEvMjAyNSAxOTozNTo1NyIsImV4cCI6MTc0NjEyODE1NywiaXNzIjoiU2VjdXJlU2VydmljZSIsImF1ZCI6IlNlY3VyZVNlcnZpY2UifQ.wElW19P4_GcBFoIw_jkhXDJC7Jusfz_j3KgiD9Jfa-k",
 									"type": "string"
 								}
 							]
@@ -110,12 +117,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:54750/api/GenerateAccessTokenByRefreshToken",
+							"raw": "http://localhost:8080/api/GenerateAccessTokenByRefreshToken",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "54750",
+							"port": "8080",
 							"path": [
 								"api",
 								"GenerateAccessTokenByRefreshToken"
@@ -182,21 +189,22 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"UserId\": \"samith\",\r\n  \"UserName\": \"Samith Binda Pantho\",\r\n  \"Email\": \"samith.pantho@hotmail.com\",\r\n  \"Password\": \"Asdf@1234\",\r\n  \"ConfirmPassword\": \"Asdf@1234\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "encryptData",
+									"value": "cgFQ4bSXq+8qzB1AvGQBBIte4QIl1PeSa8m+4GcOQsFRwXSlHxZd7INI0OOo1gEGdX42hNrojbLqn9l07Gji0EaC8pymV3/kUDSqePiXc7rMbqAa4ettw0V40EtbOy/oOUxLIn+CRkcnregLaIw/Wgk35TJjAH5/TAycuO0sqkg3c1zkcrBSZjPS/J8JV4w7vSfBzzTu+XrZKncPKv2ntsf60x7TRF0XCLkQsMV5Vxrx0YJo/ryHu0mPKYsKh04T",
+									"type": "text"
 								}
-							}
+							]
 						},
 						"url": {
-							"raw": "http://localhost:54750/api/Register",
+							"raw": "http://localhost:8080/api/Register",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "54750",
+							"port": "8080",
 							"path": [
 								"api",
 								"Register"
@@ -282,12 +290,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:54750/api/FetchUserInfo",
+							"raw": "http://localhost:8080/api/FetchUserInfo",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "54750",
+							"port": "8080",
 							"path": [
 								"api",
 								"FetchUserInfo"
@@ -359,12 +367,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:54750/api/InitializeMatchRequest?playerID=samith",
+							"raw": "http://localhost:8080/api/InitializeMatchRequest?playerID=samith",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "54750",
+							"port": "8080",
 							"path": [
 								"api",
 								"InitializeMatchRequest"
@@ -457,12 +465,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:54750/api/ResponseMatchRequest",
+							"raw": "http://localhost:8080/api/ResponseMatchRequest",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "54750",
+							"port": "8080",
 							"path": [
 								"api",
 								"ResponseMatchRequest"
@@ -544,7 +552,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"MatchId\": \"c5a8fce3-7f19-4a17-9881-1b8c9b765d30\",\r\n  \"Player1\": \"sourav\",\r\n  \"Player2\": \"samith\",\r\n  \"MatchStatus\": \"DECLINED\"\r\n}",
+							"raw": "{\r\n  \"MatchId\": \"1\",\r\n  \"Player1\": \"samith\",\r\n  \"Player2\": \"sakibsec\",\r\n  \"MatchStatus\": \"DECLINED\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -552,12 +560,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:54750/api/ResponseMatchRequest",
+							"raw": "http://localhost:8080/api/ResponseMatchRequest",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "54750",
+							"port": "8080",
 							"path": [
 								"api",
 								"ResponseMatchRequest"
@@ -647,12 +655,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:54750/api/UpdateMatchResult",
+							"raw": "http://localhost:8080/api/UpdateMatchResult",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "54750",
+							"port": "8080",
 							"path": [
 								"api",
 								"UpdateMatchResult"
@@ -720,16 +728,6 @@
 				{
 					"name": "FetchLeaderBoard",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiJhaWVVUkZiMVFpNXkyUHpPdEdVeVNWcExUYTAwaTJ0d1BtRlBGTWVGbis4PSIsIlNlc3Npb25JRCI6ImFpZVVSRmIxUWk1eTJQek90R1V5U2FycGVEOWRLbnBmTDFxdnYydDlKSUJTdVo2UFlabUNOdGFRSlNyaER2djVrQi94elk3Y1dTY3pXRHUxMkNqUHNnPT0iLCJTdGFydERhdGUiOiIwNC8yMi8yMDI1IDIwOjUwOjIzIiwiRXhwaXJ5RGF0ZSI6IjA0LzIyLzIwMjUgMjE6MDU6MjMiLCJleHAiOjE3NDUzNTU5MjMsImlzcyI6IlNlY3VyZVNlcnZpY2UiLCJhdWQiOiJTZWN1cmVTZXJ2aWNlIn0.HUpo__iVADG2sk-lKJmCQCwZv-sArwC2HvAoceiN70I",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -752,12 +750,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/api/FetchLeaderBoard",
+									"raw": "http://localhost:54750/api/FetchLeaderBoard",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
+									"port": "54750",
 									"path": [
 										"api",
 										"FetchLeaderBoard"
@@ -770,23 +768,27 @@
 							"header": [
 								{
 									"key": "Content-Length",
-									"value": "230"
+									"value": "106"
 								},
 								{
 									"key": "Content-Type",
 									"value": "application/json; charset=utf-8"
 								},
 								{
-									"key": "Date",
-									"value": "Tue, 22 Apr 2025 20:50:39 GMT"
+									"key": "Server",
+									"value": "Microsoft-IIS/10.0"
 								},
 								{
-									"key": "Server",
-									"value": "Kestrel"
+									"key": "X-Powered-By",
+									"value": "ASP.NET"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Apr 2025 20:28:53 GMT"
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"Status\": \"SUCCESS\",\n    \"Message\": \"Leaderboard fetched successfully.\",\n    \"Result\": {\n        \"topUsers\": [\n            {\n                \"position\": \"1\",\n                \"player\": \"samith\",\n                \"wins\": 1\n            },\n            {\n                \"position\": \"2\",\n                \"player\": \"sourav\",\n                \"wins\": 1\n            }\n        ],\n        \"user\": {\n            \"position\": \"-\",\n            \"player\": \"samith3\",\n            \"wins\": 0\n        }\n    }\n}"
+							"body": "{\n    \"Status\": \"SUCCESS\",\n    \"Message\": \"Leaderboard fetched successfully.\",\n    \"Result\": [\n        {\n            \"player\": \"sourav\",\n            \"wins\": 1\n        }\n    ]\n}"
 						}
 					]
 				},
@@ -806,12 +808,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:54750/api/FetchMatchHistory",
+							"raw": "http://localhost:8080/api/FetchMatchHistory",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "54750",
+							"port": "8080",
 							"path": [
 								"api",
 								"FetchMatchHistory"
@@ -880,7 +882,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiJ2eVJuVnVXb2owYlNoS2Zwd0kzQWRPNzlYS2xiSVJUdlc2S0x4RC8vcjBBPSIsIlNlc3Npb25JRCI6InZ5Um5WdVdvajBiU2hLZnB3STNBZFBnVys2VHhzOGlUOWR1d25nTk9TQ3BPZUdOQ0MrQmk5V3NLd1BBeGl6djFXNXp6MWU3clBSY09BbHFaTi95TmlBPT0iLCJTdGFydERhdGUiOiIwNi8wNC8yMDI1IDIzLjE3LjI0IiwiRXhwaXJ5RGF0ZSI6IjA2LzA0LzIwMjUgMjMuMzIuMjQiLCJleHAiOjE3NDM5NzE1NDQsImlzcyI6IlNlY3VyZVNlcnZpY2UiLCJhdWQiOiJTZWN1cmVTZXJ2aWNlIn0.r5RTZ2yhzXueomx5BYNt9MtXAa1EU0C1UuEzsWtnZHs",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiI4NllNYkhRaWFuV0lMcU1VVS93V0NrcjdVYUxLZS8wTUpUU2lsNEhrVDFzPSIsIlNlc3Npb25JRCI6Ijg2WU1iSFFpYW5XSUxxTVVVL3dXQ2w1MDQ1YlI4TWFEMnl0R3gxem1ZM1RzNGFxZHFZcVUwUjVUemdxTkZXY1c1N0hLR3VkZjRieUE0Ri9wVDVCMUZRPT0iLCJTdGFydERhdGUiOiIwNC8yMC8yMDI1IDIzOjMzOjAyIiwiRXhwaXJ5RGF0ZSI6IjA0LzIwLzIwMjUgMjM6NDg6MDIiLCJleHAiOjE3NDUxOTI4ODIsImlzcyI6IlNlY3VyZVNlcnZpY2UiLCJhdWQiOiJTZWN1cmVTZXJ2aWNlIn0.bmIJEFXUhIbOCMa4B2ibXNR10B6gmwVURu_HT2rajGg",
 									"type": "string"
 								}
 							]
@@ -888,12 +890,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:54750/api/Logout",
+							"raw": "http://localhost:8080/api/Logout",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "54750",
+							"port": "8080",
 							"path": [
 								"api",
 								"Logout"
@@ -946,6 +948,102 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"Status\": \"OK\",\n    \"Message\": \"Logged Out Successfully.\",\n    \"Result\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Server A",
+			"item": [
+				{
+					"name": "API",
+					"item": [
+						{
+							"name": "Roll",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"match_id\" : \"match1\",\r\n    \"user_id\" : \"saurav\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/roll-dice",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"roll-dice"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Match Request",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"MatchId\": \"match1\",\r\n  \"Player1\": \"saurav\",\r\n  \"Player2\": \"samith\",\r\n  \"MatchStatus\": \"PENDING\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/match/request",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"match",
+										"request"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Match Accept",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"MatchId\": \"match1\",\r\n  \"Player1\": \"saurav\",\r\n  \"Player2\": \"samith\",\r\n  \"FirstTurn\": \"saurav\",\r\n  \"MatchStatus\": \"ACCEPT\",\r\n  \"MatchToken\": \"90euc0d9evckj9s\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/match/accept",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"match",
+										"accept"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				}

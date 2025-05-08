@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class AuthUIManager : ConnectionUIManager
 {
-    //[SerializeField] private RESTAPIManager restapiManager;
     [SerializeField] private HomeUiManager homeUiManager;
 
     [SerializeField] private TMP_InputField userIdRegField;
@@ -23,9 +22,6 @@ public class AuthUIManager : ConnectionUIManager
     [Space]
     [SerializeField] private GameObject logInPanel;
     [SerializeField] private GameObject signUpPanel;
-
-    private const string UserIdKey = "userId";
-    private const string PasswordKey = "pass";
     
     public event Action OnLoginSuccess;
 
@@ -43,11 +39,6 @@ public class AuthUIManager : ConnectionUIManager
         InitAuthUI();
     }
 
-    private void OnEnable()
-    {
-        
-    }
-
     private void OnDisable()
     {
         CancelInvoke(nameof(RefreshAccessToken));
@@ -56,10 +47,12 @@ public class AuthUIManager : ConnectionUIManager
     private void InitAuthUI()
     {
         HidePopupPanel();
-        if (PlayerPrefs.HasKey(UserIdKey))
+        var (userId, password) = SecureDataHandler.LoadCredentials();
+        
+        if (!string.IsNullOrWhiteSpace(userId))
         {
-            passwordLoginField.text = PlayerPrefs.GetString(PasswordKey);
-            userIdLoginField.text = PlayerPrefs.GetString(UserIdKey);
+            passwordLoginField.text = password;
+            userIdLoginField.text = userId;
             ShowLoginPanel();
         }
         else
@@ -70,8 +63,7 @@ public class AuthUIManager : ConnectionUIManager
 
     private void UpdateUserId(string userId, string password)
     {
-        PlayerPrefs.SetString(UserIdKey, userId);
-        PlayerPrefs.SetString(PasswordKey, password);
+        SecureDataHandler.SaveCredentials(userId, password);
     }
     
     public void OnClickLogOut()
@@ -137,13 +129,10 @@ public class AuthUIManager : ConnectionUIManager
     [SerializeField] private float early = 880;
     private float GetInSec()
     {
-        //Debug.Log($"tokenExpiry: {ServerDataManager.Instance.serverResponse.Result.accessTokenExpiry}");
         DateTime tokenExpiry = DateTime.Parse(ServerDataManager.Instance.serverResponse.Result.accessTokenExpiry);
         TimeSpan remaining = tokenExpiry.ToUniversalTime() - DateTime.UtcNow;
         double secondsRemaining = remaining.TotalSeconds - early;
         if (secondsRemaining <= 0) secondsRemaining = 0;
-        
-        //Debug.Log($"sec: {secondsRemaining}");
         
         return (float)secondsRemaining;
     }

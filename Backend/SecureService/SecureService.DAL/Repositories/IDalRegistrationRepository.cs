@@ -10,6 +10,6 @@ namespace SecureService.DAL.Repositories
 {
     public interface IDalRegistrationRepository
     {
-        public StatusResult<object> Register(RegistrationViewModel registrationModel);
+        public StatusResult<object> Register(string encryptData);
     }
 }

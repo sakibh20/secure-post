@@ -29,8 +29,10 @@ public class RESTAPIManager : MonoBehaviour
             ConfirmPassword = confirmPassword,
             Email = email
         };
+        AesEncryptionHelper encryptionHelper = new AesEncryptionHelper();
+        string encryptedData = encryptionHelper.Encrypt(JsonUtility.ToJson(data));
 
-        StartCoroutine(HitPost(JsonUtility.ToJson(data), ServerDataManager.Instance.GetRegistrationUrl()));
+        StartCoroutine(HitPost(encryptedData, ServerDataManager.Instance.GetRegistrationUrl()));
     }
     
     public void LogIn(string userId, string password, Action<string> onSuccess, Action<string> onFailed)
@@ -43,8 +45,11 @@ public class RESTAPIManager : MonoBehaviour
             UserId = userId,
             Password = password
         };
+        
+        AesEncryptionHelper encryptionHelper = new AesEncryptionHelper();
+        string encryptedData = encryptionHelper.Encrypt(JsonUtility.ToJson(data));
 
-        StartCoroutine(HitPost(JsonUtility.ToJson(data), ServerDataManager.Instance.GetLoginUrl()));
+        StartCoroutine(HitPost(encryptedData, ServerDataManager.Instance.GetLoginUrl()));
     }    
     
     public void AcceptDeclineMatch(string matchId, string player1, string player2, string status, Action<string> onSuccess = null, Action<string> onFailed = null)
@@ -114,12 +119,21 @@ public class RESTAPIManager : MonoBehaviour
 
         StartCoroutine(HitLogout());
     }
+    
     public void GetLeaderboard(Action<string> onSuccess, Action<string> onFailed)
     {
         OnSuccess = onSuccess;
         OnFail = onFailed;
 
         StartCoroutine(HitGetLeaderboard());
+    }
+    
+    public void GetHistory(Action<string> onSuccess, Action<string> onFailed)
+    {
+        OnSuccess = onSuccess;
+        OnFail = onFailed;
+
+        StartCoroutine(HitGetHistory());
     }
     
     public void RequestMatch(string userId, Action<string> onSuccess, Action<string> onFailed)
@@ -133,13 +147,12 @@ public class RESTAPIManager : MonoBehaviour
     private IEnumerator HitPost(string data, string url)
     {
         Debug.Log($"Url: {url}");
-        byte[] bodyRaw = Encoding.UTF8.GetBytes(data);
+        Debug.Log($"data: {data}");
+        
+        WWWForm form = new WWWForm();
+        form.AddField("encryptData", data);
 
-        UnityWebRequest request = new UnityWebRequest(url, "POST");
-        request.uploadHandler = new UploadHandlerRaw(bodyRaw);
-        request.downloadHandler = new DownloadHandlerBuffer();
-        request.SetRequestHeader("Content-Type", "application/json");
-
+        using UnityWebRequest request = UnityWebRequest.Post(url, form);
         yield return request.SendWebRequest();
         
         ServerDataManager.Instance.serverResponse = new ServerResponse();
@@ -255,6 +268,37 @@ public class RESTAPIManager : MonoBehaviour
             else
             {
                 OnSuccess?.Invoke(ServerDataManager.Instance.leaderboardResponse.Message);
+            }
+        }
+        else
+        {
+            Debug.LogError("Request failed: " + request.error);
+            OnFail?.Invoke(request.result.ToString());
+        }
+    }
+    
+    private IEnumerator HitGetHistory()
+    {
+        UnityWebRequest request = UnityWebRequest.Get(ServerDataManager.Instance.GetHistoryUrl());
+
+        request.SetRequestHeader("Accept", "application/json");
+        request.SetRequestHeader("Authorization", "Bearer " + ServerDataManager.Instance.serverResponse.Result.accessToken);
+
+        yield return request.SendWebRequest();
+        
+        ServerDataManager.Instance.historyResponse = JsonUtility.FromJson<HistoryResponse>(request.downloadHandler.text);
+
+        if (request.result == UnityWebRequest.Result.Success)
+        {
+            Debug.Log("Response: " + request.downloadHandler.text);
+            
+            if (ServerDataManager.Instance.historyResponse.Status.ToLower() == ServerDataManager.Instance.FailedStatus)
+            {
+                OnFail?.Invoke(ServerDataManager.Instance.historyResponse.Message);
+            }
+            else
+            {
+                OnSuccess?.Invoke(ServerDataManager.Instance.historyResponse.Message);
             }
         }
         else

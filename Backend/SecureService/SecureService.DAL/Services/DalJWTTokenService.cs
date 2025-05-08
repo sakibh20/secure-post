@@ -35,8 +35,8 @@ namespace SecureService.DAL.Services
 
         public UserDetail ValidateAccessToken(ClaimsIdentity identity)
         {
-            DateTime nowDate = DateTime.Now;
-            DateTime ExpiryDate = DateTime.Now;
+            DateTime nowDate = DateTime.UtcNow;
+            DateTime ExpiryDate = DateTime.UtcNow;
             UserDetail user = new UserDetail();
             UserDetail Validuser = new UserDetail();
             string SessionID = string.Empty;
@@ -87,8 +87,8 @@ namespace SecureService.DAL.Services
 
         public UserMatch ValidateMatchToken(ClaimsIdentity identity)
         {
-            DateTime nowDate = DateTime.Now;
-            DateTime ExpiryDate = DateTime.Now;
+            DateTime nowDate = DateTime.UtcNow;
+            DateTime ExpiryDate = DateTime.UtcNow;
             string MatchID = string.Empty;
             string UserId = string.Empty;
 
@@ -127,8 +127,8 @@ namespace SecureService.DAL.Services
 
         public TokenResponseViewModel GenerateTokenByRefreshToken(ClaimsIdentity identity)
         {
-            DateTime nowDate = DateTime.Now;
-            DateTime ExpiryDate = DateTime.Now;
+            DateTime nowDate = DateTime.UtcNow;
+            DateTime ExpiryDate = DateTime.UtcNow;
             UserDetail user = new UserDetail();
             UserDetail Validuser = new UserDetail();
             string TokenID = string.Empty;
@@ -175,8 +175,8 @@ namespace SecureService.DAL.Services
                             usersNewSession.UserId = Validuser.UserId;
                             usersNewSession.SessionID = Guid.NewGuid().ToString();
                             usersNewSession.IsActiveSessionFlag = true;
-                            usersNewSession.SessionStartTime = DateTime.Now;
-                            usersNewSession.SessionEndTime = DateTime.Now.AddMinutes(15);
+                            usersNewSession.SessionStartTime = DateTime.UtcNow;
+                            usersNewSession.SessionEndTime = DateTime.UtcNow.AddMinutes(15);
                             _context.UserSession.Add(usersNewSession);
                             if (_context.SaveChanges() > 0)
                             {
