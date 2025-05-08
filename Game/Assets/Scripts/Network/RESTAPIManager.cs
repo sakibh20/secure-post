@@ -45,6 +45,7 @@ public class RESTAPIManager : MonoBehaviour
             UserId = userId,
             Password = password
         };
+        
         AesEncryptionHelper encryptionHelper = new AesEncryptionHelper();
         string encryptedData = encryptionHelper.Encrypt(JsonUtility.ToJson(data));
 
@@ -153,15 +154,6 @@ public class RESTAPIManager : MonoBehaviour
 
         using UnityWebRequest request = UnityWebRequest.Post(url, form);
         yield return request.SendWebRequest();
-        
-        // byte[] bodyRaw = Encoding.UTF8.GetBytes(data);
-        //
-        // UnityWebRequest request = new UnityWebRequest(url, "POST");
-        // request.uploadHandler = new UploadHandlerRaw(bodyRaw);
-        // request.downloadHandler = new DownloadHandlerBuffer();
-        // request.SetRequestHeader("Content-Type", "application/json");
-        //
-        // yield return request.SendWebRequest();
         
         ServerDataManager.Instance.serverResponse = new ServerResponse();
 

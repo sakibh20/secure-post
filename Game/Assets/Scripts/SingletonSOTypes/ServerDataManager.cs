@@ -29,11 +29,6 @@ public class ServerDataManager : SingletonSO<ServerDataManager>
     public string joinEndpoint = "user";
     public string joinMatch = "game";
 
-    // [Space] 
-    // public string matchId;
-    // public string player1;
-    // public string player2;
-
     [Space]
     public string FailedStatus = "failed";
     public string SuccessStatus = "ok";
