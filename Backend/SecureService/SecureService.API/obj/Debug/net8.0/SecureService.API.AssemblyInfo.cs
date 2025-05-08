@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SecureService.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+63044af82a7f80940018c026888ec683fd1f47b0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2ae0160d366aa82699f9154e4a8ecd5ce04a096f")]
 [assembly: System.Reflection.AssemblyProductAttribute("SecureService.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SecureService.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

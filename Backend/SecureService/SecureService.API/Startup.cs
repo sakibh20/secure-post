@@ -4,9 +4,11 @@ using AspNetCoreRateLimit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using SecureService.API.Extensions;
@@ -126,6 +128,22 @@ namespace SecureService.API
                 .AllowCredentials());
 
             app.UseIpRateLimiting();
+
+            app.Use(async (context, next) =>
+            {
+                await next();
+
+                if (context.Response.StatusCode == StatusCodes.Status429TooManyRequests)
+                {
+                    var logger = context.RequestServices.GetRequiredService<ILogger<Startup>>();
+                    var ip = context.Connection.RemoteIpAddress?.ToString();
+                    var path = context.Request.Path;
+                    var ua = context.Request.Headers["User-Agent"].ToString();
+
+                    logger.LogWarning("Rate limit exceeded. IP: {IP}, Path: {Path}, User-Agent: {UserAgent}",
+                        ip, path, ua);
+                }
+            });
 
             app.UseAuthentication();
             app.UseAuthorization();
