@@ -17,11 +17,9 @@ def update_match_result(token: str,  match_id: str, player1_moves: int, player2_
     }
 
     print("Payload:", payload)
-    print("Headers:", headers)
     try:
 
         response = requests.post(url, data=payload, headers=headers)
-
         print("Status Code:", response.status_code)
         print("Response Body:", response.text)
     except (Exception,) as e:
