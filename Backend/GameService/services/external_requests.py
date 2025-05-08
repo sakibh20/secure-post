@@ -20,9 +20,9 @@ def update_match_result(token: str,  match_id: str, player1_moves: int, player2_
     print("Headers:", headers)
     try:
 
-        response = requests.post(url, json=payload, headers=headers)
+        response = requests.post(url, data=payload, headers=headers)
 
         print("Status Code:", response.status_code)
         print("Response Body:", response.text)
-    except (Exception,):
-        print("Error occurred while making the request")
+    except (Exception,) as e:
+        print(f"Error occurred while making the request {e}")
