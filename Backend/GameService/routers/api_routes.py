@@ -30,6 +30,7 @@ async def claim_dice_api(payload: ClaimRequest):
 
 @api_router.post("/decide")
 async def decide_dice_api(payload: DecideRequest):
+    print("Payload:", payload.model_dump_json())
     await handle_game_round_decide(payload.user_id, payload.match_id, payload.decision, payload.token)
     return {
         "detail": "Decision processed",
