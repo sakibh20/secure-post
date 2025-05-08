@@ -78,6 +78,9 @@ async def handle_match_join(websocket: WebSocket, user_id: str, match_id):
         #     await broadcast_lobby_update()
 
 def verify_user_permission(game_manager: GameManager, token: str):
+    print(f"Received token: {token}")
+    print(f"Player1 Secret Key: {game_manager.game.player1SecretKey}")
+    print(f"Player2 Secret Key: {game_manager.game.player2SecretKey}")
     if game_manager.game.player1SecretKey != token and game_manager.game.player2SecretKey != token:
         raise HTTPException(status_code=403, detail="Invalid token")
 
