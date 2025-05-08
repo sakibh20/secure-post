@@ -1,6 +1,7 @@
+import os
 import random
 
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException, Header
 
 from services.common import notify_user
 from services.game import match_request_notifier, create_game, handle_game_roll_dice, handle_game_claim_dice, \
@@ -8,6 +9,7 @@ from services.game import match_request_notifier, create_game, handle_game_roll_
 from services.models import DiceRollRequest, ClaimRequest, MatchCreateRequest, MatchAcceptRequest, DecideRequest
 
 api_router = APIRouter()
+WEBSECRET_KEY = os.getenv("WEBSECRET_KEY", "default_websecret_key")
 
 
 @api_router.post("/roll-dice")
@@ -36,7 +38,9 @@ async def decide_dice_api(payload: DecideRequest):
     }
 
 @api_router.post("/match/request")
-async def match_request_api(payload: MatchCreateRequest):
+async def match_request_api(payload: MatchCreateRequest, websecret: str = Header(...)):
+    if websecret != WEBSECRET_KEY:
+        raise HTTPException(status_code=403, detail="Invalid websecret key")
     await match_request_notifier(payload)
     return {
         "detail": "Match request sent",
@@ -44,7 +48,9 @@ async def match_request_api(payload: MatchCreateRequest):
 
 
 @api_router.post("/match/accept")
-async def match_accept_api(payload: MatchAcceptRequest):
+async def match_accept_api(payload: MatchAcceptRequest, websecret: str = Header(...)):
+    if websecret != WEBSECRET_KEY:
+        raise HTTPException(status_code=403, detail="Invalid websecret key")
     await create_game(payload)
     return {
         "detail": "Match accepted",
