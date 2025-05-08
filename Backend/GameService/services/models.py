@@ -7,17 +7,21 @@ from pydantic import BaseModel
 class DiceRollRequest(BaseModel):
     match_id: str
     user_id: str
+    token: str
 
 
 class ClaimRequest(BaseModel):
     match_id: str
     user_id: str
     claim_value: int
+    token: str
+
 
 class DecideRequest(BaseModel):
     match_id: str
     user_id: str
     decision: bool
+    token: str
 
 class MatchCreateRequest(BaseModel):
     MatchId: str

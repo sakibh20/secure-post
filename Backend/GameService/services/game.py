@@ -77,9 +77,13 @@ async def handle_match_join(websocket: WebSocket, user_id: str, match_id):
         #     lobby_users.remove(user_id)
         #     await broadcast_lobby_update()
 
+def verify_user_permission(game_manager: GameManager, token: str):
+    if game_manager.game.player1SecretKey != token and game_manager.game.player2SecretKey != token:
+        raise HTTPException(status_code=403, detail="Invalid token")
 
-async def handle_game_roll_dice(user_id: str, match_id: str, roll: int):
+async def handle_game_roll_dice(user_id: str, match_id: str, roll: int, token: str):
     game_manager = game_data.get(match_id)
+    verify_user_permission(game_manager, token)
     if not game_manager:
         raise HTTPException(status_code=404, detail="Game not found")
     if user_id != game_manager.game.currentState.currentTurn:
@@ -90,9 +94,10 @@ async def handle_game_roll_dice(user_id: str, match_id: str, roll: int):
     game_data[match_id] = game_manager
 
 
-async def handle_game_claim_dice(user_id: str, match_id: str, claim: int):
+async def handle_game_claim_dice(user_id: str, match_id: str, claim: int, token: str):
     game_manager = game_data.get(match_id)
 
+    verify_user_permission(game_manager, token)
     if not game_manager:
         raise HTTPException(status_code=404, detail="Game not found")
     if user_id == game_manager.game.currentState.currentTurn:
@@ -102,8 +107,10 @@ async def handle_game_claim_dice(user_id: str, match_id: str, claim: int):
     await game_manager.next_turn()
     game_data[match_id] = game_manager
 
-async def handle_game_round_decide(user_id: str, match_id: str, decision: bool):
+async def handle_game_round_decide(user_id: str, match_id: str, decision: bool, token: str):
     game_manager = game_data.get(match_id)
+
+    verify_user_permission(game_manager, token)
     if not game_manager:
         raise HTTPException(status_code=404, detail="Game not found")
     if user_id != game_manager.game.currentState.currentTurn:
