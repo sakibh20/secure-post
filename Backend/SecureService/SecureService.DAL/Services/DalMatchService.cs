@@ -253,7 +253,7 @@ namespace SecureService.DAL.Services
             StatusResult<object> status = new StatusResult<object>();
             try
             {
-                List<UserMatch> matchHistory = _context.UserMatch.Where(it => (it.Player1 == user.UserId || it.Player2 == user.UserId) && it.EndTime != null).ToList();
+                List<UserMatch> matchHistory = _context.UserMatch.Where(it => (it.Player1 == user.UserId || it.Player2 == user.UserId) && it.EndTime != null).OrderByDescending(it=>it.EndTime).ToList();
 
                 status.Status = "SUCCESS";
                 status.Message = "Matches History fetched successfully.";
