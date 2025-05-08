@@ -49,6 +49,7 @@ public class ServerDataManager : SingletonSO<ServerDataManager>
     
     [Space]
     public ServerResponse serverResponse;
+    public MatchRequestResponse matchRequestResponse;
     public LeaderboardResponse leaderboardResponse;
     public HistoryResponse historyResponse;
 
@@ -57,8 +58,8 @@ public class ServerDataManager : SingletonSO<ServerDataManager>
     public WSLobbyMessage wsMatchMessage;
 
     public DiceRollResponse diceRollResponse;
-    public DiceRollResponse decideResponse;
-    public DiceRollResponse claimResponse;
+    public DiceRollResponse claimDecideResponse;
+    //public DiceRollResponse claimResponse;
     
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     public static void OnBeforeSceneLoad()
@@ -157,6 +158,7 @@ public class DiceRollRequest
 {
     public string match_id;
     public string user_id;
+    public string token;
     public int claim_value;
     public bool decision;
 }
@@ -167,6 +169,14 @@ public class DiceRollResponse
     public string match_id;
     public string user_id;
     public int dice_roll;
+}
+
+[Serializable]
+public class MatchRequestResponse
+{
+    public string Status;
+    public string Message;
+    public string Result;
 }
 
 [Serializable]

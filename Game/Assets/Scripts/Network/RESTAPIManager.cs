@@ -76,7 +76,8 @@ public class RESTAPIManager : MonoBehaviour
         DiceRollRequest data = new DiceRollRequest
         {
             match_id = matchId,
-            user_id = userId
+            user_id = userId,
+            token = ServerDataManager.Instance.matchRequestResponse.Result
         };
 
         StartCoroutine(HitRollDice(JsonUtility.ToJson(data), ServerDataManager.Instance.GetRollUrl()));
@@ -91,7 +92,8 @@ public class RESTAPIManager : MonoBehaviour
         {
             match_id = matchId,
             user_id = userId,
-            claim_value = claimValue
+            claim_value = claimValue,
+            token = ServerDataManager.Instance.matchRequestResponse.Result
         };
 
         StartCoroutine(HitClaimDecideDice(JsonUtility.ToJson(data), ServerDataManager.Instance.GetClaimUrl()));
@@ -106,7 +108,8 @@ public class RESTAPIManager : MonoBehaviour
         {
             match_id = matchId,
             user_id = userId,
-            decision = decision
+            decision = decision,
+            token = ServerDataManager.Instance.matchRequestResponse.Result
         };
 
         StartCoroutine(HitClaimDecideDice(JsonUtility.ToJson(data), ServerDataManager.Instance.GetDecisionUrl()));
@@ -192,25 +195,25 @@ public class RESTAPIManager : MonoBehaviour
 
         yield return request.SendWebRequest();
         
-        ServerResponse serverResponse = JsonUtility.FromJson<ServerResponse>(request.downloadHandler.text);
+        ServerDataManager.Instance.matchRequestResponse = JsonUtility.FromJson<MatchRequestResponse>(request.downloadHandler.text);
         
         if (request.result == UnityWebRequest.Result.Success)
         {
             Debug.Log("Success: " + request.downloadHandler.text);
             
-            if (serverResponse.Status.ToLower() == ServerDataManager.Instance.FailedStatus)
+            if (ServerDataManager.Instance.matchRequestResponse.Status.ToLower() == ServerDataManager.Instance.FailedStatus)
             {
-                OnFail?.Invoke(serverResponse.Message);
+                OnFail?.Invoke(ServerDataManager.Instance.matchRequestResponse.Message);
             }
             else
             {
-                OnSuccess?.Invoke(serverResponse.Message);
+                OnSuccess?.Invoke(ServerDataManager.Instance.matchRequestResponse.Message);
             }
         }
         else
         {
             Debug.LogError("Error: " + request.error);
-            OnFail?.Invoke(serverResponse.Message);
+            OnFail?.Invoke(ServerDataManager.Instance.matchRequestResponse.Message);
         }
     }
     
@@ -319,30 +322,31 @@ public class RESTAPIManager : MonoBehaviour
 
         yield return request.SendWebRequest();
         
-        ServerResponse serverResponse = JsonUtility.FromJson<ServerResponse>(request.downloadHandler.text);
+        ServerDataManager.Instance.matchRequestResponse = JsonUtility.FromJson<MatchRequestResponse>(request.downloadHandler.text);
 
         if (request.result == UnityWebRequest.Result.Success)
         {
             Debug.Log("Response: " + request.downloadHandler.text);
             
-            if (serverResponse.Status.ToLower() == ServerDataManager.Instance.FailedStatus)
+            if (ServerDataManager.Instance.matchRequestResponse.Status.ToLower() == ServerDataManager.Instance.FailedStatus)
             {
-                OnFail?.Invoke(serverResponse.Message);
+                OnFail?.Invoke(ServerDataManager.Instance.matchRequestResponse.Message);
             }
             else
             {
-                OnSuccess?.Invoke(serverResponse.Message);
+                OnSuccess?.Invoke(ServerDataManager.Instance.matchRequestResponse.Message);
             }
         }
         else
         {
-            OnFail?.Invoke(serverResponse.Message);
+            OnFail?.Invoke(ServerDataManager.Instance.matchRequestResponse.Message);
         }
     }
     
     private IEnumerator HitRollDice(string data, string url)
     {
         Debug.Log($"Url: {url}");
+        Debug.Log($"data: {data}");
         byte[] bodyRaw = Encoding.UTF8.GetBytes(data);
 
         UnityWebRequest request = new UnityWebRequest(url, "POST");
@@ -380,7 +384,7 @@ public class RESTAPIManager : MonoBehaviour
 
         yield return request.SendWebRequest();
         
-        DiceRollResponse response = JsonUtility.FromJson<DiceRollResponse>(request.downloadHandler.text);
+        ServerDataManager.Instance.claimDecideResponse = JsonUtility.FromJson<DiceRollResponse>(request.downloadHandler.text);
         
         if (request.result == UnityWebRequest.Result.Success)
         {
