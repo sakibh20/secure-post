@@ -7,17 +7,21 @@ from pydantic import BaseModel
 class DiceRollRequest(BaseModel):
     match_id: str
     user_id: str
+    token: str
 
 
 class ClaimRequest(BaseModel):
     match_id: str
     user_id: str
     claim_value: int
+    token: str
+
 
 class DecideRequest(BaseModel):
     match_id: str
     user_id: str
     decision: bool
+    token: str
 
 class MatchCreateRequest(BaseModel):
     MatchId: str
@@ -30,6 +34,8 @@ class MatchAcceptRequest(BaseModel):
     MatchId: str
     Player1: str
     Player2: str
+    Player1SecretKey: str
+    Player2SecretKey: str
     FirstTurn: str
     MatchToken: str
 
@@ -60,6 +66,8 @@ class Game(BaseModel):
     matchId: str
     player1: str
     player2: str
+    player1SecretKey: str
+    player2SecretKey: str
     status: GameStatus
     player1Score: int = 0
     player2Score: int = 0

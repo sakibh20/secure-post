@@ -21,6 +21,8 @@ async def create_game(payload: MatchAcceptRequest):
         matchId=payload.MatchId,
         player1=payload.Player1,
         player2=payload.Player2,
+        player1SecretKey=payload.Player1SecretKey,
+        player2SecretKey=payload.Player2SecretKey,
         status=GameStatus.WAITING,
         matchToken=payload.MatchToken,
         currentState=GameState(
@@ -75,9 +77,14 @@ async def handle_match_join(websocket: WebSocket, user_id: str, match_id):
         #     lobby_users.remove(user_id)
         #     await broadcast_lobby_update()
 
+def verify_user_permission(game_manager: GameManager, token: str, user_id: str):
+    expected_token = game_manager.game.player1SecretKey if user_id == game_manager.game.player1 else game_manager.game.player2SecretKey
+    if token != expected_token:
+        raise HTTPException(status_code=403, detail="Invalid token")
 
-async def handle_game_roll_dice(user_id: str, match_id: str, roll: int):
+async def handle_game_roll_dice(user_id: str, match_id: str, roll: int, token: str):
     game_manager = game_data.get(match_id)
+    verify_user_permission(game_manager, token, user_id)
     if not game_manager:
         raise HTTPException(status_code=404, detail="Game not found")
     if user_id != game_manager.game.currentState.currentTurn:
@@ -88,19 +95,24 @@ async def handle_game_roll_dice(user_id: str, match_id: str, roll: int):
     game_data[match_id] = game_manager
 
 
-async def handle_game_claim_dice(user_id: str, match_id: str, claim: int):
+async def handle_game_claim_dice(user_id: str, match_id: str, claim: int, token: str):
     game_manager = game_data.get(match_id)
+
+    expected_user = game_manager.game.player1 if game_manager.game.currentState.currentTurn == game_manager.game.player2 else game_manager.game.player2
+    verify_user_permission(game_manager, token, expected_user)
     if not game_manager:
         raise HTTPException(status_code=404, detail="Game not found")
-    if user_id == game_manager.game.currentState.currentTurn:
+    if user_id != expected_user:
         raise HTTPException(status_code=403, detail="Not your turn")
 
     game_manager.game.currentState.claim = claim
     await game_manager.next_turn()
     game_data[match_id] = game_manager
 
-async def handle_game_round_decide(user_id: str, match_id: str, decision: bool):
+async def handle_game_round_decide(user_id: str, match_id: str, decision: bool, token: str):
     game_manager = game_data.get(match_id)
+
+    verify_user_permission(game_manager, token, user_id)
     if not game_manager:
         raise HTTPException(status_code=404, detail="Game not found")
     if user_id != game_manager.game.currentState.currentTurn:
