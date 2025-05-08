@@ -25,6 +25,7 @@ namespace SecureService.DAL.Services
         private readonly byte[] _key;
         private readonly byte[] _iv;
         private readonly string key;
+        private readonly string game_engine_key;
 
         public DalClsService(ILogRepository logger,
             IConfiguration config,
@@ -35,6 +36,7 @@ namespace SecureService.DAL.Services
             this._memoryCache = memoryCache;
 
             this.key = Environment.GetEnvironmentVariable("AES_ENCRYPTION_KEY");
+            this.game_engine_key = Environment.GetEnvironmentVariable("WEBSECRET_KEY");
             if (string.IsNullOrEmpty(this.key))
             {
                 throw new Exception("AES Encryption key not found in environment variables.");
@@ -163,7 +165,7 @@ namespace SecureService.DAL.Services
 
                 httpWebRequest.ContentType = contentType;
                 httpWebRequest.Method = method.ToUpper();
-                //httpWebRequest.Headers.Add("Authorization", "Bearer " + token);
+                httpWebRequest.Headers.Add("websecret", game_engine_key);
 
                 //_logger.LogError("(Request) SecureService --> " + uri + " , Json : " + jsonObj);
 
