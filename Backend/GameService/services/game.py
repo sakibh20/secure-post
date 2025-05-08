@@ -21,6 +21,8 @@ async def create_game(payload: MatchAcceptRequest):
         matchId=payload.MatchId,
         player1=payload.Player1,
         player2=payload.Player2,
+        player1SecretKey=payload.Player1SecretKey,
+        player2SecretKey=payload.Player2SecretKey,
         status=GameStatus.WAITING,
         matchToken=payload.MatchToken,
         currentState=GameState(
@@ -90,6 +92,7 @@ async def handle_game_roll_dice(user_id: str, match_id: str, roll: int):
 
 async def handle_game_claim_dice(user_id: str, match_id: str, claim: int):
     game_manager = game_data.get(match_id)
+
     if not game_manager:
         raise HTTPException(status_code=404, detail="Game not found")
     if user_id == game_manager.game.currentState.currentTurn:
