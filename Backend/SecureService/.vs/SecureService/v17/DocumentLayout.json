@@ -3,20 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecureService\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{37CC6324-0218-4347-B8A7-1E8CA971C1C0}|SecureService.DAL\\SecureService.DAL.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureservice\\secureservice.dal\\services\\dalmatchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37CC6324-0218-4347-B8A7-1E8CA971C1C0}|SecureService.DAL\\SecureService.DAL.csproj|solutionrelative:secureservice.dal\\services\\dalmatchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{837511A7-7C92-40E6-8329-208F9706FFB8}|SecureService.API\\SecureService.API.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureservice\\secureservice.api\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{837511A7-7C92-40E6-8329-208F9706FFB8}|SecureService.API\\SecureService.API.csproj|solutionrelative:secureservice.api\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{37CC6324-0218-4347-B8A7-1E8CA971C1C0}|SecureService.DAL\\SecureService.DAL.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureservice\\secureservice.dal\\services\\dalclsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{37CC6324-0218-4347-B8A7-1E8CA971C1C0}|SecureService.DAL\\SecureService.DAL.csproj|solutionrelative:secureservice.dal\\services\\dalclsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{837511A7-7C92-40E6-8329-208F9706FFB8}|SecureService.API\\SecureService.API.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureservice\\secureservice.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{837511A7-7C92-40E6-8329-208F9706FFB8}|SecureService.API\\SecureService.API.csproj|solutionrelative:secureservice.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{37CC6324-0218-4347-B8A7-1E8CA971C1C0}|SecureService.DAL\\SecureService.DAL.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureservice\\secureservice.dal\\services\\dalloginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37CC6324-0218-4347-B8A7-1E8CA971C1C0}|SecureService.DAL\\SecureService.DAL.csproj|solutionrelative:secureservice.dal\\services\\dalloginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{837511A7-7C92-40E6-8329-208F9706FFB8}|SecureService.API\\SecureService.API.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureservice\\secureservice.api\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{837511A7-7C92-40E6-8329-208F9706FFB8}|SecureService.API\\SecureService.API.csproj|solutionrelative:secureservice.api\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{37CC6324-0218-4347-B8A7-1E8CA971C1C0}|SecureService.DAL\\SecureService.DAL.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureservice\\secureservice.dal\\services\\dalmatchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37CC6324-0218-4347-B8A7-1E8CA971C1C0}|SecureService.DAL\\SecureService.DAL.csproj|solutionrelative:secureservice.dal\\services\\dalmatchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{837511A7-7C92-40E6-8329-208F9706FFB8}|SecureService.API\\SecureService.API.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureservice\\secureservice.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{837511A7-7C92-40E6-8329-208F9706FFB8}|SecureService.API\\SecureService.API.csproj|solutionrelative:secureservice.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{37CC6324-0218-4347-B8A7-1E8CA971C1C0}|SecureService.DAL\\SecureService.DAL.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureservice\\secureservice.dal\\services\\daljwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -25,10 +29,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{37CC6324-0218-4347-B8A7-1E8CA971C1C0}|SecureService.DAL\\SecureService.DAL.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureservice\\secureservice.dal\\services\\dallogoutservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{37CC6324-0218-4347-B8A7-1E8CA971C1C0}|SecureService.DAL\\SecureService.DAL.csproj|solutionrelative:secureservice.dal\\services\\dallogoutservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37CC6324-0218-4347-B8A7-1E8CA971C1C0}|SecureService.DAL\\SecureService.DAL.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureservice\\secureservice.dal\\services\\dalloginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37CC6324-0218-4347-B8A7-1E8CA971C1C0}|SecureService.DAL\\SecureService.DAL.csproj|solutionrelative:secureservice.dal\\services\\dalloginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E8648250-66CB-4F5D-822A-AE78073C6350}|SecureService.BLL\\SecureService.BLL.csproj|c:\\users\\samith\\onedrive\\documents\\tampare_university\\spring_25\\secure_programming\\project\\secure-post\\backend\\secureservice\\secureservice.bll\\services\\loginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -166,17 +166,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 23,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "DalMatchService.cs",
               "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecureService\\SecureService.DAL\\Services\\DalMatchService.cs",
               "RelativeDocumentMoniker": "SecureService.DAL\\Services\\DalMatchService.cs",
               "ToolTip": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecureService\\SecureService.DAL\\Services\\DalMatchService.cs",
               "RelativeToolTip": "SecureService.DAL\\Services\\DalMatchService.cs",
-              "ViewState": "AgIAAFkAAAAAAAAAAAA9wAMBAAAtAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMBAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-06T16:54:48.684Z",
               "IsPinned": true,
@@ -193,8 +193,7 @@
               "ViewState": "AgIAAAAAAAAAAAAAAIBZwBAAAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-06T16:55:21.508Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -207,8 +206,7 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-06T16:56:04.779Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -221,8 +219,7 @@
               "ViewState": "AgIAAAcAAAAAAAAAAAAqwCQAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-06T16:56:22.736Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -235,12 +232,11 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAHUAAABOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-06T18:22:07.239Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecureService\\SecureService.API\\appsettings.json",
               "RelativeDocumentMoniker": "SecureService.API\\appsettings.json",
@@ -248,8 +244,7 @@
               "RelativeToolTip": "SecureService.API\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-05-05T23:24:47.187Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-05T23:24:47.187Z"
             },
             {
               "$type": "Document",
@@ -259,7 +254,7 @@
               "RelativeDocumentMoniker": "SecureService.DAL\\Services\\DalClsService.cs",
               "ToolTip": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecureService\\SecureService.DAL\\Services\\DalClsService.cs",
               "RelativeToolTip": "SecureService.DAL\\Services\\DalClsService.cs",
-              "ViewState": "AgIAAHUAAAAAAAAAAAAwwKUAAAA2AAAAAAAAAA==",
+              "ViewState": "AgIAACIAAAAAAAAAAAAgwKUAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-05T20:28:55.48Z",
               "EditorCaption": ""
@@ -274,8 +269,7 @@
               "RelativeToolTip": "SecureService.BLL\\Repositories\\ILoginRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T20:28:03.208Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-05T20:28:03.208Z"
             },
             {
               "$type": "Document",
@@ -287,8 +281,7 @@
               "RelativeToolTip": "SecureService.BLL\\Services\\RegistrationService.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAIBJwBYAAABDAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T20:24:47.518Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-05T20:24:47.518Z"
             },
             {
               "$type": "Document",
@@ -300,8 +293,7 @@
               "RelativeToolTip": "SecureService.BLL\\Repositories\\IRegistrationRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T20:24:41.686Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-05T20:24:41.686Z"
             },
             {
               "$type": "Document",
@@ -313,8 +305,7 @@
               "RelativeToolTip": "SecureService.DAL\\Repositories\\IDalRegistrationRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T20:21:31.995Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-05T20:21:31.995Z"
             },
             {
               "$type": "Document",
@@ -326,8 +317,7 @@
               "RelativeToolTip": "SecureService.BLL\\Services\\LoginService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-25T08:02:19.297Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-25T08:02:19.297Z"
             },
             {
               "$type": "Document",
@@ -339,8 +329,7 @@
               "RelativeToolTip": "SecureService.Entity\\Shared\\Internal\\TokenResponseViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-25T00:51:05.357Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-25T00:51:05.357Z"
             },
             {
               "$type": "Document",
@@ -352,12 +341,11 @@
               "RelativeToolTip": "SecureService.DAL\\Repositories\\IDalClsRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-24T22:37:38.782Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-24T22:37:38.782Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "DalJWTTokenService.cs",
               "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecureService\\SecureService.DAL\\Services\\DalJWTTokenService.cs",
               "RelativeDocumentMoniker": "SecureService.DAL\\Services\\DalJWTTokenService.cs",
@@ -365,8 +353,7 @@
               "RelativeToolTip": "SecureService.DAL\\Services\\DalJWTTokenService.cs",
               "ViewState": "AgIAABUAAAAAAAAAAAAQwH0AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-24T19:49:36.628Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-24T19:49:36.628Z"
             },
             {
               "$type": "Document",
@@ -378,8 +365,7 @@
               "RelativeToolTip": "SecureService.Logging\\LogService.cs",
               "ViewState": "AgIAABkAAAAAAAAAAAAowCsAAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T17:00:49.262Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-23T17:00:49.262Z"
             },
             {
               "$type": "Document",
@@ -391,8 +377,7 @@
               "RelativeToolTip": "SecureService.Entity\\Shared\\Internal\\LeaderBoardDataViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAIBJwBAAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-22T20:20:20.901Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-22T20:20:20.901Z"
             },
             {
               "$type": "Document",
@@ -404,8 +389,7 @@
               "RelativeToolTip": "SecureService.API\\Controllers\\RegistrationController.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAqwBcAAABDAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-22T20:18:20.484Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-22T20:18:20.484Z"
             },
             {
               "$type": "Document",
@@ -417,8 +401,7 @@
               "RelativeToolTip": "SecureService.Entity\\Shared\\Internal\\MatchresultViewModel.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAIBZwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-22T20:13:58.639Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-22T20:13:58.639Z"
             },
             {
               "$type": "Document",
@@ -430,8 +413,7 @@
               "RelativeToolTip": "SecureService.Entity\\Shared\\Database\\UserRefreshToken.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-20T18:25:24.565Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-20T18:25:24.565Z"
             },
             {
               "$type": "Document",
@@ -443,8 +425,7 @@
               "RelativeToolTip": "SecureService.Entity\\Shared\\Internal\\MatchAcceptedViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-19T23:57:38.52Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-19T23:57:38.52Z"
             },
             {
               "$type": "Document",
@@ -456,8 +437,7 @@
               "RelativeToolTip": "SecureService.Entity\\Shared\\Internal\\MatchRequestViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-19T23:37:41.596Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-19T23:37:41.596Z"
             },
             {
               "$type": "Document",
@@ -469,18 +449,17 @@
               "RelativeToolTip": "SecureService.DAL\\Repositories\\IDalLoginRepository.cs",
               "ViewState": "AgIAAAQAAAAAAAAAAAAiwAwAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-19T23:06:53.75Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-19T23:06:53.75Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "Startup.cs",
               "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecureService\\SecureService.API\\Startup.cs",
               "RelativeDocumentMoniker": "SecureService.API\\Startup.cs",
               "ToolTip": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecureService\\SecureService.API\\Startup.cs",
               "RelativeToolTip": "SecureService.API\\Startup.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAqwCQAAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAAHsAAAAAAAAAAAAQwCQAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-11T07:44:41.844Z",
               "EditorCaption": ""
@@ -495,8 +474,7 @@
               "RelativeToolTip": "SecureService.API\\Properties\\launchSettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAIBZwAYAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-04-06T20:57:12.02Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-06T20:57:12.02Z"
             },
             {
               "$type": "Document",
@@ -508,8 +486,7 @@
               "RelativeToolTip": "SecureService.DAL\\Repositories\\IDalJWTTokenRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-06T17:59:04.533Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-06T17:59:04.533Z"
             },
             {
               "$type": "Document",
@@ -521,8 +498,7 @@
               "RelativeToolTip": "SecureService.Context\\Shared\\DBContext.cs",
               "ViewState": "AgIAAGQAAAAAAAAAAAAgwI8AAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-06T16:00:38.346Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-06T16:00:38.346Z"
             },
             {
               "$type": "Document",
@@ -534,8 +510,7 @@
               "RelativeToolTip": "SecureService.API\\Controllers\\LoginController.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAAQwBoAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-03T18:34:27.22Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-03T18:34:27.22Z"
             },
             {
               "$type": "Document",
@@ -547,8 +522,7 @@
               "RelativeToolTip": "SecureService.API\\Controllers\\LogoutController.cs",
               "ViewState": "AgIAABkAAAAAAAAAAAAmwC0AAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-06T16:50:10.615Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-06T16:50:10.615Z"
             },
             {
               "$type": "Document",
@@ -560,8 +534,7 @@
               "RelativeToolTip": "SecureService.DAL\\Services\\DalRegistrationService.cs",
               "ViewState": "AgIAACwAAAAAAAAAAAAwwDsAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-06T18:10:38.734Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-06T18:10:38.734Z"
             },
             {
               "$type": "Document",
@@ -573,25 +546,24 @@
               "RelativeToolTip": "SecureService.BLL\\Services\\ClsService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-06T16:48:06.545Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-06T16:48:06.545Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 2,
               "Title": "DalLoginService.cs",
               "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecureService\\SecureService.DAL\\Services\\DalLoginService.cs",
               "RelativeDocumentMoniker": "SecureService.DAL\\Services\\DalLoginService.cs",
               "ToolTip": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecureService\\SecureService.DAL\\Services\\DalLoginService.cs",
               "RelativeToolTip": "SecureService.DAL\\Services\\DalLoginService.cs",
-              "ViewState": "AgIAAGwAAAAAAAAAAEBVwGkAAAB2AAAAAAAAAA==",
+              "ViewState": "AgIAACkAAAAAAAAAAAAgwGkAAAB2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-06T15:50:45.752Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "DalLogoutService.cs",
               "DocumentMoniker": "C:\\Users\\Samith\\OneDrive\\Documents\\Tampare_University\\Spring_25\\Secure_Programming\\Project\\secure-post\\Backend\\SecureService\\SecureService.DAL\\Services\\DalLogoutService.cs",
               "RelativeDocumentMoniker": "SecureService.DAL\\Services\\DalLogoutService.cs",
@@ -599,8 +571,7 @@
               "RelativeToolTip": "SecureService.DAL\\Services\\DalLogoutService.cs",
               "ViewState": "AgIAADEAAAAAAAAAAAAwwEkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-06T16:39:34.564Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-06T16:39:34.564Z"
             },
             {
               "$type": "Document",
@@ -612,8 +583,7 @@
               "RelativeToolTip": "SecureService.Entity\\Shared\\Database\\UserMatch.cs",
               "ViewState": "AgIAACEAAAAAAAAAAAAUwC4AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-06T17:31:17.881Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-06T17:31:17.881Z"
             },
             {
               "$type": "Document",
@@ -625,8 +595,7 @@
               "RelativeToolTip": "SecureService.BLL\\Repositories\\IJWTTokenRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-06T16:30:35.617Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-06T16:30:35.617Z"
             },
             {
               "$type": "Document",
@@ -638,8 +607,7 @@
               "RelativeToolTip": "SecureService.BLL\\Services\\JWTTokenService.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAAAmwBwAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-06T16:30:47.489Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-06T16:30:47.489Z"
             },
             {
               "$type": "Document",
@@ -651,8 +619,7 @@
               "RelativeToolTip": "SecureService.Context\\SecureServiceDbContext.cs",
               "ViewState": "AgIAABYAAAAAAAAAAAA1wBYAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-06T16:01:46.924Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-06T16:01:46.924Z"
             },
             {
               "$type": "Document",
@@ -664,8 +631,7 @@
               "RelativeToolTip": "SecureService.BLL\\Services\\LogoutService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAIBZwBYAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-06T16:40:52.124Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-06T16:40:52.124Z"
             },
             {
               "$type": "Document",
@@ -677,8 +643,7 @@
               "RelativeToolTip": "SecureService.DAL\\Repositories\\IDalLogoutRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-06T16:40:13.457Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-06T16:40:13.457Z"
             }
           ]
         }
